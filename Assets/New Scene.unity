@@ -1830,6 +1830,8 @@ MonoBehaviour:
   downButton: {fileID: 1874969848}
   leftButton: {fileID: 2110944820}
   rightButton: {fileID: 2097039037}
+  moveDuration: 0.5
+  jumpHeight: 1
 --- !u!1 &476242411
 GameObject:
   m_ObjectHideFlags: 0
@@ -9855,7 +9857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.949721, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

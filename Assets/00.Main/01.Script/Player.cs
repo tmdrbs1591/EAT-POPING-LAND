@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public Button rightButton;
 
     public float moveDuration = 0.5f; // 이동 시간
+    public float jumpHeight = 1f; // 점프 높이
 
     void Start()
     {
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
 
     void MovePlayerToTarget(Vector3 targetPosition)
     {
-        transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutQuad);
+        Vector3 jumpUp = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
+        transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);
     }
 }
