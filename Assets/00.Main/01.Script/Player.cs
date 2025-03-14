@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     public Button downButton;
     public Button leftButton;
     public Button rightButton;
+
+    public float moveDuration = 0.5f; // 이동 시간
 
     void Start()
     {
@@ -62,6 +65,6 @@ public class Player : MonoBehaviour
 
     void MovePlayerToTarget(Vector3 targetPosition)
     {
-        transform.position = targetPosition;
+        transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutQuad);
     }
 }
