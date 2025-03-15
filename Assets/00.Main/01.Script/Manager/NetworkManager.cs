@@ -80,7 +80,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel("01.StartWaitRoom");
+            PhotonNetwork.LoadLevel("01.Ingame");
         }
     }
 
@@ -218,7 +218,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         LobbyPanel.SetActive(false);
         DisconnectPanel.SetActive(false);
-        PhotonNetwork.Instantiate("Player", new Vector3(0, 10, 0), Quaternion.identity);
     }
 
 
