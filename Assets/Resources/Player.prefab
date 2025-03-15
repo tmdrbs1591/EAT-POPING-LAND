@@ -445,7 +445,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.8117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8117647}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 1377563084874637235}
   - component: {fileID: 1377563084874637236}
   - component: {fileID: 1377563084874637232}
+  - component: {fileID: 1233105282314760694}
   - component: {fileID: -1277726024634907011}
   m_Layer: 0
   m_Name: Player
@@ -800,6 +801,20 @@ MonoBehaviour:
   uiCanvas: {fileID: 1377563085808872151}
   uiTextCanvas: {fileID: 708555411057267875}
   nickNameText: {fileID: 5975211890537420281}
+--- !u!114 &1233105282314760694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377563084874637237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a1c98be3eb2894c9725e3d5490bab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerColor: 0
+  spriteRenderer: {fileID: 1377563084415698557}
 --- !u!114 &-1277726024634907011
 MonoBehaviour:
   m_ObjectHideFlags: 0
