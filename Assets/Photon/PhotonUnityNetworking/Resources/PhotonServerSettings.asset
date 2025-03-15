@@ -43,6 +43,7 @@ MonoBehaviour:
   - PlayerMove
   - <Start>g__OnMoveButtonClicked|13_7
   - OnMoveButtonClicked
+  - StartTurn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

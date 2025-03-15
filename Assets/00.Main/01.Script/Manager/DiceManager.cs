@@ -1,5 +1,7 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +17,8 @@ public class DiceManager : MonoBehaviour
 
     [SerializeField] GameObject dicePanel;
     public TMP_Text diceResultText;
+
+    public bool isDice; // ÁÖ»çÀ§¸¦ ±¼·È´Â°¡
     private void Awake()
     {
         instance = this;
@@ -22,8 +26,9 @@ public class DiceManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isDice)
         {
+            isDice = true;
             RollDice();
             StartCoroutine(ResultTextCor());
         }

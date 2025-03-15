@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
     private string lastDirection = ""; // 마지막 이동한 방향
 
+    bool isMove;
+
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
         { "위", "아래" },
@@ -66,7 +68,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
         if (!photonView.IsMine)
             return;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isMove)
         {
             uiCanvas.SetActive(true);
             UpdateButtonVisibility(); // ✅ 감지된 방향에 따라 버튼 상태 업데이트
@@ -108,7 +110,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     IEnumerator MoveCor(string direction)
     {
         uiCanvas.SetActive(false);
-
+        isMove = true;
         for (int i = 0; i < DiceManager.instance.diceResult; i++)
         {
             string selectedDirection = direction;
@@ -139,6 +141,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
             yield return new WaitForSeconds(0.6f);
         }
+        TurnManager.instance.EndTurn();
+        Debug.Log("턴 종료");
+        isMove = false;
+
     }
 
     [PunRPC]
