@@ -10,7 +10,6 @@ public class DiceManager : MonoBehaviour
     {
         instance = this;
     }
-    public PlayerControl player;
     public int diceResult;
     // Update is called once per frame
     void Update()
@@ -31,6 +30,5 @@ public class DiceManager : MonoBehaviour
 
         Debug.Log($"주사위1: {dice1}, 주사위2: {dice2}, 합계: {total}");
 
-        player.uiCanvas.SetActive( true );
     }
 }

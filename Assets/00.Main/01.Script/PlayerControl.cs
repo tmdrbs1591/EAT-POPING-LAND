@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Photon.Realtime;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -41,6 +42,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            uiCanvas.SetActive(true);
+        }
+
         CastRay(Vector3.forward, "À§");
         CastRay(Vector3.back, "¾Æ·¡");
         CastRay(Vector3.left, "¿ÞÂÊ");

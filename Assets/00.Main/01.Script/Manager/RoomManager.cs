@@ -35,9 +35,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (SceneManager.GetActiveScene().name == "01.Ingame")
+        if (scene.name == "01.Ingame")
         {
-            Debug.Log("씬ㅇ 이동");
+            // 현재 방에서 내 플레이어 인덱스 가져오기
+            int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+
+            // 스폰 포인트 가져오기
+            Transform spawnPoint = SpawnPoint.instance.GetSpawnPoint(playerIndex);
+
+            // 포톤 네트워크로 플레이어 생성
+            PhotonNetwork.Instantiate("Player", spawnPoint.position, Quaternion.identity);
         }
     }
 }
