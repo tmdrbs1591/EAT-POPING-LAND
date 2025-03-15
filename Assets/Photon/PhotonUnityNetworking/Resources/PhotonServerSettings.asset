@@ -19,7 +19,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: asia
     Server: 
     Port: 0
     ProxyServer: 
@@ -40,6 +40,9 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ChatRPC
+  - PlayerMove
+  - <Start>g__OnMoveButtonClicked|13_7
+  - OnMoveButtonClicked
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

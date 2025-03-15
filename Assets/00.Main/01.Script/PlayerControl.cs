@@ -133,7 +133,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
                     yield break;
                 }
             }
-            photonView.RPC(nameof(OnMoveButtonClicked), RpcTarget.All, selectedDirection);
+            photonView.RPC("OnMoveButtonClicked", RpcTarget.All, selectedDirection);
             lastDirection = selectedDirection; // 마지막 이동 방향 기록
 
             yield return new WaitForSeconds(0.6f);
