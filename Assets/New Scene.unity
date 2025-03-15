@@ -1482,6 +1482,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310226243}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &344780504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344780505}
+  - component: {fileID: 344780506}
+  m_Layer: 0
+  m_Name: DiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344780505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344780504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.5717583, y: 5.9861417, z: 27.071682}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344780506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344780504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2709935da43b749bd6c39bb8d97413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 450098959}
+  diceResult: 0
 --- !u!1 &384638818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450098954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.589, y: 1.591, z: 26.124}
+  m_LocalPosition: {x: 2.589, y: 1.2, z: 26.124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1911,13 +1957,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7dd08b1d0205f4f9c785b72be4c927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveDuration: 0.5
+  jumpHeight: 1
   rayDistance: 4
   upButton: {fileID: 1699822049}
   downButton: {fileID: 1874969848}
   leftButton: {fileID: 2110944820}
   rightButton: {fileID: 2097039037}
-  moveDuration: 0.5
-  jumpHeight: 1
+  uiCanvas: {fileID: 1378026088}
 --- !u!1 &476242411
 GameObject:
   m_ObjectHideFlags: 0
