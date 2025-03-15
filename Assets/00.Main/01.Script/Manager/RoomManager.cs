@@ -33,18 +33,25 @@ public class RoomManager : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded -= OnSceneLoaded; // 구독 해제
     }
 
+
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (scene.name == "01.Ingame")
         {
-            // 현재 방에서 내 플레이어 인덱스 가져오기
             int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-
-            // 스폰 포인트 가져오기
             Transform spawnPoint = SpawnPoint.instance.GetSpawnPoint(playerIndex);
 
-            // 포톤 네트워크로 플레이어 생성
-            PhotonNetwork.Instantiate("Player", spawnPoint.position, Quaternion.identity);
+            var player = PhotonNetwork.Instantiate("Player", spawnPoint.position, Quaternion.identity);
+            var playerColorScript = player.GetComponent<PlayerColor>();
+
+            PlayerColorType color = (PlayerColorType)playerIndex;
+
+            if (playerColorScript.photonView.IsMine)
+            {
+                playerColorScript.playerColor = color;
+                playerColorScript.photonView.RPC("SetColor", RpcTarget.AllBuffered, (int)color);
+            }
         }
     }
+
 }

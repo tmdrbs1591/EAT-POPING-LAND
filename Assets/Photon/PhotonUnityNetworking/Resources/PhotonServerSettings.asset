@@ -45,6 +45,8 @@ MonoBehaviour:
   - OnMoveButtonClicked
   - StartTurn
   - SyncPlayerColor
+  - SetPlayerColor
+  - SetColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

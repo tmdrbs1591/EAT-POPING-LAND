@@ -1,23 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 
 public enum PlayerColorType
 {
     Red,
-    Green, 
+    Green,
     Blue,
     Yellow
 }
-public class PlayerColor : MonoBehaviour
-{
 
+public class PlayerColor : MonoBehaviourPun
+{
     public PlayerColorType playerColor;
 
-    [SerializeField] SpriteRenderer spriteRenderer;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("SetColor", RpcTarget.AllBuffered, (int)playerColor);
+        }
+    }
+
+    [PunRPC]
+    void SetColor(int colorIndex)
+    {
+        playerColor = (PlayerColorType)colorIndex;
+        ApplyColor();
+    }
+
+    void ApplyColor()
     {
         switch (playerColor)
         {
@@ -33,14 +46,6 @@ public class PlayerColor : MonoBehaviour
             case PlayerColorType.Yellow:
                 spriteRenderer.color = Color.yellow;
                 break;
-            default:
-                break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
