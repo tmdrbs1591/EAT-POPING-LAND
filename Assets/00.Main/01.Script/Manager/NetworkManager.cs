@@ -199,6 +199,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < players.Count(); i++)
         {
             GameObject playerItem = Instantiate(playerListItemPrefab, playerLisContent);
+            playerItem.GetComponent<PlayerListItem>().Setup(players[i]);
             playerObjects[players[i].NickName] = playerItem; // 플레이어 오브젝트 저장
         }
 
@@ -242,6 +243,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         ChatRPC("<color=yellow>" + newPlayer.NickName + "님이 참가하셨습니다</color>");
 
         GameObject playerItem = Instantiate(playerListItemPrefab, playerLisContent);
+        playerItem.GetComponent<PlayerListItem>().Setup(newPlayer);
         playerObjects[newPlayer.NickName] = playerItem; // 플레이어 오브젝트 저장
 
     }
