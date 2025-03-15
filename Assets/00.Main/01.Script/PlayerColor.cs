@@ -15,6 +15,11 @@ public class PlayerColor : MonoBehaviourPun
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    public Material redMaterial;
+    public Material blueMaterial;
+    public Material yellowMaterial;
+    public Material greenMaterial;
+
     private void Start()
     {
         if (photonView.IsMine)
@@ -23,6 +28,22 @@ public class PlayerColor : MonoBehaviourPun
         }
     }
 
+    public Material MaterialChange()
+    {
+        switch (playerColor)
+        {
+            case PlayerColorType.Red:
+                return redMaterial;
+            case PlayerColorType.Green:
+                return greenMaterial;
+            case PlayerColorType.Blue:
+                return blueMaterial;
+            case PlayerColorType.Yellow:
+                return yellowMaterial;
+            default:
+                return null; // 기본값 (오류 방지)
+        }
+    }
     [PunRPC]
     void SetColor(int colorIndex)
     {

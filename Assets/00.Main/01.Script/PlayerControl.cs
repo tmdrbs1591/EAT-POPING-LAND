@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public float jumpHeight = 1f;
     public float rayDistance = 5f;
     private Dictionary<string, Vector3> directionPositions = new Dictionary<string, Vector3>();
+    [SerializeField] GameObject playerColorBox;
+
 
     [Header("UI")]
     public Button upButton;
@@ -105,7 +107,18 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    void ColorChange()
+    {
+        StartCoroutine(ColorChangeCor());
+    }
 
+    IEnumerator ColorChangeCor()
+    {
+        playerColorBox.SetActive(true);
+        yield return new WaitForSeconds(1);
+        playerColorBox.SetActive(false);
+    }
 
     IEnumerator MoveCor(string direction)
     {
@@ -142,6 +155,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(0.6f);
         }
         TurnManager.instance.EndTurn();
+
+
+        photonView.RPC("ColorChange", RpcTarget.All);
+
+
         Debug.Log("턴 종료");
         isMove = false;
 
