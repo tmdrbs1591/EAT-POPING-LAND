@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
         if (!photonView.IsMine)
             return;
-        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isMove)
+        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isMove && !TurnManager.instance.isCountingDown)
         {
             uiCanvas.SetActive(true);
             UpdateButtonVisibility(); // ✅ 감지된 방향에 따라 버튼 상태 업데이트

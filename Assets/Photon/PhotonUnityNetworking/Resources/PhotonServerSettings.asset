@@ -48,6 +48,8 @@ MonoBehaviour:
   - SetPlayerColor
   - SetColor
   - ColorChange
+  - StartCountdown
+  - StartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
