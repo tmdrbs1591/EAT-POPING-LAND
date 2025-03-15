@@ -1,11 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Photon.Realtime;
+using TMPro;
+using Photon.Pun;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : MonoBehaviourPunCallbacks
 {
     [Header("Stat")]
     public float moveDuration = 0.5f;
@@ -19,38 +21,57 @@ public class PlayerControl : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public GameObject uiCanvas;
+    [SerializeField] TMP_Text nickNameText;
 
-    private List<string> currentValidDirections = new List<string>(); // ÇöÀç °¨ÁöµÈ ¹æÇâ ¸®½ºÆ®
 
-    private string lastDirection = ""; // ¸¶Áö¸· ÀÌµ¿ÇÑ ¹æÇâ
+    private List<string> currentValidDirections = new List<string>(); // í˜„ì¬ ê°ì§€ëœ ë°©í–¥ ë¦¬ìŠ¤íŠ¸
+
+    private string lastDirection = ""; // ë§ˆì§€ë§‰ ì´ë™í•œ ë°©í–¥
 
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
-        { "À§", "¾Æ·¡" },
-        { "¾Æ·¡", "À§" },
-        { "¿ŞÂÊ", "¿À¸¥ÂÊ" },
-        { "¿À¸¥ÂÊ", "¿ŞÂÊ" }
+        { "ìœ„", "ì•„ë˜" },
+        { "ì•„ë˜", "ìœ„" },
+        { "ì™¼ìª½", "ì˜¤ë¥¸ìª½" },
+        { "ì˜¤ë¥¸ìª½", "ì™¼ìª½" }
     };
 
     void Start()
     {
-        upButton.onClick.AddListener(() => StartCoroutine(MoveCor("À§")));
-        downButton.onClick.AddListener(() => StartCoroutine(MoveCor("¾Æ·¡")));
-        leftButton.onClick.AddListener(() => StartCoroutine(MoveCor("¿ŞÂÊ")));
-        rightButton.onClick.AddListener(() => StartCoroutine(MoveCor("¿À¸¥ÂÊ")));
-    }
+        if (photonView.IsMine)
+        {
+            nickNameText.text = PhotonNetwork.NickName;
+            nickNameText.color = Color.green;
+        }
+        else
+        {
+            nickNameText.text = photonView.Owner.NickName;
+            nickNameText.color = Color.white;
+        }
 
+        // âœ… ëª¨ë“  ë²„íŠ¼ì— RPCë¡œ ë³´ë‚´ê¸°
+        upButton.onClick.AddListener(() => StartCoroutine(MoveCor("ìœ„")));
+        downButton.onClick.AddListener(() => StartCoroutine(MoveCor("ì•„ë˜")));
+        leftButton.onClick.AddListener(() => StartCoroutine(MoveCor("ì™¼ìª½")));
+        rightButton.onClick.AddListener(() => StartCoroutine(MoveCor("ì˜¤ë¥¸ìª½")));
+
+    }
     void Update()
     {
+        CastRay(Vector3.forward, "ìœ„");
+        CastRay(Vector3.back, "ì•„ë˜");
+        CastRay(Vector3.left, "ì™¼ìª½");
+        CastRay(Vector3.right, "ì˜¤ë¥¸ìª½");
+
+        if (!photonView.IsMine)
+            return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             uiCanvas.SetActive(true);
+            UpdateButtonVisibility(); // âœ… ê°ì§€ëœ ë°©í–¥ì— ë”°ë¼ ë²„íŠ¼ ìƒíƒœ ì—…ë°ì´íŠ¸
         }
 
-        CastRay(Vector3.forward, "À§");
-        CastRay(Vector3.back, "¾Æ·¡");
-        CastRay(Vector3.left, "¿ŞÂÊ");
-        CastRay(Vector3.right, "¿À¸¥ÂÊ");
+
     }
 
     void CastRay(Vector3 direction, string directionName)
@@ -81,6 +102,8 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+
+
     IEnumerator MoveCor(string direction)
     {
         uiCanvas.SetActive(false);
@@ -89,12 +112,12 @@ public class PlayerControl : MonoBehaviour
         {
             string selectedDirection = direction;
 
-            // ÇöÀç ¼±ÅÃµÈ ¹æÇâÀÌ °¨ÁöµÇÁö ¾ÊÀ¸¸é, ´Ù¸¥ ¹æÇâ Áß ·£´ı ¼±ÅÃ
+            // í˜„ì¬ ì„ íƒëœ ë°©í–¥ì´ ê°ì§€ë˜ì§€ ì•Šìœ¼ë©´, ë‹¤ë¥¸ ë°©í–¥ ì¤‘ ëœë¤ ì„ íƒ
             if (!currentValidDirections.Contains(direction))
             {
                 List<string> validDirections = new List<string>(currentValidDirections);
 
-                // ÀÌÀü ¹æÇâÀÇ ¹İ´ë ¹æÇâ Á¦°Å
+                // ì´ì „ ë°©í–¥ì˜ ë°˜ëŒ€ ë°©í–¥ ì œê±°
                 if (!string.IsNullOrEmpty(lastDirection) && validDirections.Contains(oppositeDirection[lastDirection]))
                 {
                     validDirections.Remove(oppositeDirection[lastDirection]);
@@ -106,18 +129,18 @@ public class PlayerControl : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("°¨ÁöµÈ ¹æÇâ ¾øÀ½! ÀÌµ¿ Áß´Ü");
+                    Debug.Log("ê°ì§€ëœ ë°©í–¥ ì—†ìŒ! ì´ë™ ì¤‘ë‹¨");
                     yield break;
                 }
             }
-
-            OnMoveButtonClicked(selectedDirection);
-            lastDirection = selectedDirection; // ¸¶Áö¸· ÀÌµ¿ ¹æÇâ ±â·Ï
+            photonView.RPC(nameof(OnMoveButtonClicked), RpcTarget.All, selectedDirection);
+            lastDirection = selectedDirection; // ë§ˆì§€ë§‰ ì´ë™ ë°©í–¥ ê¸°ë¡
 
             yield return new WaitForSeconds(0.6f);
         }
     }
 
+    [PunRPC]
     void OnMoveButtonClicked(string direction)
     {
         if (directionPositions.ContainsKey(direction))
@@ -129,5 +152,14 @@ public class PlayerControl : MonoBehaviour
     void MovePlayerToTarget(Vector3 targetPosition)
     {
         transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);
+    }
+
+    void UpdateButtonVisibility()
+    {
+        //ê°ì§€ëœ ë°©í–¥ë§Œ í™œì„±í™”
+        upButton.gameObject.SetActive(currentValidDirections.Contains("ìœ„"));
+        downButton.gameObject.SetActive(currentValidDirections.Contains("ì•„ë˜"));
+        leftButton.gameObject.SetActive(currentValidDirections.Contains("ì™¼ìª½"));
+        rightButton.gameObject.SetActive(currentValidDirections.Contains("ì˜¤ë¥¸ìª½"));
     }
 }
