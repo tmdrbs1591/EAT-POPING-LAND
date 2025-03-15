@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public Button leftButton;
     public Button rightButton;
     public GameObject uiCanvas;
+    public GameObject uiTextCanvas;
     [SerializeField] TMP_Text nickNameText;
 
 

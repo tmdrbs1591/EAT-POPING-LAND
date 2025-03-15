@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class DiceManager : MonoBehaviour
 {
     public static DiceManager instance;
 
+    public GameObject DiceCamera;
     public Dice dice1;
     public Dice dice2;
 
@@ -49,12 +49,15 @@ public class DiceManager : MonoBehaviour
 
     IEnumerator ResultTextCor()
     {
+        DiceCamera.SetActive(true);
         dicePanel.SetActive(true);
         diceResultText.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         diceResultText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         dicePanel.SetActive(false);
+        DiceCamera.SetActive(false);
+
 
     }
 }
