@@ -37,6 +37,12 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
             {
                 AddMoney(10);
             }
+
+            // 숫자 키 (1~4) 입력 시 해당 플레이어에게서 10원 뺏기
+            if (Input.GetKeyDown(KeyCode.Alpha1)) StealMoneyFromPlayer(0, 10); // 1번 플레이어
+            if (Input.GetKeyDown(KeyCode.Alpha2)) StealMoneyFromPlayer(1, 10); // 2번 플레이어
+            if (Input.GetKeyDown(KeyCode.Alpha3)) StealMoneyFromPlayer(2, 10); // 3번 플레이어
+            if (Input.GetKeyDown(KeyCode.Alpha4)) StealMoneyFromPlayer(3, 10); // 4번 플레이어
         }
     }
 
@@ -93,4 +99,35 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
             uiPositions[index].SetActive(true);
         }
     }
+
+    public void StealMoneyFromPlayer(int playerIndex, int amount) // 돈 뺏어오기
+    {
+        if (!photonView.IsMine) return; // 내 플레이어만 실행 가능
+
+        // 현재 접속한 플레이어 리스트 가져오기
+        Player[] players = PhotonNetwork.PlayerList;
+
+        // 인덱스가 유효한지 확인
+        if (playerIndex < 0 || playerIndex >= players.Length) return;
+
+        Player targetPlayer = players[playerIndex]; // 선택한 플레이어
+
+        // 대상 플레이어의 돈을 가져와서 확인
+        if (targetPlayer.CustomProperties.ContainsKey("Money"))
+        {
+            int targetMoney = (int)targetPlayer.CustomProperties["Money"];
+
+            if (targetMoney >= amount) // 돈이 충분하면 빼앗기
+            {
+                // 내 돈 증가
+                UpdateMoney(amount);
+
+                // 상대 돈 감소
+                Hashtable hash = new Hashtable();
+                hash["Money"] = targetMoney - amount;
+                targetPlayer.SetCustomProperties(hash);
+            }
+        }
+    }
+
 }
