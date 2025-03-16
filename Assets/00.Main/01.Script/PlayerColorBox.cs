@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerColorBox : MonoBehaviourPunCallbacks
@@ -8,6 +9,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
     public PlayerColor playerColorScript;
 
     public GameObject battleUI;
+    public TMP_Text battleUIText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,11 +31,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     hold.holdType = playerColorScript.HoldChange();
                 }
 
-                if(hold.holdType != playerColorScript.playerColor)
+                if (hold.holdType != playerColorScript.playerColor)
                 {
                     if (photonView.IsMine)
                     {
+                        string playerName = FindPlayerNameByColor(hold.holdType);
                         battleUI.SetActive(true);
+                        battleUIText.text = $"{playerName} 님에게 전투를 신청하시겠습니까?";
                     }
                 }
             }
@@ -43,4 +47,19 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    private string FindPlayerNameByColor(PlayerColorType colorType)
+    {
+        PlayerColor[] allPlayers = FindObjectsOfType<PlayerColor>(); // 모든 PlayerColor 스크립트 찾기
+
+        foreach (var playerColor in allPlayers)
+        {
+            if (playerColor.playerColor == colorType) // 색이 같은 플레이어 찾기
+            {
+                return playerColor.GetComponent<PhotonView>().Owner.NickName; // PhotonView에서 닉네임 가져오기
+            }
+        }
+        return "알 수 없음";
+    }
+
 }

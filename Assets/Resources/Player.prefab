@@ -4517,6 +4517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerColorScript: {fileID: 1233105282314760694}
   battleUI: {fileID: 4292398530547663160}
+  battleUIText: {fileID: 7375761299748058257}
 --- !u!54 &2127915466653791853
 Rigidbody:
   m_ObjectHideFlags: 0
