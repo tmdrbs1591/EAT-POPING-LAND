@@ -81,6 +81,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
     public void EndTurn()
     {
+
         int nextPlayerIndex = (currentPlayerIndex + 1) % totalPlayers;
         photonView.RPC("StartTurn", RpcTarget.All, nextPlayerIndex);
 

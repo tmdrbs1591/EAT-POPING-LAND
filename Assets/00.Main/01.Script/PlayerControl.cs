@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public float rayDistance = 5f;
     private Dictionary<string, Vector3> directionPositions = new Dictionary<string, Vector3>();
     [SerializeField] GameObject playerColorBox;
+    [SerializeField] PlayerColorBox playerColorBoxScript;
 
 
     [Header("UI")]
@@ -154,8 +155,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
             yield return new WaitForSeconds(0.6f);
         }
-        TurnManager.instance.EndTurn();
 
+            PlayerTurnEnd();
 
         photonView.RPC("ColorChange", RpcTarget.All);
 
@@ -174,6 +175,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         }
     }
 
+    public void PlayerTurnEnd()
+    {
+        TurnManager.instance.EndTurn();
+    }
     void MovePlayerToTarget(Vector3 targetPosition)
     {
         transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);

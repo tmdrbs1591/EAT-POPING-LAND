@@ -44,6 +44,23 @@ public class PlayerColor : MonoBehaviourPun
                 return null; // 기본값 (오류 방지)
         }
     }
+
+    public HoldType HoldChange()
+    {
+        switch (playerColor)
+        {
+            case PlayerColorType.Red:
+                return HoldType.Red;
+            case PlayerColorType.Green:
+                return HoldType.Green; 
+            case PlayerColorType.Blue:
+                return HoldType.Blue; 
+            case PlayerColorType.Yellow:
+                return HoldType.Yellow; 
+            default:
+                return HoldType.Default; // 기본값 (오류 방지)
+        }
+    }
     [PunRPC]
     void SetColor(int colorIndex)
     {
