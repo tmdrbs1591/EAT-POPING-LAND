@@ -35,6 +35,7 @@ public class BattleManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_BattleStart(string player1, string player2)
     {
+        battlePanel.SetActive(false);
         battlePanel.SetActive(true);
         firstPlayerNameText.text = player1;
         secondPlayerNameText.text = player2;
