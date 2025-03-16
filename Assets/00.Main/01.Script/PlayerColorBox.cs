@@ -40,7 +40,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
                         BattleManager.instance.SetBattleInfo(playerName);
                         battleUI.SetActive(true); // 버튼 활성화
-                        battleUIText.text = $"{playerName} 님에게 전투를 신청하시겠습니까?";
+                        battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
                     }
                 }
 
