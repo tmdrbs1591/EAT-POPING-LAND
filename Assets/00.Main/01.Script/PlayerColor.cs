@@ -53,20 +53,29 @@ public class PlayerColor : MonoBehaviourPun
 
     void ApplyColor()
     {
+        Color newColor;
+
         switch (playerColor)
         {
             case PlayerColorType.Red:
-                spriteRenderer.color = Color.red;
+                newColor = Color.red;
                 break;
             case PlayerColorType.Green:
-                spriteRenderer.color = Color.green;
+                newColor = Color.green;
                 break;
             case PlayerColorType.Blue:
-                spriteRenderer.color = Color.blue;
+                newColor = Color.blue;
                 break;
             case PlayerColorType.Yellow:
-                spriteRenderer.color = Color.yellow;
+                newColor = Color.yellow;
+                break;
+            default:
+                newColor = Color.white;
                 break;
         }
+
+        newColor.a = 0.5f; // 알파값을 반으로 줄임
+        spriteRenderer.color = newColor;
     }
+
 }
