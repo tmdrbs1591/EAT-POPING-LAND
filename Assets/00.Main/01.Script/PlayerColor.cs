@@ -6,7 +6,8 @@ public enum PlayerColorType
     Red,
     Green,
     Blue,
-    Yellow
+    Yellow,
+    Default,
 }
 
 public class PlayerColor : MonoBehaviourPun
@@ -45,20 +46,20 @@ public class PlayerColor : MonoBehaviourPun
         }
     }
 
-    public HoldType HoldChange()
+    public PlayerColorType HoldChange()
     {
         switch (playerColor)
         {
             case PlayerColorType.Red:
-                return HoldType.Red;
+                return PlayerColorType.Red;
             case PlayerColorType.Green:
-                return HoldType.Green; 
+                return PlayerColorType.Green; 
             case PlayerColorType.Blue:
-                return HoldType.Blue; 
+                return PlayerColorType.Blue; 
             case PlayerColorType.Yellow:
-                return HoldType.Yellow; 
+                return PlayerColorType.Yellow; 
             default:
-                return HoldType.Default; // 기본값 (오류 방지)
+                return PlayerColorType.Default; // 기본값 (오류 방지)
         }
     }
     [PunRPC]

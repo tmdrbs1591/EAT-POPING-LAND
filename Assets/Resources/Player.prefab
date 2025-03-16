@@ -4515,9 +4515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c99d3910cf4e741aeefb3a1e02b7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerColor: {fileID: 1233105282314760694}
-  battleRequestPanel: {fileID: 4292398530547663160}
-  battleRequestText: {fileID: 7375761299748058257}
+  playerColorScript: {fileID: 1233105282314760694}
+  battleUI: {fileID: 4292398530547663160}
 --- !u!54 &2127915466653791853
 Rigidbody:
   m_ObjectHideFlags: 0
