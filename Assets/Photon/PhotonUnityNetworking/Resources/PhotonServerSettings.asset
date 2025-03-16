@@ -51,6 +51,9 @@ MonoBehaviour:
   - StartCountdown
   - StartGame
   - UIPanelTo
+  - RPCBattleStart
+  - RPCSetBattleInfo
+  - RPC_BattleStart
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

@@ -153,7 +153,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             photonView.RPC("OnMoveButtonClicked", RpcTarget.All, selectedDirection);
             lastDirection = selectedDirection; // 마지막 이동 방향 기록
 
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.25f);
         }
 
 
@@ -191,5 +191,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         downButton.gameObject.SetActive(currentValidDirections.Contains("아래"));
         leftButton.gameObject.SetActive(currentValidDirections.Contains("왼쪽"));
         rightButton.gameObject.SetActive(currentValidDirections.Contains("오른쪽"));
+    }
+
+    public void BattleStart()
+    {
+        BattleManager.instance.BattleStart();
+        Debug.Log("배틀 시작");
     }
 }

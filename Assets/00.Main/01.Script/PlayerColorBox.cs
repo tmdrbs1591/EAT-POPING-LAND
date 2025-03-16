@@ -37,10 +37,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     if (photonView.IsMine)
                     {
                         string playerName = FindPlayerNameByColor(hold.holdType);
-                        battleUI.SetActive(true);
+                        Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
+                        BattleManager.instance.SetBattleInfo(playerName);
+                        battleUI.SetActive(true); // 버튼 활성화
                         battleUIText.text = $"{playerName} 님에게 전투를 신청하시겠습니까?";
                     }
                 }
+
                 else
                 {
                     if (photonView.IsMine)
