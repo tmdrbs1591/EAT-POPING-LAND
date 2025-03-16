@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerColorBox : MonoBehaviourPunCallbacks
 {
     public PlayerColor playerColorScript;
+    public PlayerControl playerControl;
 
     public GameObject battleUI;
     public TMP_Text battleUIText;
@@ -38,6 +39,14 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         string playerName = FindPlayerNameByColor(hold.holdType);
                         battleUI.SetActive(true);
                         battleUIText.text = $"{playerName} 님에게 전투를 신청하시겠습니까?";
+                    }
+                }
+                else
+                {
+                    if (photonView.IsMine)
+                    {
+                        TurnManager.instance.EndTurn();
+                        playerControl.isMove = false;
                     }
                 }
             }

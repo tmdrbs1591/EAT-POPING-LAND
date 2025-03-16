@@ -32,7 +32,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
     private string lastDirection = ""; // 마지막 이동한 방향
 
-    bool isMove;
+    public bool isMove;
 
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
@@ -156,13 +156,12 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(0.6f);
         }
 
-            PlayerTurnEnd();
 
         photonView.RPC("ColorChange", RpcTarget.All);
 
 
         Debug.Log("턴 종료");
-        isMove = false;
+        
 
     }
 
@@ -178,6 +177,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public void PlayerTurnEnd()
     {
         TurnManager.instance.EndTurn();
+        isMove = false;
     }
     void MovePlayerToTarget(Vector3 targetPosition)
     {
