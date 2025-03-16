@@ -32,7 +32,7 @@ Material:
     - _RimPower: 2.2
     - _RimStep: 1
     - _RimStepSmooth: 1
-    - _ShadowStep: 0.524
+    - _ShadowStep: 0
     - _ShadowStepSmooth: 0.358
     - _SpecularStep: 0.953
     - _SpecularStepSmooth: 0.601
@@ -42,7 +42,7 @@ Material:
     - _Step3: 0.97
     - _Step4: 0.025
     m_Colors:
-    - _BaseColor: {r: 0.44748628, g: 0.37878248, b: 0.4528302, a: 1}
+    - _BaseColor: {r: 0.67848575, g: 0.49160433, b: 0.6886792, a: 1}
     - _HighColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.64075613, g: 0.41194963, b: 1, a: 1}
