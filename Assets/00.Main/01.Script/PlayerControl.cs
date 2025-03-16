@@ -161,7 +161,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
 
         Debug.Log("턴 종료");
-        
+
 
     }
 
@@ -171,6 +171,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         if (directionPositions.ContainsKey(direction))
         {
             MovePlayerToTarget(directionPositions[direction]);
+            AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.1f), 1);// 오디오 재생
         }
     }
 

@@ -28,7 +28,7 @@ public class DiceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isDice)
         {
-            AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1f), 1);// 오디오 재생
+            AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1);// 오디오 재생
 
             isDice = true;
             RollDice();
