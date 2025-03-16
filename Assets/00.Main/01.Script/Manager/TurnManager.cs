@@ -71,6 +71,8 @@ public class TurnManager : MonoBehaviourPunCallbacks
             DiceManager.instance.enabled = true; // 주사위 활성화
             myTurnPanel.SetActive(true);
             Debug.Log("나의 턴!");
+
+        
         }
         else
         {
