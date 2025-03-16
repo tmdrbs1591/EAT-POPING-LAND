@@ -54,6 +54,7 @@ MonoBehaviour:
   - RPCBattleStart
   - RPCSetBattleInfo
   - RPC_BattleStart
+  - RPC_PlaySound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
