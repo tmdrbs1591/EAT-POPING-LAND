@@ -38,6 +38,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (scene.name == "01.Ingame")
         {
+
+         //   PhotonNetwork.SendRate = 100; // 기본값은 10
+          //  PhotonNetwork.SerializationRate = 100; // 기본값은 10
+
             int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
             Transform spawnPoint = SpawnPoint.instance.GetSpawnPoint(playerIndex);
 
