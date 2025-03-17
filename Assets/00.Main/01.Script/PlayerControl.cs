@@ -109,6 +109,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    public void RPC_SetPosition(Vector3 newPosition) //위치 이동
+    {
+        transform.position = newPosition;
+    }
+    [PunRPC]
     void ColorChange()
     {
         StartCoroutine(ColorChangeCor());
