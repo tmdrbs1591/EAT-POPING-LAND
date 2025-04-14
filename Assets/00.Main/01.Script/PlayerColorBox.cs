@@ -31,8 +31,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     renderer.material = playerColorScript.MaterialChange();
                     hold.holdType = playerColorScript.HoldChange();
                 }
-
-                if (hold.holdType != playerColorScript.playerColor)
+               if (hold.holdType != playerColorScript.playerColor)
                 {
                     if (photonView.IsMine)
                     {
@@ -43,7 +42,6 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
                     }
                 }
-
                 else
                 {
                     if (photonView.IsMine)

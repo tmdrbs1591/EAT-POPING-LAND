@@ -90,6 +90,7 @@ public class BattleManager : MonoBehaviourPun
             if (pv != null && pv.Owner.NickName == playerName)
             {
                 pv.RPC("RPC_SetPosition", RpcTarget.All, position);
+                pv.RPC("RPC_SetRotation", RpcTarget.All, -20f, -45f, 20f);
                 break;
             }
         }
@@ -133,6 +134,7 @@ public class BattleManager : MonoBehaviourPun
                 {
                     Vector3 originalPos = playerOriginalPositions[playerID];
                     pv.RPC("RPC_SetPosition", RpcTarget.All, originalPos); // 원래 위치로 복귀
+                    pv.RPC("RPC_SetRotation", RpcTarget.All, 0f, 0f, 0f);
                 }
             }
         }

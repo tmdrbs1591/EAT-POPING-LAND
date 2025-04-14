@@ -57,6 +57,7 @@ MonoBehaviour:
   - RPC_PlaySound
   - RPC_SetPosition
   - RPC_BattleResult
+  - RPC_SetRotation
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

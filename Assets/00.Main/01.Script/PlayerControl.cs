@@ -114,6 +114,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         transform.position = newPosition;
     }
     [PunRPC]
+    public void RPC_SetRotation(float x, float y, float z)
+    {
+        transform.rotation = Quaternion.Euler(x, y, z);
+    }
+    [PunRPC]
     void ColorChange()
     {
         StartCoroutine(ColorChangeCor());
