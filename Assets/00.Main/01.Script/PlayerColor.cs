@@ -29,7 +29,7 @@ public class PlayerColor : MonoBehaviourPun
         }
     }
 
-    public Material MaterialChange()
+    public Material MaterialChange() // 메테리얼 변경
     {
         switch (playerColor)
         {
@@ -46,7 +46,7 @@ public class PlayerColor : MonoBehaviourPun
         }
     }
 
-    public PlayerColorType HoldChange()
+    public PlayerColorType HoldChange() // 타입변경
     {
         switch (playerColor)
         {
@@ -94,6 +94,6 @@ public class PlayerColor : MonoBehaviourPun
 
         newColor.a = 0.5f; // 알파값을 반으로 줄임
         spriteRenderer.color = newColor;
-    }
+    } // 발 밑에 색깔
 
 }
