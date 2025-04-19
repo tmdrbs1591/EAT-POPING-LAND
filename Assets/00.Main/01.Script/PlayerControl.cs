@@ -42,6 +42,12 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         { "위", "아래" }, { "아래", "위" }, { "왼쪽", "오른쪽" }, { "오른쪽", "왼쪽" }
     };
 
+    private PlayerBattle playerbattleScript;
+
+    private void Awake()
+    {
+        playerbattleScript = GetComponent<PlayerBattle>();
+    }
     void Start()
     {
         if (photonView.IsMine)
@@ -212,9 +218,17 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void RPC_SetPosition(Vector3 newPosition) //위치 이동
+    public void RPC_SetBattlePosition(Vector3 newPosition) //배틀 위치 이동
     {
         transform.position = newPosition;
+        playerbattleScript.Init();
+        playerbattleScript.enabled = true;
+    }
+    [PunRPC]
+    public void RPC_SetRePosition(Vector3 newPosition) //원래 위치 이동
+    {
+        transform.position = newPosition;
+        playerbattleScript.enabled = false;
     }
     [PunRPC]
     public void RPC_SetRotation(float x, float y, float z)

@@ -6012,7 +6012,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377563084874637237}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c872e1127aef94044b7ece23200a2ca8, type: 3}
   m_Name: 
@@ -6025,6 +6025,7 @@ MonoBehaviour:
   charSprite: {fileID: 1377563084806830045}
   hpSlider: {fileID: 2236349868426858059}
   slasgPtc: {fileID: 8937816228709515401}
+  attackCooldown: 0.3
 --- !u!114 &-1277726024634907011
 MonoBehaviour:
   m_ObjectHideFlags: 0

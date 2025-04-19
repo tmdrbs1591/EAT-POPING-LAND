@@ -21,13 +21,21 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] Slider hpSlider;
     [SerializeField] ParticleSystem slasgPtc;
 
+    [Header("공격 쿨타임")]
+    [SerializeField] private float attackCooldown = 1f;
+    private float nextAttackTime = 0f;
+
     private Rigidbody rb;
     private float inputX;
     private bool isFacingRight = true;
-
+        
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Init();
+    }
+    public void Init()
+    {
         curHp = maxHp;
         hpSlider.value = curHp / maxHp;
     }
@@ -38,6 +46,7 @@ public class PlayerBattle : MonoBehaviourPun
             return;
 
         inputX = Input.GetAxis("Horizontal");
+
 
         // 방향 전환 처리
         if (inputX > 0 && isFacingRight)
@@ -52,41 +61,54 @@ public class PlayerBattle : MonoBehaviourPun
         if (!photonView.IsMine)
             return;
 
-        if (Input.GetKeyDown(KeyCode.X))
+        Die();
+
+        if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
         {
+            nextAttackTime = Time.time + attackCooldown;
             Damage();
             photonView.RPC("PtcOnRPC", RpcTarget.All);
         }
-
 
         Vector3 move = new Vector3(inputX, 0, 0) * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
     }
 
-
+    void Die()
+    {
+        if(curHp <= 0)
+        {
+           BattleManager.instance.BattleLose();
+        }
+    }
     private void Flip()
     {
         photonView.RPC("FlipRPC", RpcTarget.All);
     }
-    [PunRPC]
-    private void FlipRPC()
-    {
-        isFacingRight = !isFacingRight;
+[PunRPC]
+private void FlipRPC()
+{
+    isFacingRight = !isFacingRight;
 
-        // 스프라이트 Y축으로 180도 회전
-        charSprite.transform.Rotate(0f, 180f, 0f);
+    // 바라보는 방향에 따라 정확한 회전값 설정
+    if (isFacingRight)
+        charSprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    else
+        charSprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
 
-        // 공격 박스 위치 반전
-        Vector3 attackPos = attackBoxPos.localPosition;
-        attackPos.x *= -1;
-        attackBoxPos.localPosition = attackPos;
-    }
+    // 공격 박스 위치 반전
+    Vector3 attackPos = attackBoxPos.localPosition;
+    attackPos.x *= -1;
+    attackBoxPos.localPosition = attackPos;
+}
+
 
     [PunRPC]
     public void TakeDamage(float damage)
     {
         curHp -= damage;
         hpSlider.value = curHp/maxHp;
+        
     }
     [PunRPC]
     public void PtcOnRPC()

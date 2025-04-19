@@ -33,6 +33,10 @@ public class BattleManager : MonoBehaviourPun
         {
             BattleWin();
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            BattleLose();
+        }
     }
 
     public void SetBattleInfo(string opponent)
@@ -89,7 +93,7 @@ public class BattleManager : MonoBehaviourPun
             PhotonView pv = player.GetComponent<PhotonView>();
             if (pv != null && pv.Owner.NickName == playerName)
             {
-                pv.RPC("RPC_SetPosition", RpcTarget.All, position);
+                pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
                 pv.RPC("RPC_SetRotation", RpcTarget.All, 0f,0f,0f);
                 break;
             }
@@ -100,6 +104,28 @@ public class BattleManager : MonoBehaviourPun
     {
         int winnerID = PhotonNetwork.LocalPlayer.ActorNumber;
         photonView.RPC("RPC_BattleResult", RpcTarget.All, winnerID);
+    }
+    public void BattleLose()
+    {
+        int opponentID = -1;
+
+        foreach (var kvp in playerOriginalPositions)
+        {
+            if (kvp.Key != PhotonNetwork.LocalPlayer.ActorNumber)
+            {
+                opponentID = kvp.Key;
+                break;
+            }
+        }
+
+        if (opponentID != -1)
+        {
+            photonView.RPC("RPC_BattleResult", RpcTarget.All, opponentID);
+        }
+        else
+        {
+            Debug.LogWarning("상대방 ID를 찾을 수 없습니다.");
+        }
     }
 
     [PunRPC]
@@ -133,7 +159,7 @@ public class BattleManager : MonoBehaviourPun
                 if (playerOriginalPositions.ContainsKey(playerID))
                 {
                     Vector3 originalPos = playerOriginalPositions[playerID];
-                    pv.RPC("RPC_SetPosition", RpcTarget.All, originalPos); // 원래 위치로 복귀
+                    pv.RPC("RPC_SetRePosition", RpcTarget.All, originalPos); // 원래 위치로 복귀
                     pv.RPC("RPC_SetRotation", RpcTarget.All, 31.7f, 42.8f, 0f);
                 }
             }
