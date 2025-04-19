@@ -94,10 +94,10 @@ public class PlayerBattle : MonoBehaviourPun
     {
         StartCoroutine(TimeSlowCor());
     }
-    IEnumerator TimeSlowCor()
+    IEnumerator TimeSlowCor() // 속도 느려지게
     {
         Time.timeScale = 0.1f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1f;
         BattleManager.instance.BattleLose();
     }
