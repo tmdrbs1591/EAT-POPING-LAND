@@ -19,7 +19,8 @@ public class PlayerBattle : MonoBehaviourPun
     [Header("UI")]
     [SerializeField] GameObject charSprite;
     [SerializeField] Slider hpSlider;
-    [SerializeField] ParticleSystem slasgPtc;
+    [SerializeField] ParticleSystem slashPtc;
+    [SerializeField] ParticleSystem diePtc;
 
     [Header("°ø°Ý ÄðÅ¸ÀÓ")]
     [SerializeField] private float attackCooldown = 1f;
@@ -28,6 +29,7 @@ public class PlayerBattle : MonoBehaviourPun
     private Rigidbody rb;
     private float inputX;
     private bool isFacingRight = true;
+    private bool isDie;
         
     void Start()
     {
@@ -38,6 +40,7 @@ public class PlayerBattle : MonoBehaviourPun
     {
         curHp = maxHp;
         hpSlider.value = curHp / maxHp;
+        isDie = false;
     }
 
     void Update()
@@ -67,7 +70,7 @@ public class PlayerBattle : MonoBehaviourPun
         {
             nextAttackTime = Time.time + attackCooldown;
             Damage();
-            photonView.RPC("PtcOnRPC", RpcTarget.All);
+            photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
         }
 
         Vector3 move = new Vector3(inputX, 0, 0) * moveSpeed * Time.fixedDeltaTime;
@@ -76,10 +79,27 @@ public class PlayerBattle : MonoBehaviourPun
 
     void Die()
     {
-        if(curHp <= 0)
+        if (isDie)
+            return;
+        if (curHp <= 0)
         {
-           BattleManager.instance.BattleLose();
+            isDie = true;
+            photonView.RPC("DiePtcOnRPC", RpcTarget.All);
+            photonView.RPC("TimeSlowRPC", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    void TimeSlowRPC()
+    {
+        StartCoroutine(TimeSlowCor());
+    }
+    IEnumerator TimeSlowCor()
+    {
+        Time.timeScale = 0.1f;
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+        BattleManager.instance.BattleLose();
     }
     private void Flip()
     {
@@ -111,9 +131,14 @@ private void FlipRPC()
         
     }
     [PunRPC]
-    public void PtcOnRPC()
+    public void SlashPtcOnRPC()
     {
-        slasgPtc.Play();
+        slashPtc.Play();
+    }
+    [PunRPC]
+    public void DiePtcOnRPC()
+    {
+        diePtc.Play();
     }
     private void Damage()
     {
