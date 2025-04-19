@@ -59,6 +59,7 @@ MonoBehaviour:
   - RPC_BattleResult
   - RPC_SetRotation
   - FlipRPC
+  - TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
