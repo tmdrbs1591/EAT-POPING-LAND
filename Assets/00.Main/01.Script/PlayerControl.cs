@@ -17,7 +17,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     [SerializeField] GameObject playerColorBox;
     [SerializeField] PlayerColorBox playerColorBoxScript;
 
-
     [Header("UI")]
     public Button upButton;
     public Button downButton;
@@ -27,16 +26,16 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public GameObject uiTextCanvas;
     [SerializeField] TMP_Text nickNameText;
 
-
     private List<string> currentValidDirections = new List<string>(); // 현재 감지된 방향 리스트
-
     private string lastDirection = ""; // 마지막 이동한 방향
+    private string currentDirection = "";
 
+    private int remainingMoveCount;
     public bool isMove;
 
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
-        { "위", "아래" },     { "아래", "위" },   { "왼쪽", "오른쪽" },  { "오른쪽", "왼쪽" }
+        { "위", "아래" }, { "아래", "위" }, { "왼쪽", "오른쪽" }, { "오른쪽", "왼쪽" }
     };
 
     void Start()
@@ -52,22 +51,39 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             nickNameText.color = Color.white;
         }
 
-        // ✅ 모든 버튼에 RPC로 보내기
-        upButton.onClick.AddListener(() => StartCoroutine(MoveCor("위"))); downButton.onClick.AddListener(() => StartCoroutine(MoveCor("아래"))); leftButton.onClick.AddListener(() => StartCoroutine(MoveCor("왼쪽"))); rightButton.onClick.AddListener(() => StartCoroutine(MoveCor("오른쪽")));
+        // 버튼 리스너 설정
+        upButton.onClick.AddListener(() => OnDirectionButtonClicked("위"));
+        downButton.onClick.AddListener(() => OnDirectionButtonClicked("아래"));
+        leftButton.onClick.AddListener(() => OnDirectionButtonClicked("왼쪽"));
+        rightButton.onClick.AddListener(() => OnDirectionButtonClicked("오른쪽"));
     }
+
     void Update()
     {
-        CastRay(Vector3.forward, "위"); CastRay(Vector3.back, "아래"); CastRay(Vector3.left, "왼쪽"); CastRay(Vector3.right, "오른쪽");
+        CastRay(Vector3.forward, "위");
+        CastRay(Vector3.back, "아래");
+        CastRay(Vector3.left, "왼쪽");
+        CastRay(Vector3.right, "오른쪽");
 
         if (!photonView.IsMine)
             return;
-        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isMove && !TurnManager.instance.isCountingDown)
+
+        if (Input.GetKeyDown(KeyCode.Space) &&
+            TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 &&
+            !isMove &&
+            !TurnManager.instance.isCountingDown)
         {
+            StartCoroutine(DiceResultCor());
             uiCanvas.SetActive(true);
-            UpdateButtonVisibility(); // ✅ 감지된 방향에 따라 버튼 상태 업데이트
+            UpdateButtonVisibility();
         }
     }
 
+    IEnumerator DiceResultCor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        remainingMoveCount = DiceManager.instance.diceResult;
+    }
     void CastRay(Vector3 direction, string directionName)
     {
         RaycastHit hit;
@@ -96,68 +112,66 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         }
     }
 
-
-
-    IEnumerator MoveCor(string direction)
+    public void OnDirectionButtonClicked(string dir)
     {
-        uiCanvas.SetActive(false);
+        if (isMove) return;
+
+        currentDirection = dir;
+        StartCoroutine(MoveStep());
+    }
+
+    IEnumerator MoveStep()
+    {
         isMove = true;
-        for (int i = 0; i < DiceManager.instance.diceResult; i++)
+        uiCanvas.SetActive(false);
+
+        while (remainingMoveCount > 0)
         {
-            string selectedDirection = direction;
-
-            // 현재 선택된 방향이 감지되지 않으면, 다른 방향 중 랜덤 선택
-            if (!currentValidDirections.Contains(direction))
+            // 현재 방향이 유효하지 않으면 중단하고 UI 켜기
+            if (!currentValidDirections.Contains(currentDirection))
             {
-                List<string> validDirections = new List<string>(currentValidDirections);
-
-                // 이전 방향의 반대 방향 제거
-                if (!string.IsNullOrEmpty(lastDirection) && validDirections.Contains(oppositeDirection[lastDirection]))
-                {
-                    validDirections.Remove(oppositeDirection[lastDirection]);
-                }
-
-                if (validDirections.Count > 0)
-                {
-                    selectedDirection = validDirections[Random.Range(0, validDirections.Count)];
-                }
-                else
-                {
-                    Debug.Log("감지된 방향 없음! 이동 중단");
-                    yield break;
-                }
+                Debug.Log("더 이상 갈 수 없음. 방향 재선택 필요");
+                break;
             }
-            photonView.RPC("OnMoveButtonClicked", RpcTarget.All, selectedDirection);
-            lastDirection = selectedDirection; // 마지막 이동 방향 기록
 
-            yield return new WaitForSeconds(0.25f);
+            photonView.RPC("OnMoveButtonClicked", RpcTarget.All, currentDirection);
+            remainingMoveCount--;
+
+            yield return new WaitForSeconds(0.4f);
         }
 
+        isMove = false;
 
-        photonView.RPC("ColorChange", RpcTarget.All);
-
-
-        Debug.Log("턴 종료");
-
-
+        if (remainingMoveCount <= 0)
+        {
+            photonView.RPC("ColorChange", RpcTarget.All);
+            Debug.Log("턴 종료");
+        }
+        else
+        {
+            uiCanvas.SetActive(true);
+            UpdateButtonVisibility();
+        }
     }
+
     void UpdateButtonVisibility()
     {
-        //감지된 방향만 활성화
         upButton.gameObject.SetActive(currentValidDirections.Contains("위"));
         downButton.gameObject.SetActive(currentValidDirections.Contains("아래"));
         leftButton.gameObject.SetActive(currentValidDirections.Contains("왼쪽"));
         rightButton.gameObject.SetActive(currentValidDirections.Contains("오른쪽"));
     }
+
     [PunRPC]
     void OnMoveButtonClicked(string direction)
     {
         if (directionPositions.ContainsKey(direction))
         {
             MovePlayerToTarget(directionPositions[direction]);
-            AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.1f), 1);// 오디오 재생
+            AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.1f), 1);
         }
     }
+
     void MovePlayerToTarget(Vector3 targetPosition)
     {
         transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);
