@@ -18,7 +18,7 @@ public class PlayerBattle : MonoBehaviourPun
 
     [Header("UI")]
     [SerializeField] GameObject charSprite;
-    [SerializeField] Slider hpSlider;
+    [SerializeField] public Slider hpSlider;
     [SerializeField] ParticleSystem slashPtc;
     [SerializeField] ParticleSystem diePtc;
 
@@ -86,6 +86,7 @@ public class PlayerBattle : MonoBehaviourPun
             isDie = true;
             photonView.RPC("DiePtcOnRPC", RpcTarget.All);
             photonView.RPC("TimeSlowRPC", RpcTarget.All);
+            StartCoroutine(TimeSlowCor());
         }
     }
 
@@ -99,6 +100,10 @@ public class PlayerBattle : MonoBehaviourPun
         Time.timeScale = 0.1f;
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1f;
+    }
+    IEnumerator BattleLoseCor()
+    {
+        yield return new WaitForSecondsRealtime(5f);
         BattleManager.instance.BattleLose();
     }
     private void Flip()

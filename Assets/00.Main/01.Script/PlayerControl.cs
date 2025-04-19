@@ -223,12 +223,14 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         transform.position = newPosition;
         playerbattleScript.Init();
         playerbattleScript.enabled = true;
+        playerbattleScript.hpSlider.gameObject.SetActive(true);
     }
     [PunRPC]
     public void RPC_SetRePosition(Vector3 newPosition) //원래 위치 이동
     {
         transform.position = newPosition;
         playerbattleScript.enabled = false;
+        playerbattleScript.hpSlider.gameObject.SetActive(false);
     }
     [PunRPC]
     public void RPC_SetRotation(float x, float y, float z)

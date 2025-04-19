@@ -270,8 +270,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region 채팅
     public void Send()
     {
+        // 채팅 입력 필드가 비어 있으면 메시지를 보내지 않고 입력 필드에 포커스를 유지
+        if (string.IsNullOrWhiteSpace(ChatInput.text))
+        {
+            ChatInput.ActivateInputField(); // 입력 필드에 포커스 유지
+            return;
+        }
+
+        // 입력 필드에 메시지가 있으면 메시지를 보내고 입력 필드를 다시 활성화
         PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + ChatInput.text);
-        ChatInput.text = "";
+        ChatInput.text = ""; // 입력 필드 초기화
+        ChatInput.ActivateInputField(); // 입력 필드에 포커스 유지
     }
 
     [PunRPC]
