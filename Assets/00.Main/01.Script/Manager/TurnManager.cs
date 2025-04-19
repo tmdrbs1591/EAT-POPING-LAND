@@ -47,7 +47,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
    
         while (countdown > 0)
         {
-            countdownText.text = $"{countdown}초 뒤에 시작합니다.";
+            countdownText.text = $"{countdown}초 뒤에 게임을 시작합니다.";
             yield return new WaitForSeconds(1f);
             countdown--;
         }
