@@ -26,6 +26,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public GameObject uiTextCanvas;
     [SerializeField] TMP_Text nickNameText;
 
+    [SerializeField] GameObject playerSprite;
+    [SerializeField] GameObject playerNickUI;
+
+
     private List<string> currentValidDirections = new List<string>(); // 현재 감지된 방향 리스트
     private string lastDirection = ""; // 마지막 이동한 방향
     private string currentDirection = "";
@@ -215,7 +219,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_SetRotation(float x, float y, float z)
     {
-        transform.rotation = Quaternion.Euler(x, y, z);
+        playerSprite.transform.rotation = Quaternion.Euler(x, y, z);
+        playerNickUI.transform.rotation = Quaternion.Euler(x, y, z);
     }
 
 
