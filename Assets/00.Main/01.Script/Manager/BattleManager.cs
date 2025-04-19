@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Photon.Pun;
+using System.Linq;
+using Photon.Realtime;
 
 public class BattleManager : MonoBehaviourPun
 {
@@ -22,6 +24,9 @@ public class BattleManager : MonoBehaviourPun
 
     private string opponentName = "";
 
+    private int player1ID;
+    private int player2ID;
+
     private void Awake()
     {
         instance = this;
@@ -29,10 +34,10 @@ public class BattleManager : MonoBehaviourPun
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            BattleWin();
-        }
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    BattleWin();
+        //}
         if (Input.GetKeyDown(KeyCode.L))
         {
             BattleLose();
@@ -64,9 +69,12 @@ public class BattleManager : MonoBehaviourPun
         secondPlayerNameText.text = player2;
 
         SavePlayerPositions(player1, player2);
-
         MovePlayerToBattlePos(player1, firstBattlePos.position);
         MovePlayerToBattlePos(player2, secondBattlePos.position);
+
+        // ✅ 싸운 플레이어 ID 저장
+        player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player1).ActorNumber;
+        player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player2).ActorNumber;
     }
 
     private void SavePlayerPositions(string player1, string player2)
@@ -100,33 +108,24 @@ public class BattleManager : MonoBehaviourPun
         }
     }
 
-    public void BattleWin()
-    {
-        int winnerID = PhotonNetwork.LocalPlayer.ActorNumber;
-        photonView.RPC("RPC_BattleResult", RpcTarget.All, winnerID);
-    }
-    public void BattleLose()
-    {
-        int opponentID = -1;
+    //public void BattleWin()
+    //{
+    //    int winnerID = PhotonNetwork.LocalPlayer.ActorNumber;
+    //    photonView.RPC("RPC_BattleResult", RpcTarget.All, winnerID);
+    //}
+public void BattleLose()
+{
+    int myID = PhotonNetwork.LocalPlayer.ActorNumber;
+    int opponentID = (myID == player1ID) ? player2ID : player1ID;
 
-        foreach (var kvp in playerOriginalPositions)
-        {
-            if (kvp.Key != PhotonNetwork.LocalPlayer.ActorNumber)
-            {
-                opponentID = kvp.Key;
-                break;
-            }
-        }
+    Player winner = PhotonNetwork.CurrentRoom.GetPlayer(opponentID);
+    Player loser = PhotonNetwork.LocalPlayer;
 
-        if (opponentID != -1)
-        {
-            photonView.RPC("RPC_BattleResult", RpcTarget.All, opponentID);
-        }
-        else
-        {
-            Debug.LogWarning("상대방 ID를 찾을 수 없습니다.");
-        }
-    }
+    photonView.RPC("RPC_BattleResult", winner, opponentID);
+    photonView.RPC("RPC_BattleResult", loser, opponentID);
+    photonView.RPC("RPC_BattlePanelFalse",RpcTarget.All);
+}
+
 
     [PunRPC]
     private void RPC_BattleResult(int winnerID)
@@ -140,12 +139,16 @@ public class BattleManager : MonoBehaviourPun
             Debug.Log(" 패배!");
         }
 
-        battlePanel.SetActive(false);
-        battleScreen.SetActive(false);
+     
 
         ResetPlayerPositions();
     }
-
+    [PunRPC]
+    private void RPC_BattlePanelFalse()
+    {
+        battlePanel.SetActive(false);
+        battleScreen.SetActive(false);
+    }
     private void ResetPlayerPositions()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");

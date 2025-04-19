@@ -86,7 +86,7 @@ public class PlayerBattle : MonoBehaviourPun
             isDie = true;
             photonView.RPC("DiePtcOnRPC", RpcTarget.All);
             photonView.RPC("TimeSlowRPC", RpcTarget.All);
-            StartCoroutine(TimeSlowCor());
+            StartCoroutine(BattleLoseCor());
         }
     }
 

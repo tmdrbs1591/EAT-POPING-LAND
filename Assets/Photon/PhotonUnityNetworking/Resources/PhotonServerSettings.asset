@@ -66,6 +66,7 @@ MonoBehaviour:
   - DiePtcOnRPC
   - SlashPtcOnRPC
   - TimeSlowRPC
+  - RPC_BattlePanelFalse
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
