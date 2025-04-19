@@ -230,6 +230,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     {
         transform.position = newPosition;
         playerbattleScript.enabled = false;
+        playerbattleScript.photonView.RPC("DieCanvasFalseRPC", RpcTarget.All);
         playerbattleScript.hpSlider.gameObject.SetActive(false);
     }
     [PunRPC]

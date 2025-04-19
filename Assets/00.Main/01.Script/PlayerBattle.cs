@@ -21,6 +21,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] public Slider hpSlider;
     [SerializeField] ParticleSystem slashPtc;
     [SerializeField] ParticleSystem diePtc;
+    [SerializeField] GameObject dieCanvas;
 
     [Header("°ø°Ý ÄðÅ¸ÀÓ")]
     [SerializeField] private float attackCooldown = 1f;
@@ -144,6 +145,13 @@ private void FlipRPC()
     public void DiePtcOnRPC()
     {
         diePtc.Play();
+        dieCanvas.SetActive(true);
+    }
+
+    [PunRPC]
+    public void DieCanvasFalseRPC()
+    {
+        dieCanvas.SetActive(false);
     }
     private void Damage()
     {
