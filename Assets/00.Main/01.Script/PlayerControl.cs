@@ -36,10 +36,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
-        { "위", "아래" },
-        { "아래", "위" },
-        { "왼쪽", "오른쪽" },
-        { "오른쪽", "왼쪽" }
+        { "위", "아래" },     { "아래", "위" },   { "왼쪽", "오른쪽" },  { "오른쪽", "왼쪽" }
     };
 
     void Start()
@@ -56,18 +53,11 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         }
 
         // ✅ 모든 버튼에 RPC로 보내기
-        upButton.onClick.AddListener(() => StartCoroutine(MoveCor("위")));
-        downButton.onClick.AddListener(() => StartCoroutine(MoveCor("아래")));
-        leftButton.onClick.AddListener(() => StartCoroutine(MoveCor("왼쪽")));
-        rightButton.onClick.AddListener(() => StartCoroutine(MoveCor("오른쪽")));
-
+        upButton.onClick.AddListener(() => StartCoroutine(MoveCor("위"))); downButton.onClick.AddListener(() => StartCoroutine(MoveCor("아래"))); leftButton.onClick.AddListener(() => StartCoroutine(MoveCor("왼쪽"))); rightButton.onClick.AddListener(() => StartCoroutine(MoveCor("오른쪽")));
     }
     void Update()
     {
-        CastRay(Vector3.forward, "위");
-        CastRay(Vector3.back, "아래");
-        CastRay(Vector3.left, "왼쪽");
-        CastRay(Vector3.right, "오른쪽");
+        CastRay(Vector3.forward, "위"); CastRay(Vector3.back, "아래"); CastRay(Vector3.left, "왼쪽"); CastRay(Vector3.right, "오른쪽");
 
         if (!photonView.IsMine)
             return;
@@ -76,8 +66,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             uiCanvas.SetActive(true);
             UpdateButtonVisibility(); // ✅ 감지된 방향에 따라 버튼 상태 업데이트
         }
-
-
     }
 
     void CastRay(Vector3 direction, string directionName)
@@ -108,28 +96,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    public void RPC_SetPosition(Vector3 newPosition) //위치 이동
-    {
-        transform.position = newPosition;
-    }
-    [PunRPC]
-    public void RPC_SetRotation(float x, float y, float z)
-    {
-        transform.rotation = Quaternion.Euler(x, y, z);
-    }
-    [PunRPC]
-    void ColorChange()
-    {
-        StartCoroutine(ColorChangeCor());
-    }
 
-    IEnumerator ColorChangeCor()
-    {
-        playerColorBox.SetActive(true);
-        yield return new WaitForSeconds(1);
-        playerColorBox.SetActive(false);
-    }
 
     IEnumerator MoveCor(string direction)
     {
@@ -174,7 +141,14 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
 
     }
-
+    void UpdateButtonVisibility()
+    {
+        //감지된 방향만 활성화
+        upButton.gameObject.SetActive(currentValidDirections.Contains("위"));
+        downButton.gameObject.SetActive(currentValidDirections.Contains("아래"));
+        leftButton.gameObject.SetActive(currentValidDirections.Contains("왼쪽"));
+        rightButton.gameObject.SetActive(currentValidDirections.Contains("오른쪽"));
+    }
     [PunRPC]
     void OnMoveButtonClicked(string direction)
     {
@@ -184,29 +158,51 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             AudioManager.instance.PlaySound(transform.position, 1, Random.Range(1f, 1.1f), 1);// 오디오 재생
         }
     }
+    void MovePlayerToTarget(Vector3 targetPosition)
+    {
+        transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);
+    }
+
+
+
+
+
+
+    [PunRPC]
+    void ColorChange()
+    {
+        StartCoroutine(ColorChangeCor());
+    }
+
+    IEnumerator ColorChangeCor()
+    {
+        playerColorBox.SetActive(true);
+        yield return new WaitForSeconds(1);
+        playerColorBox.SetActive(false);
+    }
 
     public void PlayerTurnEnd()
     {
         TurnManager.instance.EndTurn();
         isMove = false;
     }
-    void MovePlayerToTarget(Vector3 targetPosition)
-    {
-        transform.DOJump(targetPosition, jumpHeight, 1, moveDuration).SetEase(Ease.InOutQuad);
-    }
-
-    void UpdateButtonVisibility()
-    {
-        //감지된 방향만 활성화
-        upButton.gameObject.SetActive(currentValidDirections.Contains("위"));
-        downButton.gameObject.SetActive(currentValidDirections.Contains("아래"));
-        leftButton.gameObject.SetActive(currentValidDirections.Contains("왼쪽"));
-        rightButton.gameObject.SetActive(currentValidDirections.Contains("오른쪽"));
-    }
-
+    
     public void BattleStart()
     {
         BattleManager.instance.BattleStart();
         Debug.Log("배틀 시작");
     }
+
+    [PunRPC]
+    public void RPC_SetPosition(Vector3 newPosition) //위치 이동
+    {
+        transform.position = newPosition;
+    }
+    [PunRPC]
+    public void RPC_SetRotation(float x, float y, float z)
+    {
+        transform.rotation = Quaternion.Euler(x, y, z);
+    }
+
+
 }
