@@ -114,6 +114,8 @@ public class BattleManager : MonoBehaviourPun
                 break;
             }
         }
+
+    
     }
 
     //public void BattleWin()
@@ -137,6 +139,8 @@ public class BattleManager : MonoBehaviourPun
 
         // 모든 클라이언트에게 승자 이름 보여주기
         photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
+
+            SystemMessaageManager.instance.MessageTextStart($"승자는 {winnerName} 입니다!");
     }
 
 
@@ -203,6 +207,7 @@ public class BattleManager : MonoBehaviourPun
                         control.WinColorChange();// 원하는 함수 호출
                     }
                 }
+             
             }
         }
 

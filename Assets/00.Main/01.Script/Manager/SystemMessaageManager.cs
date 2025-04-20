@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-public class SystemMessaageManager : MonoBehaviour
+using Photon.Pun;
+public class SystemMessaageManager : MonoBehaviourPunCallbacks
 {
     public static SystemMessaageManager instance;
 
     public GameObject systemMegapon;
     public TMP_Text systemText;
 
-    public Animator megaponAnim;
     private void Awake()
     {
         instance = this;
@@ -18,9 +17,17 @@ public class SystemMessaageManager : MonoBehaviour
 
     public void MessageTextStart(string text)
     {
-        StartCoroutine(MessageTextStartCor(text));
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("MessageTextStartRPC",RpcTarget.All,text);
+        }
     }
 
+    [PunRPC]
+    public void MessageTextStartRPC(string text)
+    {
+        StartCoroutine(MessageTextStartCor(text));
+    }
     IEnumerator MessageTextStartCor(string text)
     {
         systemMegapon.SetActive(true);
@@ -36,8 +43,6 @@ public class SystemMessaageManager : MonoBehaviour
 
         // 전체 텍스트가 출력된 후 5초 기다리고 끔
         yield return new WaitForSeconds(3.5f);
-        megaponAnim.SetTrigger("End");
-        yield return new WaitForSeconds(2f);
         systemMegapon.SetActive(false);
     }
 }
