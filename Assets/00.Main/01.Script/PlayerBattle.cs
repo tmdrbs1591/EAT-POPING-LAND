@@ -99,7 +99,7 @@ public class PlayerBattle : MonoBehaviourPun
     }
     IEnumerator TimeSlowCor()
     {
-        CameraShake.instance.Shake(0.4f, 0.2f);
+        CameraShake.instance.Shake(0.4f, 0.4f);
 
         Time.timeScale = 0.1f;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
