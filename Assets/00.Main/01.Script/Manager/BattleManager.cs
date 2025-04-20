@@ -62,12 +62,18 @@ public class BattleManager : MonoBehaviourPun
             return;
 
         photonView.RPC("RPC_BattleStart", RpcTarget.All, PhotonNetwork.NickName, opponentName);
+
+     
     }
 
     [PunRPC]
     private void RPC_BattleStart(string player1, string player2)
     {
         isBattle = true;
+
+        TurnManager.instance.diceUI.SetActive(false);
+        TurnManager.instance.otherDiceUI.SetActive(false);
+
 
         battleScreen.SetActive(true);
         battleCamera.SetActive(true);
