@@ -136,6 +136,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         isMove = true;
         uiCanvas.SetActive(false);
 
+        photonView.RPC("TurnUICloseRPC", RpcTarget.All);
+      
+
+
         while (remainingMoveCount > 0)
         {
             // 현재 방향이 유효하지 않으면 중단하고 UI 켜기
@@ -164,6 +168,15 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             UpdateButtonVisibility();
         }
     }
+
+    [PunRPC]
+    void TurnUICloseRPC()
+    {
+        TurnManager.instance.otherDiceUI.SetActive(false);
+        Debug.Log("diceui닫기");
+    }
+
+
 
     void UpdateButtonVisibility()
     {

@@ -1437,6 +1437,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.1
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &188568723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +2912,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.05
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &381265147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3064,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.05
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &383868186
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,6 +5713,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d70832c75dcb4564a95479ee1117f202, type: 3}
   - {fileID: 8300000, guid: 473531bb6b79dc6428cf6528be4ac071, type: 3}
   - {fileID: 8300000, guid: 5c123543f1a1194498ba42fede2449bf, type: 3}
+  - {fileID: 8300000, guid: d9f4c38a175e68945809931766d01bf8, type: 3}
+  - {fileID: 8300000, guid: 9330af9e2b047d84ba4c8a184c637e91, type: 3}
+  - {fileID: 8300000, guid: 2b32913532e313b4581eef032b16e7f1, type: 3}
   songs: []
   audioObject: {fileID: 708117791136189665, guid: 2cf61973486430c4991435763dd4f4bd, type: 3}
 --- !u!4 &615571039
@@ -6946,6 +6955,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &739777665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7473,6 +7484,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &780911988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8366,6 +8379,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.1
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &852134991
 GameObject:
   m_ObjectHideFlags: 0
@@ -9980,6 +9995,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.1
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1072757116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11369,6 +11386,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1222424428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12230,6 +12249,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1284557213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12606,6 +12627,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1340734474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13284,6 +13307,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.1
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!1 &1372735188
 GameObject:
   m_ObjectHideFlags: 0
@@ -13528,6 +13553,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1410078264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17004,6 +17031,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1849091194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17564,6 +17593,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: 6dd3a6489a24e3545ad269856be82dc8, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.04
+  hightlightAudioIndex: 3
+  clickIndex: 4
 --- !u!114 &1866925270
 MonoBehaviour:
   m_ObjectHideFlags: 0

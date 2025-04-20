@@ -74632,6 +74632,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.4
+  hightlightAudioIndex: 3
+  clickIndex: 5
 --- !u!114 &1511536509059487367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74786,6 +74788,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.4
+  hightlightAudioIndex: 3
+  clickIndex: 5
 --- !u!114 &8933619324064383553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74940,6 +74944,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.4
+  hightlightAudioIndex: 3
+  clickIndex: 5
 --- !u!114 &4593376418618798092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75094,6 +75100,8 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a26be2d73ae419a47ad9a2e92bade15a, type: 2}
   scaleDuration: 0.3
   highlightScale: 1.4
+  hightlightAudioIndex: 3
+  clickIndex: 5
 --- !u!114 &1661668345272372873
 MonoBehaviour:
   m_ObjectHideFlags: 0

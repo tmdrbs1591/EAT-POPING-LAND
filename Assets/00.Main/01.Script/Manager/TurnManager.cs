@@ -20,6 +20,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
     private bool isFirstTurn = true; // 첫 턴인지 확인
 
     public GameObject diceUI;
+    public GameObject otherDiceUI;
     private void Awake()
     {
         instance = this;
@@ -85,6 +86,9 @@ public class TurnManager : MonoBehaviourPunCallbacks
         {
             DiceManager.instance.enabled = false;
             myTurnPanel.SetActive(false);
+            otherDiceUI.SetActive(true);
+
+
         }
     }
 
