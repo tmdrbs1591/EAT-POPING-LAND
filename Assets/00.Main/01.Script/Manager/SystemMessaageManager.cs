@@ -17,10 +17,9 @@ public class SystemMessaageManager : MonoBehaviourPunCallbacks
 
     public void MessageTextStart(string text)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            photonView.RPC("MessageTextStartRPC",RpcTarget.All,text);
-        }
+
+        photonView.RPC("MessageTextStartRPC", RpcTarget.All, text);
+
     }
 
     [PunRPC]

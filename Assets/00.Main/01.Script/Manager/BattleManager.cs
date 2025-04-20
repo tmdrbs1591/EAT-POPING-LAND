@@ -5,6 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
+using Photon.Pun.Demo.PunBasics;
 
 public class BattleManager : MonoBehaviourPun
 {
@@ -132,7 +133,7 @@ public class BattleManager : MonoBehaviourPun
         Player loser = PhotonNetwork.LocalPlayer;
 
         string winnerName = winner.NickName;
-
+        string loserName = loser.NickName;
         // 승자와 패자에게만 승패 판단용
         photonView.RPC("RPC_BattleResult", winner, opponentID);
         photonView.RPC("RPC_BattleResult", loser, opponentID);
@@ -140,7 +141,7 @@ public class BattleManager : MonoBehaviourPun
         // 모든 클라이언트에게 승자 이름 보여주기
         photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
 
-            SystemMessaageManager.instance.MessageTextStart($"승자는 {winnerName} 입니다!");
+        SystemMessaageManager.instance.MessageTextStart($"{winnerName}님이 {loserName}님을 상대로 승리하였습니다!");
     }
 
 

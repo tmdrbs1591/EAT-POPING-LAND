@@ -54,7 +54,10 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
         countdownText.text = "턴 시작!";
         yield return new WaitForSeconds(1f);
-        SystemMessaageManager.instance.MessageTextStart("게임이 시작되었습니다!");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SystemMessaageManager.instance.MessageTextStart("게임이 시작되었습니다!");
+        }
         countdownText.text = "";
 
         isCountingDown = false; // 카운트다운 종료
