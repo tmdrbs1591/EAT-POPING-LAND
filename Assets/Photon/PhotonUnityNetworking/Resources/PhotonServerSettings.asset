@@ -71,6 +71,8 @@ MonoBehaviour:
   - ShowWinner
   - ResetPosPlayerRPC
   - RPC_ShowWinner
+  - WinColorChange
+  - HoldColorChange
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

@@ -45,6 +45,22 @@ public class PlayerColor : MonoBehaviourPun
                 return null; // 기본값 (오류 방지)
         }
     }
+    public int GetMaterialIndex() // Material의 인덱스 반환
+    {
+        switch (playerColor)
+        {
+            case PlayerColorType.Red:
+                return 0; // Red에 해당하는 인덱스
+            case PlayerColorType.Green:
+                return 1; // Green에 해당하는 인덱스
+            case PlayerColorType.Blue:
+                return 2; // Blue에 해당하는 인덱스
+            case PlayerColorType.Yellow:
+                return 3; // Yellow에 해당하는 인덱스
+            default:
+                return -1; // Default일 경우 인덱스 -1 (잘못된 값)
+        }
+    }
 
     public PlayerColorType HoldChange() // 타입변경
     {

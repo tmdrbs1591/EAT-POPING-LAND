@@ -154,7 +154,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
         if (remainingMoveCount <= 0)
         {
-            photonView.RPC("ColorChange", RpcTarget.All);
+            ColorChange();
             Debug.Log("턴 종료");
         }
         else
@@ -192,18 +192,14 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
 
 
-    [PunRPC]
     void ColorChange()
     {
-        StartCoroutine(ColorChangeCor());
+
+        playerColorBoxScript.CheckPointBelow();
+        Debug.Log("컬체 들아엄00;");
     }
 
-    IEnumerator ColorChangeCor()
-    {
-        playerColorBox.SetActive(true);
-        yield return new WaitForSeconds(1);
-        playerColorBox.SetActive(false);
-    }
+
 
     public void PlayerTurnEnd()
     {

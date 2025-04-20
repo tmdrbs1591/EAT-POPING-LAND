@@ -126960,16 +126960,16 @@ GameObject:
   - component: {fileID: 8430370466965720930}
   - component: {fileID: 8701214329892515695}
   - component: {fileID: 9132672573522661755}
-  - component: {fileID: 7897252419058615472}
   - component: {fileID: 3815141749734506843}
   - component: {fileID: 2127915466653791853}
+  - component: {fileID: 7435380367288409466}
   m_Layer: 0
   m_Name: Player Color Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8430370466965720930
 Transform:
   m_ObjectHideFlags: 0
@@ -126978,7 +126978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6212660837171090416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.87, z: 0}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0}
   m_LocalScale: {x: 0.52637124, y: 2.1625974, z: 0.52637124}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127035,19 +127035,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7897252419058615472
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212660837171090416}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3815141749734506843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127064,6 +127051,7 @@ MonoBehaviour:
   playerControl: {fileID: 1377563084874637232}
   battleUI: {fileID: 4292398530547663160}
   battleUIText: {fileID: 7375761299748058257}
+  rayLength: 3
 --- !u!54 &2127915466653791853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127080,6 +127068,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7435380367288409466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212660837171090416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6240976857419443859
 GameObject:
   m_ObjectHideFlags: 0

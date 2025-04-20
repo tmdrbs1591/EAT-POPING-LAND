@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 34949951}
   - component: {fileID: 34949950}
   - component: {fileID: 34949953}
+  - component: {fileID: 34949954}
   m_Layer: 0
   m_Name: Cube (15)
   m_TagString: PointBox
@@ -597,6 +598,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &34949954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34949948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 15
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &37973060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1217,7 @@ GameObject:
   - component: {fileID: 73583895}
   - component: {fileID: 73583894}
   - component: {fileID: 73583897}
+  - component: {fileID: 73583898}
   m_Layer: 0
   m_Name: Cube (63)
   m_TagString: PointBox
@@ -1287,6 +1316,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &73583898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73583892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 28
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &80966425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +1955,7 @@ GameObject:
   - component: {fileID: 187133630}
   - component: {fileID: 187133629}
   - component: {fileID: 187133633}
+  - component: {fileID: 187133634}
   m_Layer: 0
   m_Name: Cube (10)
   m_TagString: PointBox
@@ -1997,6 +2054,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &187133634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187133628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 61
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &201096767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,6 +2209,7 @@ GameObject:
   - component: {fileID: 206891398}
   - component: {fileID: 206891397}
   - component: {fileID: 206891400}
+  - component: {fileID: 206891401}
   m_Layer: 0
   m_Name: Cube (47)
   m_TagString: PointBox
@@ -2223,6 +2308,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &206891401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206891395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 17
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &216079441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2348,7 @@ GameObject:
   - component: {fileID: 216079443}
   - component: {fileID: 216079442}
   - component: {fileID: 216079446}
+  - component: {fileID: 216079447}
   m_Layer: 0
   m_Name: Cube (08)
   m_TagString: PointBox
@@ -2334,6 +2447,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &216079447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216079441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 49
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &222455309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,6 +2698,7 @@ GameObject:
   - component: {fileID: 247623673}
   - component: {fileID: 247623672}
   - component: {fileID: 247623675}
+  - component: {fileID: 247623676}
   m_Layer: 0
   m_Name: Cube (25)
   m_TagString: PointBox
@@ -2656,6 +2797,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &247623676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247623670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 14
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &249996147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3214,7 @@ GameObject:
   - component: {fileID: 310226246}
   - component: {fileID: 310226245}
   - component: {fileID: 310226248}
+  - component: {fileID: 310226249}
   m_Layer: 0
   m_Name: Cube (60)
   m_TagString: PointBox
@@ -3144,6 +3313,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &310226249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310226243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 56
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &344780504
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,6 +4340,7 @@ GameObject:
   - component: {fileID: 428648890}
   - component: {fileID: 428648889}
   - component: {fileID: 428648892}
+  - component: {fileID: 428648893}
   m_Layer: 0
   m_Name: Cube (29)
   m_TagString: PointBox
@@ -4242,6 +4439,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &428648893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428648887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 13
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &429637029
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,6 +4965,7 @@ GameObject:
   - component: {fileID: 485326620}
   - component: {fileID: 485326619}
   - component: {fileID: 485326622}
+  - component: {fileID: 485326623}
   m_Layer: 0
   m_Name: Cube (24)
   m_TagString: PointBox
@@ -4839,6 +5064,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &485326623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485326617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 12
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &485569749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,6 +5182,7 @@ GameObject:
   - component: {fileID: 488250929}
   - component: {fileID: 488250928}
   - component: {fileID: 488250931}
+  - component: {fileID: 488250932}
   m_Layer: 0
   m_Name: Cube (43)
   m_TagString: PointBox
@@ -5028,6 +5281,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &488250932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488250926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 48
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &499373830
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,6 +5556,7 @@ GameObject:
   - component: {fileID: 512204859}
   - component: {fileID: 512204858}
   - component: {fileID: 512204861}
+  - component: {fileID: 512204862}
   m_Layer: 0
   m_Name: Cube (48)
   m_TagString: PointBox
@@ -5374,6 +5655,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &512204862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512204856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 47
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &518325400
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,6 +5740,7 @@ GameObject:
   - component: {fileID: 522743440}
   - component: {fileID: 522743439}
   - component: {fileID: 522743443}
+  - component: {fileID: 522743444}
   m_Layer: 0
   m_Name: Cube (40)
   m_TagString: PointBox
@@ -5530,6 +5839,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &522743444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522743438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 46
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &543241602
 GameObject:
   m_ObjectHideFlags: 0
@@ -5748,6 +6084,7 @@ GameObject:
   - component: {fileID: 552658272}
   - component: {fileID: 552658271}
   - component: {fileID: 552658275}
+  - component: {fileID: 552658276}
   m_Layer: 0
   m_Name: Cube (12)
   m_TagString: PointBox
@@ -5846,6 +6183,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &552658276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552658270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 39
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &554413315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6337,6 +6701,7 @@ GameObject:
   - component: {fileID: 584046490}
   - component: {fileID: 584046489}
   - component: {fileID: 584046492}
+  - component: {fileID: 584046493}
   m_Layer: 0
   m_Name: Cube (30)
   m_TagString: PointBox
@@ -6435,6 +6800,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &584046493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584046487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 16
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &600894377
 GameObject:
   m_ObjectHideFlags: 0
@@ -6573,6 +6965,7 @@ GameObject:
   - component: {fileID: 616935339}
   - component: {fileID: 616935338}
   - component: {fileID: 616935341}
+  - component: {fileID: 616935342}
   m_Layer: 0
   m_Name: Cube (20)
   m_TagString: PointBox
@@ -6671,6 +7064,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &616935342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616935336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 55
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &620324042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6933,6 +7353,7 @@ GameObject:
   - component: {fileID: 631278157}
   - component: {fileID: 631278156}
   - component: {fileID: 631278159}
+  - component: {fileID: 631278160}
   m_Layer: 0
   m_Name: Cube (53)
   m_TagString: PointBox
@@ -7031,6 +7452,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &631278160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631278154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 54
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &639233182
 GameObject:
   m_ObjectHideFlags: 0
@@ -7044,6 +7492,7 @@ GameObject:
   - component: {fileID: 639233185}
   - component: {fileID: 639233184}
   - component: {fileID: 639233187}
+  - component: {fileID: 639233188}
   m_Layer: 0
   m_Name: Cube (17)
   m_TagString: PointBox
@@ -7142,6 +7591,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &639233188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639233182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 53
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &640397302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7608,6 +8084,7 @@ GameObject:
   - component: {fileID: 677687373}
   - component: {fileID: 677687372}
   - component: {fileID: 677687375}
+  - component: {fileID: 677687376}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: PointBox
@@ -7706,6 +8183,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &677687376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677687370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 36
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &684434040
 GameObject:
   m_ObjectHideFlags: 0
@@ -7885,6 +8389,7 @@ GameObject:
   - component: {fileID: 689636275}
   - component: {fileID: 689636274}
   - component: {fileID: 689636278}
+  - component: {fileID: 689636279}
   m_Layer: 0
   m_Name: Cube (38)
   m_TagString: PointBox
@@ -7983,6 +8488,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &689636279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689636273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 38
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &693927963
 GameObject:
   m_ObjectHideFlags: 0
@@ -8319,6 +8851,7 @@ GameObject:
   - component: {fileID: 714436126}
   - component: {fileID: 714436125}
   - component: {fileID: 714436128}
+  - component: {fileID: 714436129}
   m_Layer: 0
   m_Name: Cube (55)
   m_TagString: PointBox
@@ -8417,6 +8950,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &714436129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714436123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 37
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &722341632
 GameObject:
   m_ObjectHideFlags: 0
@@ -8513,6 +9073,7 @@ GameObject:
   - component: {fileID: 731698795}
   - component: {fileID: 731698794}
   - component: {fileID: 731698798}
+  - component: {fileID: 731698799}
   m_Layer: 0
   m_Name: Cube (09)
   m_TagString: PointBox
@@ -8611,6 +9172,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &731698799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731698793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 60
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &736325518
 GameObject:
   m_ObjectHideFlags: 0
@@ -9127,6 +9715,7 @@ GameObject:
   - component: {fileID: 799584029}
   - component: {fileID: 799584028}
   - component: {fileID: 799584031}
+  - component: {fileID: 799584032}
   m_Layer: 0
   m_Name: Cube (16)
   m_TagString: PointBox
@@ -9225,6 +9814,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &799584032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799584026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 59
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &800841780
 GameObject:
   m_ObjectHideFlags: 0
@@ -9238,6 +9854,7 @@ GameObject:
   - component: {fileID: 800841783}
   - component: {fileID: 800841782}
   - component: {fileID: 800841785}
+  - component: {fileID: 800841786}
   m_Layer: 0
   m_Name: Cube (61)
   m_TagString: PointBox
@@ -9336,6 +9953,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &800841786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800841780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 58
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &803988300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9847,6 +10491,7 @@ GameObject:
   - component: {fileID: 835704603}
   - component: {fileID: 835704602}
   - component: {fileID: 835704605}
+  - component: {fileID: 835704606}
   m_Layer: 0
   m_Name: Cube (23)
   m_TagString: PointBox
@@ -9945,6 +10590,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &835704606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835704600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 57
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &841869738
 GameObject:
   m_ObjectHideFlags: 0
@@ -10588,6 +11260,7 @@ GameObject:
   - component: {fileID: 874163668}
   - component: {fileID: 874163667}
   - component: {fileID: 874163670}
+  - component: {fileID: 874163671}
   m_Layer: 0
   m_Name: Cube (36)
   m_TagString: PointBox
@@ -10686,6 +11359,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &874163671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874163665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 45
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &898022964
 GameObject:
   m_ObjectHideFlags: 0
@@ -10699,6 +11399,7 @@ GameObject:
   - component: {fileID: 898022967}
   - component: {fileID: 898022966}
   - component: {fileID: 898022969}
+  - component: {fileID: 898022970}
   m_Layer: 0
   m_Name: Cube (18)
   m_TagString: PointBox
@@ -10797,6 +11498,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &898022970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898022964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 44
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &900001538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,6 +11825,7 @@ GameObject:
   - component: {fileID: 931709820}
   - component: {fileID: 931709819}
   - component: {fileID: 931709822}
+  - component: {fileID: 931709823}
   m_Layer: 0
   m_Name: Cube (57)
   m_TagString: PointBox
@@ -11195,6 +11924,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &931709823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931709817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 43
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &962499833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11466,6 +12222,7 @@ GameObject:
   - component: {fileID: 1011429690}
   - component: {fileID: 1011429689}
   - component: {fileID: 1011429692}
+  - component: {fileID: 1011429693}
   m_Layer: 0
   m_Name: Cube (50)
   m_TagString: PointBox
@@ -11564,6 +12321,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1011429693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011429687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 42
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1016977096
 GameObject:
   m_ObjectHideFlags: 0
@@ -12003,6 +12787,7 @@ GameObject:
   - component: {fileID: 1079034285}
   - component: {fileID: 1079034284}
   - component: {fileID: 1079034287}
+  - component: {fileID: 1079034288}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: PointBox
@@ -12101,6 +12886,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1079034288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079034282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 41
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1088355587
 GameObject:
   m_ObjectHideFlags: 0
@@ -12114,6 +12926,7 @@ GameObject:
   - component: {fileID: 1088355590}
   - component: {fileID: 1088355589}
   - component: {fileID: 1088355592}
+  - component: {fileID: 1088355593}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: PointBox
@@ -12212,6 +13025,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1088355593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088355587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 40
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1096092834
 GameObject:
   m_ObjectHideFlags: 0
@@ -12478,6 +13318,7 @@ GameObject:
   - component: {fileID: 1103684876}
   - component: {fileID: 1103684875}
   - component: {fileID: 1103684879}
+  - component: {fileID: 1103684880}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: PointBox
@@ -12576,6 +13417,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1103684880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103684874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 35
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1109258674
 GameObject:
   m_ObjectHideFlags: 0
@@ -12589,6 +13457,7 @@ GameObject:
   - component: {fileID: 1109258677}
   - component: {fileID: 1109258676}
   - component: {fileID: 1109258679}
+  - component: {fileID: 1109258680}
   m_Layer: 0
   m_Name: Cube (19)
   m_TagString: PointBox
@@ -12687,6 +13556,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1109258680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109258674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 34
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1114046430
 GameObject:
   m_ObjectHideFlags: 0
@@ -12700,6 +13596,7 @@ GameObject:
   - component: {fileID: 1114046433}
   - component: {fileID: 1114046432}
   - component: {fileID: 1114046435}
+  - component: {fileID: 1114046436}
   m_Layer: 0
   m_Name: Cube (58)
   m_TagString: PointBox
@@ -12798,6 +13695,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1114046436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114046430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 33
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1114416201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13377,6 +14301,7 @@ GameObject:
   - component: {fileID: 1144782793}
   - component: {fileID: 1144782792}
   - component: {fileID: 1144782795}
+  - component: {fileID: 1144782796}
   m_Layer: 0
   m_Name: Cube (26)
   m_TagString: PointBox
@@ -13475,6 +14400,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1144782796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144782790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 32
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1150885691
 GameObject:
   m_ObjectHideFlags: 0
@@ -14087,6 +15039,7 @@ GameObject:
   - component: {fileID: 1222666113}
   - component: {fileID: 1222666112}
   - component: {fileID: 1222666115}
+  - component: {fileID: 1222666116}
   m_Layer: 0
   m_Name: Cube (56)
   m_TagString: PointBox
@@ -14185,6 +15138,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1222666116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222666110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 31
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1222704310
 GameObject:
   m_ObjectHideFlags: 0
@@ -14403,6 +15383,7 @@ GameObject:
   - component: {fileID: 1236214056}
   - component: {fileID: 1236214055}
   - component: {fileID: 1236214058}
+  - component: {fileID: 1236214059}
   m_Layer: 0
   m_Name: Cube (14)
   m_TagString: PointBox
@@ -14501,6 +15482,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1236214059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236214053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 30
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1253959725
 GameObject:
   m_ObjectHideFlags: 0
@@ -14732,6 +15740,7 @@ GameObject:
   - component: {fileID: 1276469007}
   - component: {fileID: 1276469006}
   - component: {fileID: 1276469009}
+  - component: {fileID: 1276469010}
   m_Layer: 0
   m_Name: Cube (52)
   m_TagString: PointBox
@@ -14830,6 +15839,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1276469010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276469004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 29
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1280669994
 GameObject:
   m_ObjectHideFlags: 0
@@ -16200,6 +17236,7 @@ GameObject:
   - component: {fileID: 1420972840}
   - component: {fileID: 1420972839}
   - component: {fileID: 1420972843}
+  - component: {fileID: 1420972844}
   m_Layer: 0
   m_Name: Cube (41)
   m_TagString: PointBox
@@ -16298,6 +17335,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1420972844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420972838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 52
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1424590456
 GameObject:
   m_ObjectHideFlags: 0
@@ -17737,6 +18801,7 @@ GameObject:
   - component: {fileID: 1522769356}
   - component: {fileID: 1522769355}
   - component: {fileID: 1522769358}
+  - component: {fileID: 1522769359}
   m_Layer: 0
   m_Name: Cube (51)
   m_TagString: PointBox
@@ -17835,6 +18900,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1522769359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522769353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 51
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1530565462
 GameObject:
   m_ObjectHideFlags: 0
@@ -18149,6 +19241,7 @@ GameObject:
   - component: {fileID: 1565506197}
   - component: {fileID: 1565506196}
   - component: {fileID: 1565506200}
+  - component: {fileID: 1565506201}
   m_Layer: 0
   m_Name: Cube (13)
   m_TagString: PointBox
@@ -18247,6 +19340,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1565506201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565506195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 50
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1572624371
 GameObject:
   m_ObjectHideFlags: 0
@@ -18810,6 +19930,7 @@ GameObject:
   - component: {fileID: 1665100297}
   - component: {fileID: 1665100296}
   - component: {fileID: 1665100300}
+  - component: {fileID: 1665100301}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: PointBox
@@ -18908,6 +20029,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1665100301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665100295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 27
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1671422517
 GameObject:
   m_ObjectHideFlags: 0
@@ -18921,6 +20069,7 @@ GameObject:
   - component: {fileID: 1671422520}
   - component: {fileID: 1671422519}
   - component: {fileID: 1671422522}
+  - component: {fileID: 1671422523}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: PointBox
@@ -19019,6 +20168,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1671422523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671422517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 26
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1672308778
 GameObject:
   m_ObjectHideFlags: 0
@@ -19032,6 +20208,7 @@ GameObject:
   - component: {fileID: 1672308781}
   - component: {fileID: 1672308780}
   - component: {fileID: 1672308783}
+  - component: {fileID: 1672308784}
   m_Layer: 0
   m_Name: Cube (32)
   m_TagString: PointBox
@@ -19130,6 +20307,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1672308784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672308778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 25
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1681566204
 GameObject:
   m_ObjectHideFlags: 0
@@ -19502,6 +20706,7 @@ GameObject:
   - component: {fileID: 1707034164}
   - component: {fileID: 1707034163}
   - component: {fileID: 1707034166}
+  - component: {fileID: 1707034167}
   m_Layer: 0
   m_Name: Cube (21)
   m_TagString: PointBox
@@ -19600,6 +20805,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1707034167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707034161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 24
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1713238686
 GameObject:
   m_ObjectHideFlags: 0
@@ -19689,6 +20921,7 @@ GameObject:
   - component: {fileID: 1721304310}
   - component: {fileID: 1721304309}
   - component: {fileID: 1721304312}
+  - component: {fileID: 1721304313}
   m_Layer: 0
   m_Name: Cube (28)
   m_TagString: PointBox
@@ -19787,6 +21020,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1721304313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721304307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 23
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1722266512
 GameObject:
   m_ObjectHideFlags: 0
@@ -19959,6 +21219,7 @@ GameObject:
   - component: {fileID: 1730024832}
   - component: {fileID: 1730024831}
   - component: {fileID: 1730024834}
+  - component: {fileID: 1730024835}
   m_Layer: 0
   m_Name: Cube (27)
   m_TagString: PointBox
@@ -20057,6 +21318,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1730024835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730024829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 22
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1742673970
 GameObject:
   m_ObjectHideFlags: 0
@@ -20070,6 +21358,7 @@ GameObject:
   - component: {fileID: 1742673973}
   - component: {fileID: 1742673972}
   - component: {fileID: 1742673975}
+  - component: {fileID: 1742673976}
   m_Layer: 0
   m_Name: Cube (35)
   m_TagString: PointBox
@@ -20168,6 +21457,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1742673976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742673970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 21
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1761838770
 GameObject:
   m_ObjectHideFlags: 0
@@ -20798,6 +22114,7 @@ GameObject:
   - component: {fileID: 1854254938}
   - component: {fileID: 1854254937}
   - component: {fileID: 1854254941}
+  - component: {fileID: 1854254942}
   m_Layer: 0
   m_Name: Cube (46)
   m_TagString: PointBox
@@ -20896,6 +22213,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1854254942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854254936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 20
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1857843208
 GameObject:
   m_ObjectHideFlags: 0
@@ -21347,6 +22691,7 @@ GameObject:
   - component: {fileID: 1906861037}
   - component: {fileID: 1906861036}
   - component: {fileID: 1906861040}
+  - component: {fileID: 1906861041}
   m_Layer: 0
   m_Name: Cube (45)
   m_TagString: PointBox
@@ -21445,6 +22790,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1906861041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906861035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 19
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1906976525
 GameObject:
   m_ObjectHideFlags: 0
@@ -21458,6 +22830,7 @@ GameObject:
   - component: {fileID: 1906976527}
   - component: {fileID: 1906976526}
   - component: {fileID: 1906976530}
+  - component: {fileID: 1906976531}
   m_Layer: 0
   m_Name: Cube (07)
   m_TagString: PointBox
@@ -21556,6 +22929,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1906976531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906976525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 18
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1910824565
 GameObject:
   m_ObjectHideFlags: 0
@@ -22086,6 +23486,7 @@ GameObject:
   - component: {fileID: 1950171290}
   - component: {fileID: 1950171289}
   - component: {fileID: 1950171292}
+  - component: {fileID: 1950171293}
   m_Layer: 0
   m_Name: Cube (37)
   m_TagString: PointBox
@@ -22184,6 +23585,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1950171293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950171287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 11
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1951441665
 GameObject:
   m_ObjectHideFlags: 0
@@ -22360,6 +23788,7 @@ GameObject:
   - component: {fileID: 1966017352}
   - component: {fileID: 1966017351}
   - component: {fileID: 1966017354}
+  - component: {fileID: 1966017355}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: PointBox
@@ -22458,6 +23887,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &1966017355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966017349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 242
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1970676633
 GameObject:
   m_ObjectHideFlags: 0
@@ -22809,6 +24265,7 @@ GameObject:
   - component: {fileID: 2015308574}
   - component: {fileID: 2015308573}
   - component: {fileID: 2015308576}
+  - component: {fileID: 2015308577}
   m_Layer: 0
   m_Name: Cube (22)
   m_TagString: PointBox
@@ -22907,6 +24364,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &2015308577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015308571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 9
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2027009038
 GameObject:
   m_ObjectHideFlags: 0
@@ -23417,6 +24901,7 @@ GameObject:
   - component: {fileID: 2060516574}
   - component: {fileID: 2060516573}
   - component: {fileID: 2060516577}
+  - component: {fileID: 2060516578}
   m_Layer: 0
   m_Name: Cube (11)
   m_TagString: PointBox
@@ -23515,6 +25000,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &2060516578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060516572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 8
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2064768958
 GameObject:
   m_ObjectHideFlags: 0
@@ -23528,6 +25040,7 @@ GameObject:
   - component: {fileID: 2064768961}
   - component: {fileID: 2064768960}
   - component: {fileID: 2064768963}
+  - component: {fileID: 2064768964}
   m_Layer: 0
   m_Name: Cube (62)
   m_TagString: PointBox
@@ -23626,6 +25139,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &2064768964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064768958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 7
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2077207838
 GameObject:
   m_ObjectHideFlags: 0
@@ -23937,6 +25477,7 @@ GameObject:
   - component: {fileID: 2081337272}
   - component: {fileID: 2081337271}
   - component: {fileID: 2081337274}
+  - component: {fileID: 2081337275}
   m_Layer: 0
   m_Name: Cube (54)
   m_TagString: PointBox
@@ -24035,6 +25576,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &2081337275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081337269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2090708901
 GameObject:
   m_ObjectHideFlags: 0
@@ -24198,6 +25766,7 @@ GameObject:
   - component: {fileID: 2127699066}
   - component: {fileID: 2127699065}
   - component: {fileID: 2127699068}
+  - component: {fileID: 2127699069}
   m_Layer: 0
   m_Name: Cube (31)
   m_TagString: PointBox
@@ -24296,6 +25865,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdType: 0
+  materialList:
+  - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
+  - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
+  - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
+--- !u!114 &2127699069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127699063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2144929465
 GameObject:
   m_ObjectHideFlags: 0

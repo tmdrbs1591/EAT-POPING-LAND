@@ -11,51 +11,62 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
     public GameObject battleUI;
     public TMP_Text battleUIText;
+    [SerializeField] private float rayLength = 3f; // 인스펙터에서 조절 가능하게
 
-    private void OnTriggerEnter(Collider other)
+
+
+    public void CheckPointBelow()
     {
-        if (other.gameObject.CompareTag("PointBox"))
+        Vector3 center = transform.position + Vector3.down * (rayLength / 2f);
+        Vector3 halfExtents = new Vector3(0.5f, rayLength / 2f, 0.5f); // 너비, 높이 반절
+        Collider[] hits = Physics.OverlapBox(center, halfExtents);
+
+        foreach (var hit in hits)
         {
-            Renderer renderer = other.GetComponent<Renderer>();
-            Hold hold = other.GetComponent<Hold>();
-
-            if (renderer == null)
+            if (hit.CompareTag("PointBox"))
             {
-                renderer = other.GetComponentInChildren<Renderer>();
-            }
-
-            if (renderer != null)
-            {
-                if (hold.holdType == PlayerColorType.Default)
+                Hold hold = hit.GetComponent<Hold>();
+                if (hold != null)
                 {
-                    renderer.material = playerColorScript.MaterialChange();
-                    hold.holdType = playerColorScript.HoldChange();
-                }
-               if (hold.holdType != playerColorScript.playerColor)
-                {
-                    if (photonView.IsMine)
+                    if (hold.holdType == PlayerColorType.Default)
                     {
-                        string playerName = FindPlayerNameByColor(hold.holdType);
-                        Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
-                        BattleManager.instance.SetBattleInfo(playerName);
-                        battleUI.SetActive(true); // 버튼 활성화
-                        battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
+                        int materialIndex = playerColorScript.GetMaterialIndex(); // 미리 지정된 인덱스
+                        int holdTypeInt = (int)playerColorScript.HoldChange();
+
+                        PhotonView holdView = hold.GetComponent<PhotonView>();
+                        if (holdView != null)
+                        {
+                            holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
+                        }
+
                     }
-                }
-                else
-                {
-                    if (photonView.IsMine)
+
+                    if (hold.holdType != playerColorScript.playerColor)
                     {
-                        TurnManager.instance.EndTurn();
-                        playerControl.isMove = false;
+                        if (photonView.IsMine)
+                        {
+                            string playerName = FindPlayerNameByColor(hold.holdType);
+                            Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
+                            BattleManager.instance.SetBattleInfo(playerName);
+                            battleUI.SetActive(true);
+                            battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
+                        }
                     }
+                    else
+                    {
+                        if (photonView.IsMine)
+                        {
+                            TurnManager.instance.EndTurn();
+                            playerControl.isMove = false;
+                        }
+                    }
+
+                    return; // 첫 번째 맞은 거 처리하고 종료
                 }
-            }
-            else
-            {
-                Debug.LogWarning($"{other.gameObject.name} 오브젝트에 Renderer가 없음!");
             }
         }
+
+        Debug.Log("아래에 PointBox 없음");
     }
 
     private string FindPlayerNameByColor(PlayerColorType colorType)
@@ -70,6 +81,15 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
             }
         }
         return "알 수 없음";
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Vector3 center = transform.position + Vector3.down * (rayLength / 2f);
+        Vector3 size = new Vector3(1f, rayLength, 1f);
+        Gizmos.DrawWireCube(center, size);
     }
 
 }
