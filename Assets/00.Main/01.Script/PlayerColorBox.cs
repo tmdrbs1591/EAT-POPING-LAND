@@ -40,8 +40,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         }
 
                     }
-
-                    if (hold.holdType != playerColorScript.playerColor)
+                    if (hold.holdType != playerColorScript.playerColor && !playerControl.isWin)
                     {
                         if (photonView.IsMine)
                         {
@@ -50,6 +49,17 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                             BattleManager.instance.SetBattleInfo(playerName);
                             battleUI.SetActive(true);
                             battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
+                        }
+                    }
+                    else if (hold.holdType != playerColorScript.playerColor && playerControl.isWin)
+                    {
+                        int materialIndex = playerColorScript.GetMaterialIndex(); // 미리 지정된 인덱스
+                        int holdTypeInt = (int)playerColorScript.HoldChange();
+
+                        PhotonView holdView = hold.GetComponent<PhotonView>();
+                        if (holdView != null)
+                        {
+                            holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                         }
                     }
                     else

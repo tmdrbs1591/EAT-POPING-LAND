@@ -29,6 +29,7 @@ public class BattleManager : MonoBehaviourPun
 
     private int player1ID;
     private int player2ID;
+    private int winnerActorID = -1; // 승자 ID 저장용
 
     private void Awake()
     {
@@ -138,6 +139,8 @@ public class BattleManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_BattleResult(int winnerID)
     {
+        winnerActorID = winnerID; // 저장해둠
+
         if (PhotonNetwork.LocalPlayer.ActorNumber == winnerID)
         {
             Debug.Log("승리!");
@@ -147,6 +150,7 @@ public class BattleManager : MonoBehaviourPun
             Debug.Log("패배!");
         }
     }
+
     [PunRPC]
     public void RPC_ShowWinner(string winnerName)
     {
@@ -176,15 +180,28 @@ public class BattleManager : MonoBehaviourPun
             if (pv != null)
             {
                 int playerID = pv.Owner.ActorNumber;
+
                 if (playerOriginalPositions.ContainsKey(playerID))
                 {
                     Vector3 originalPos = playerOriginalPositions[playerID];
-                    pv.RPC("RPC_SetRePosition", RpcTarget.All, originalPos); // 원래 위치로 복귀
+                    pv.RPC("RPC_SetRePosition", RpcTarget.All, originalPos);
                     pv.RPC("RPC_SetRotation", RpcTarget.All, 31.7f, 42.8f, 0f);
+                }
+
+                // ✅ 승자일 경우 PlayerControl 스크립트 접근
+                if (playerID == winnerActorID)
+                {
+                    PlayerControl control = player.GetComponent<PlayerControl>();
+                    if (control != null)
+                    {
+                        // 예: 승자 처리
+                        control.WinColorChange();// 원하는 함수 호출
+                    }
                 }
             }
         }
 
-        playerOriginalPositions.Clear(); // 위치 데이터 초기화
+        playerOriginalPositions.Clear();
     }
+
 }

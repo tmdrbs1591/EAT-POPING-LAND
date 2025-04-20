@@ -36,6 +36,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
     private int remainingMoveCount;
     public bool isMove;
+    public bool isWin;
 
     private Dictionary<string, string> oppositeDirection = new Dictionary<string, string>()
     {
@@ -192,13 +193,19 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
 
 
-    void ColorChange()
+    public void ColorChange()
     {
 
         playerColorBoxScript.CheckPointBelow();
         Debug.Log("컬체 들아엄00;");
     }
-
+    
+    public void WinColorChange()
+    {
+        isWin = true;
+        playerColorBoxScript.CheckPointBelow();
+        isWin = false;
+    }
 
 
     public void PlayerTurnEnd()

@@ -74219,6 +74219,7 @@ MonoBehaviour:
   playerSprite: {fileID: 1377563084806830045}
   playerNickUI: {fileID: 4948530589327601744}
   isMove: 0
+  isWin: 0
 --- !u!114 &1233105282314760694
 MonoBehaviour:
   m_ObjectHideFlags: 0
