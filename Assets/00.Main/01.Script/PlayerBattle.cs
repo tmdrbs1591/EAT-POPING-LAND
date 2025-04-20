@@ -12,7 +12,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float curHp;
     [SerializeField] private float maxHp;
-
+    [SerializeField] private float jumpForce = 7f;
     [Header("공격")]
     [SerializeField] private Vector3 attackBoxSize;
     [SerializeField] private Transform attackBoxPos;
@@ -22,11 +22,14 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] public Slider hpSlider;
     [SerializeField] ParticleSystem slashPtc;
     [SerializeField] ParticleSystem diePtc;
+    [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackCooldown = 1f;
     private float nextAttackTime = 0f;
+    [SerializeField] private float jumpCooldown = 1f;
+    private float nextJumpTime = 0f;
 
     private Rigidbody rb;
     private float inputX;
@@ -75,8 +78,20 @@ public class PlayerBattle : MonoBehaviourPun
             photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
         }
 
+        if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
+        {
+            nextJumpTime = Time.time + jumpCooldown;
+            Jump();
+        }
+
         Vector3 move = new Vector3(inputX, 0, 0) * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Y속도 초기화
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     void Die()
@@ -145,6 +160,7 @@ private void FlipRPC()
     [PunRPC]
     public void TakeDamage(float damage)
     {
+        damagePtc.Play();
         CameraShake.instance.Shake(0.3f, 0.1f);
         curHp -= damage;
         hpSlider.value = curHp/maxHp;
@@ -161,7 +177,7 @@ private void FlipRPC()
         diePtc.Play();
         dieCanvas.SetActive(true);
     }
-
+  
     [PunRPC]
     public void DieCanvasFalseRPC()
     {

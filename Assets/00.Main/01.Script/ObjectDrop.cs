@@ -11,10 +11,11 @@ public class ObjectDrop : MonoBehaviour
     private Vector3 originalPosition;    // 원래 위치
 
     PhotonTransformView photonTransformview;
-
+    Rigidbody rigid;
     void Start()
     {
         photonTransformview = GetComponent<PhotonTransformView>();
+        rigid = GetComponent<Rigidbody>();
         originalPosition = transform.position;                     // 현재 위치 저장
         transform.position += Vector3.up * dropHeight;             // 위로 올려서 숨기기
 
@@ -35,6 +36,13 @@ public class ObjectDrop : MonoBehaviour
             photonTransformview.enabled = false;
             yield return new WaitForSeconds(7f);
             photonTransformview.enabled = true;
+        }
+
+        if (rigid != null)
+        {
+            rigid.constraints |= RigidbodyConstraints.FreezePositionY;
+            yield return new WaitForSeconds(7f);
+            rigid.constraints &= ~RigidbodyConstraints.FreezePositionY;
         }
     }
 }
