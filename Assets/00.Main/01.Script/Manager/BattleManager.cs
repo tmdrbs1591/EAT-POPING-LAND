@@ -6,6 +6,7 @@ using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
 using Photon.Pun.Demo.PunBasics;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 public class BattleManager : MonoBehaviourPun
 {
@@ -71,9 +72,6 @@ public class BattleManager : MonoBehaviourPun
     {
         isBattle = true;
 
-        TurnManager.instance.diceUI.SetActive(false);
-        TurnManager.instance.otherDiceUI.SetActive(false);
-
 
         battleScreen.SetActive(true);
         battleCamera.SetActive(true);
@@ -90,6 +88,16 @@ public class BattleManager : MonoBehaviourPun
         // ✅ 싸운 플레이어 ID 저장
         player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player1).ActorNumber;
         player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player2).ActorNumber;
+
+        StartCoroutine(DicePanelCloseUICor());
+
+    }
+    IEnumerator DicePanelCloseUICor()
+    {
+        yield return new WaitForSeconds(0.2f);
+        TurnManager.instance.diceUI.SetActive(false);
+        TurnManager.instance.otherDiceUI.SetActive(false);
+
     }
 
     private void SavePlayerPositions(string player1, string player2)
