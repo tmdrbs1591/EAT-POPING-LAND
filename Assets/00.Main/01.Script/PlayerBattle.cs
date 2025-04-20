@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBattle : MonoBehaviourPun
@@ -96,16 +97,28 @@ public class PlayerBattle : MonoBehaviourPun
     {
         StartCoroutine(TimeSlowCor());
     }
-    IEnumerator TimeSlowCor() // 속도 느려지게
+    IEnumerator TimeSlowCor()
     {
+        CameraShake.instance.Shake(0.4f, 0.2f);
+
         Time.timeScale = 0.1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
         yield return new WaitForSecondsRealtime(5f);
+
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
     }
+
+
     IEnumerator BattleLoseCor()
     {
-        yield return new WaitForSecondsRealtime(5f);
         BattleManager.instance.BattleLose();
+        yield return new WaitForSecondsRealtime(5f);
+        BattleManager.instance.photonView.RPC("RPC_BattlePanelFalse", RpcTarget.All);
+        BattleManager.instance.photonView.RPC("ResetPosPlayerRPC",RpcTarget.All);
+
+
     }
     private void Flip()
     {
@@ -132,6 +145,7 @@ private void FlipRPC()
     [PunRPC]
     public void TakeDamage(float damage)
     {
+        CameraShake.instance.Shake(0.3f, 0.1f);
         curHp -= damage;
         hpSlider.value = curHp/maxHp;
         

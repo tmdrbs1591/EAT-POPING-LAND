@@ -21,6 +21,9 @@ public class BattleManager : MonoBehaviourPun
     [SerializeField] TMP_Text firstPlayerNameText;
     [SerializeField] TMP_Text secondPlayerNameText;
     [SerializeField] GameObject battlePanel;
+    [SerializeField] public GameObject winnerPanel;
+    [SerializeField] TMP_Text winnerNameText;
+
 
     private string opponentName = "";
 
@@ -113,18 +116,23 @@ public class BattleManager : MonoBehaviourPun
     //    int winnerID = PhotonNetwork.LocalPlayer.ActorNumber;
     //    photonView.RPC("RPC_BattleResult", RpcTarget.All, winnerID);
     //}
-public void BattleLose()
-{
-    int myID = PhotonNetwork.LocalPlayer.ActorNumber;
-    int opponentID = (myID == player1ID) ? player2ID : player1ID;
+    public void BattleLose()
+    {
+        int myID = PhotonNetwork.LocalPlayer.ActorNumber;
+        int opponentID = (myID == player1ID) ? player2ID : player1ID;
 
-    Player winner = PhotonNetwork.CurrentRoom.GetPlayer(opponentID);
-    Player loser = PhotonNetwork.LocalPlayer;
+        Player winner = PhotonNetwork.CurrentRoom.GetPlayer(opponentID);
+        Player loser = PhotonNetwork.LocalPlayer;
 
-    photonView.RPC("RPC_BattleResult", winner, opponentID);
-    photonView.RPC("RPC_BattleResult", loser, opponentID);
-    photonView.RPC("RPC_BattlePanelFalse",RpcTarget.All);
-}
+        string winnerName = winner.NickName;
+
+        // 승자와 패자에게만 승패 판단용
+        photonView.RPC("RPC_BattleResult", winner, opponentID);
+        photonView.RPC("RPC_BattleResult", loser, opponentID);
+
+        // 모든 클라이언트에게 승자 이름 보여주기
+        photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
+    }
 
 
     [PunRPC]
@@ -136,13 +144,22 @@ public void BattleLose()
         }
         else
         {
-            Debug.Log(" 패배!");
+            Debug.Log("패배!");
         }
+    }
+    [PunRPC]
+    public void RPC_ShowWinner(string winnerName)
+    {
+        winnerPanel.SetActive(true);
+        winnerNameText.text = $"{winnerName} WIN";
+    }
 
-     
-
+    [PunRPC]
+    public void ResetPosPlayerRPC() //플레이어 위치 다시 제자리로
+    {
         ResetPlayerPositions();
     }
+
     [PunRPC]
     private void RPC_BattlePanelFalse()
     {

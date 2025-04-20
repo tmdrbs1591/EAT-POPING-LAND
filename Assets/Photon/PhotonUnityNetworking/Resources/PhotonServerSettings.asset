@@ -68,6 +68,9 @@ MonoBehaviour:
   - TimeSlowRPC
   - RPC_BattlePanelFalse
   - DieCanvasFalseRPC
+  - ShowWinner
+  - ResetPosPlayerRPC
+  - RPC_ShowWinner
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
