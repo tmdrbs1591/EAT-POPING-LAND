@@ -31,6 +31,8 @@ public class BattleManager : MonoBehaviourPun
     private int player2ID;
     private int winnerActorID = -1; // 승자 ID 저장용
 
+    public bool isBattle; // 배틀중인지
+
     private void Awake()
     {
         instance = this;
@@ -64,6 +66,8 @@ public class BattleManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_BattleStart(string player1, string player2)
     {
+        isBattle = true;
+
         battleScreen.SetActive(true);
         battleCamera.SetActive(true);
         battlePanel.SetActive(false);
@@ -169,6 +173,7 @@ public class BattleManager : MonoBehaviourPun
     {
         battlePanel.SetActive(false);
         battleScreen.SetActive(false);
+        isBattle = false;
     }
     private void ResetPlayerPositions()
     {

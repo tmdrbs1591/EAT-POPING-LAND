@@ -82,7 +82,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Space) &&
             TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 &&
             !isMove &&
-            !TurnManager.instance.isCountingDown)
+            !TurnManager.instance.isCountingDown && !BattleManager.instance.isBattle)
         {
             StartCoroutine(DiceResultCor());
             uiCanvas.SetActive(true);
