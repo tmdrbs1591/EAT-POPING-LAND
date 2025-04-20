@@ -30,6 +30,8 @@ public class DiceManager : MonoBehaviour
         {
             AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1);// 오디오 재생
 
+            TurnManager.instance.diceUI.SetActive(false);
+
             isDice = true;
             RollDice();
             StartCoroutine(ResultTextCor());

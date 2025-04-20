@@ -115,11 +115,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Pretendard-Bold SDF
+  m_Name: Outline
   m_EditorClassIdentifier: 
-  hashCode: -1952601870
+  hashCode: 730025504
   material: {fileID: -759619409155714407}
-  materialHashCode: 673816594
+  materialHashCode: 707259392
   m_Version: 1.1.0
   m_SourceFontFileGUID: f5055dc1e83c77a48aaa9ce861dab6fa
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: f5055dc1e83c77a48aaa9ce861dab6fa, type: 3}
