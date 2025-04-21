@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -39,13 +39,13 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    // ±âÁ¸ ±âº»°ªÀ¸·Î È£Ãâ
+    // ê¸°ì¡´ ê¸°ë³¸ê°’ìœ¼ë¡œ í˜¸ì¶œ
     public void Shake()
     {
         Shake(defaultShakeRange, defaultDuration);
     }
 
-    // °­µµ¿Í Áö¼Ó½Ã°£À» ¸Å°³º¯¼ö·Î ¹Ş´Â Shake
+    // ê°•ë„ì™€ ì§€ì†ì‹œê°„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ëŠ” Shake
     public void Shake(float intensity, float duration)
     {
         if (mainCamera != null)
@@ -62,23 +62,21 @@ public class CameraShake : MonoBehaviour
     private IEnumerator ShakeCoroutine(float intensity, float duration)
     {
         float elapsed = 0.0f;
+        Vector3 startPos = mainCamera.transform.position; // í”ë“¤ê¸° ì§ì „ì˜ ì¹´ë©”ë¼ ìœ„ì¹˜
 
         while (elapsed < duration)
         {
-            float CameraPosX = Random.value * intensity * 2 - intensity;
-            float CameraPosY = Random.value * intensity * 2 - intensity;
+            float offsetX = Random.value * intensity * 2 - intensity;
+            float offsetY = Random.value * intensity * 2 - intensity;
 
-            Vector3 newCameraPos = originalCameraPos;
-            newCameraPos.x += CameraPosX;
-            newCameraPos.y += CameraPosY;
-
-            mainCamera.transform.position = newCameraPos;
+            Vector3 shakePos = startPos + new Vector3(offsetX, offsetY, 0);
+            mainCamera.transform.position = shakePos;
 
             elapsed += Time.deltaTime;
-
             yield return null;
         }
 
-        mainCamera.transform.position = originalCameraPos;
+        mainCamera.transform.position = startPos;
     }
+
 }

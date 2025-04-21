@@ -105,7 +105,33 @@ public class BattleManager : MonoBehaviourPun
         player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == attacker).ActorNumber;
         player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == defender).ActorNumber;
 
+
+
+        GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player"); // 배틀 카메라에 플레이어 위치들 넣기
+        foreach (GameObject go in allPlayers)
+        {
+            var view = go.GetComponent<PhotonView>();
+            if (view != null && view.OwnerActorNr == player1ID)
+            {
+                var battleCameraScript = battleCamera.GetComponent<CameraFollow>();
+                battleCameraScript.player1 = go.transform;
+                break;
+            }
+        }
+            
+        foreach (GameObject go in allPlayers)
+        {
+            var view = go.GetComponent<PhotonView>();
+            if (view != null && view.OwnerActorNr == player2ID)
+            {
+                var battleCameraScript = battleCamera.GetComponent<CameraFollow>();
+                battleCameraScript.player2 = go.transform;
+                break;
+            }
+        }
         StartCoroutine(DicePanelCloseUICor());
+
+
     }
 
     IEnumerator DicePanelCloseUICor()
@@ -141,7 +167,7 @@ public class BattleManager : MonoBehaviourPun
             if (pv != null && pv.Owner.NickName == playerName)
             {
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
-                pv.RPC("RPC_SetRotation", RpcTarget.All, 0f,0f,0f);
+                pv.RPC("RPC_SetRotation", RpcTarget.All, 60f, 0f,0f);
                 break;
             }
         }

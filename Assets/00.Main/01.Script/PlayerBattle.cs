@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -8,12 +8,12 @@ using DG.Tweening;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBattle : MonoBehaviourPun
 {
-    [Header("½ºÅİ")]
+    [Header("ìŠ¤í…Ÿ")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float curHp;
     [SerializeField] private float maxHp;
     [SerializeField] private float jumpForce = 7f;
-    [Header("°ø°İ")]
+    [Header("ê³µê²©")]
     [SerializeField] private Vector3 attackBoxSize;
     [SerializeField] private Transform attackBoxPos;
 
@@ -25,7 +25,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
 
-    [Header("°ø°İ ÄğÅ¸ÀÓ")]
+    [Header("ê³µê²© ì¿¨íƒ€ì„")]
     [SerializeField] private float attackCooldown = 1f;
     private float nextAttackTime = 0f;
     [SerializeField] private float jumpCooldown = 1f;
@@ -33,6 +33,8 @@ public class PlayerBattle : MonoBehaviourPun
 
     private Rigidbody rb;
     private float inputX;
+    private float inputZ; // zì¶• ì…ë ¥
+
     private bool isFacingRight = true;
     private bool isDie;
 
@@ -56,14 +58,13 @@ public class PlayerBattle : MonoBehaviourPun
             return;
 
         inputX = Input.GetAxis("Horizontal");
+        inputZ = Input.GetAxis("Vertical"); // zì¶• ì…ë ¥ ì¶”ê°€
 
-
-        // ¹æÇâ ÀüÈ¯ Ã³¸®
+        // ë°©í–¥ ì „í™˜ ì²˜ë¦¬
         if (inputX > 0 && isFacingRight)
             Flip();
         else if (inputX < 0 && !isFacingRight)
             Flip();
-
     }
 
     void FixedUpdate()
@@ -80,19 +81,27 @@ public class PlayerBattle : MonoBehaviourPun
             photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
         }
 
-        if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
-        {
-            nextJumpTime = Time.time + jumpCooldown;
-            Jump();
-        }
+        //if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
+        //{
+        //    nextJumpTime = Time.time + jumpCooldown;
+        //    Jump();
+        //}
 
-        Vector3 move = new Vector3(inputX, 0, 0) * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + move);
+        Vector3 moveDir = new Vector3(inputX, 0, inputZ).normalized;
+
+        if (moveDir != Vector3.zero)
+        {
+            rb.velocity = moveDir * moveSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero; //ì…ë ¥ ì—†ì„ ë•Œ ì¦‰ì‹œ ë©ˆì¶¤
+        }
     }
 
     private void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Y¼Óµµ ÃÊ±âÈ­
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Yì†ë„ ì´ˆê¸°í™”
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
@@ -146,13 +155,13 @@ private void FlipRPC()
 {
     isFacingRight = !isFacingRight;
 
-    // ¹Ù¶óº¸´Â ¹æÇâ¿¡ µû¶ó Á¤È®ÇÑ È¸Àü°ª ¼³Á¤
+    // ë°”ë¼ë³´ëŠ” ë°©í–¥ì— ë”°ë¼ ì •í™•í•œ íšŒì „ê°’ ì„¤ì •
     if (isFacingRight)
-        charSprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        charSprite.transform.rotation = Quaternion.Euler(60f, 0f, 0f);
     else
-        charSprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        charSprite.transform.rotation = Quaternion.Euler(-60f, 180f, 0f);
 
-    // °ø°İ ¹Ú½º À§Ä¡ ¹İÀü
+    // ê³µê²© ë°•ìŠ¤ ìœ„ì¹˜ ë°˜ì „
     Vector3 attackPos = attackBoxPos.localPosition;
     attackPos.x *= -1;
     attackBoxPos.localPosition = attackPos;
