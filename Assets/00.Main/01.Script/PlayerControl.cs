@@ -259,6 +259,12 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerSprite.transform.rotation = Quaternion.Euler(x, y, z);
         playerNickUI.transform.rotation = Quaternion.Euler(x, y, z);
     }
+    [PunRPC]
+    public void RPC_SetUIPosition(float x, float y, float z)
+    {
+        playerNickUI.GetComponent<RectTransform>().localPosition = new Vector3(x, y, z);
+    }
+
 
 
 }

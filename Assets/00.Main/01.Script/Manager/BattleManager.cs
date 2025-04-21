@@ -169,6 +169,8 @@ public class BattleManager : MonoBehaviourPun
             {
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
                 pv.RPC("RPC_SetRotation", RpcTarget.All, 60f, 0f,0f);
+                pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f,2.8f);
+                
                 break;
             }
         }
@@ -288,6 +290,7 @@ public class BattleManager : MonoBehaviourPun
                     Vector3 originalPos = playerOriginalPositions[playerID];
                     pv.RPC("RPC_SetRePosition", RpcTarget.All, originalPos);
                     pv.RPC("RPC_SetRotation", RpcTarget.All, 31.7f, 42.8f, 0f);
+                    pv.RPC("RPC_SetUIPosition", RpcTarget.All, 1.1f, 3.36f, 0.53f);
                 }
 
                 // ✅ 승자일 경우 PlayerControl 스크립트 접근

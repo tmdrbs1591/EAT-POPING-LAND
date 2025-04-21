@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
-using DG.Tweening;
+using Spine.Unity;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBattle : MonoBehaviourPun
@@ -30,6 +30,17 @@ public class PlayerBattle : MonoBehaviourPun
     private float nextAttackTime = 0f;
     [SerializeField] private float jumpCooldown = 1f;
     private float nextJumpTime = 0f;
+
+    [Header("스파인")] //스파인 애니메이션을 위한것
+    public SkeletonAnimation skeletonAnimation;
+    public AnimationReferenceAsset[] animClip;
+    public enum AnimState
+    {
+        Idle,
+        Walk
+    }
+    public AnimState animState; // 현재 애니메이션 처리가 무엇인가에 대한 변수
+    private string currentAnimation; //현재 어떤 애니메이션이 재생되고 있는가에 대한 변수
 
     private Rigidbody rb;
     private float inputX;
@@ -92,13 +103,21 @@ public class PlayerBattle : MonoBehaviourPun
         if (moveDir != Vector3.zero)
         {
             rb.velocity = moveDir * moveSpeed;
+            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
         }
         else
         {
             rb.velocity = Vector3.zero; //입력 없을 때 즉시 멈춤
+            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
         }
+       
     }
-
+    [PunRPC]
+    void SetAnimStateRPC(int state)
+    {
+        animState = (AnimState)state;
+        SetCurrentAnimation(animState);
+    }
     private void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Y속도 초기화
@@ -223,6 +242,31 @@ private void FlipRPC()
                 if (otherPlayerScript != null)
                     otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 1f);
             }
+        }
+    }
+    private void AsncAnimation(AnimationReferenceAsset animClip, bool loop, float timeScale)
+    {
+        if (animClip.name.Equals(currentAnimation)) // 동일한 애니메이션을 재생하려 한다면 아래코드구문 실행 X 
+            return;
+
+        skeletonAnimation.state.SetAnimation(0, animClip, loop).TimeScale = timeScale; // 해당 애니메이션으로 변경한다
+        skeletonAnimation.loop = loop;
+        skeletonAnimation.timeScale = timeScale;
+
+
+        currentAnimation = animClip.name; // 현재 재생되고 있는 애니메이션 값을 변경 
+    }
+
+    private void SetCurrentAnimation(AnimState _state)
+    {
+        switch (_state)
+        {
+            case AnimState.Idle:
+                AsncAnimation(animClip[(int)AnimState.Idle], true, 1f);
+                break;
+            case AnimState.Walk:
+                AsncAnimation(animClip[(int)AnimState.Walk], true, 1f);
+                break;
         }
     }
 
