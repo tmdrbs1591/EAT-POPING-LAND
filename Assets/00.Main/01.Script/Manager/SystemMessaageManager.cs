@@ -41,7 +41,7 @@ public class SystemMessaageManager : MonoBehaviourPunCallbacks
         }
 
         // 전체 텍스트가 출력된 후 5초 기다리고 끔
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(5f);
         systemMegapon.SetActive(false);
     }
 }
