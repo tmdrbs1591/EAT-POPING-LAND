@@ -18,6 +18,10 @@ public class BattleManager : MonoBehaviourPun
     public Transform firstBattlePos;
     public Transform secondBattlePos;
 
+    private string challengerName; // 배틀 건 사람
+    private string defenderName;   // 배틀 당한 사람
+
+
     private Dictionary<int, Vector3> playerOriginalPositions = new Dictionary<int, Vector3>(); // 플레이어 원래 위치 저장
 
     [SerializeField] TMP_Text firstPlayerNameText;
@@ -65,37 +69,45 @@ public class BattleManager : MonoBehaviourPun
         if (string.IsNullOrEmpty(opponentName))
             return;
 
-        photonView.RPC("RPC_BattleStart", RpcTarget.All, PhotonNetwork.NickName, opponentName);
+        challengerName = PhotonNetwork.NickName;
+        defenderName = opponentName;
 
-     
+        // 시스템 메시지 출력
+        SystemMessaageManager.instance.MessageTextStart($"{challengerName}님이 {defenderName}님에게 배틀을 신청했습니다!");
+
+        photonView.RPC("RPC_BattleStart", RpcTarget.All, challengerName, defenderName);
     }
 
+
+
     [PunRPC]
-    private void RPC_BattleStart(string player1, string player2)
+    private void RPC_BattleStart(string attacker, string defender)
     {
         isBattle = true;
 
         battleCamera.transform.position = startPos;
-
         battleScreen.SetActive(true);
         battleCamera.SetActive(true);
         battlePanel.SetActive(false);
         battlePanel.SetActive(true);
 
-        firstPlayerNameText.text = player1;
-        secondPlayerNameText.text = player2;
+        firstPlayerNameText.text = attacker;
+        secondPlayerNameText.text = defender;
 
-        SavePlayerPositions(player1, player2);
-        MovePlayerToBattlePos(player1, firstBattlePos.position);
-        MovePlayerToBattlePos(player2, secondBattlePos.position);
+        // 내부적으로도 공격자와 방어자 저장
+        challengerName = attacker;
+        defenderName = defender;
 
-        // ✅ 싸운 플레이어 ID 저장
-        player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player1).ActorNumber;
-        player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == player2).ActorNumber;
+        SavePlayerPositions(attacker, defender);
+        MovePlayerToBattlePos(attacker, firstBattlePos.position);
+        MovePlayerToBattlePos(defender, secondBattlePos.position);
+
+        player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == attacker).ActorNumber;
+        player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == defender).ActorNumber;
 
         StartCoroutine(DicePanelCloseUICor());
-
     }
+
     IEnumerator DicePanelCloseUICor()
     {
         yield return new WaitForSeconds(0.2f);
@@ -159,7 +171,23 @@ public class BattleManager : MonoBehaviourPun
         // 모든 클라이언트에게 승자 이름 보여주기
         photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
 
-        SystemMessaageManager.instance.MessageTextStart($"{winnerName}님이 {loserName}님을 상대로 승리하였습니다!");
+
+        SystemMessaageManager.instance.MessageTextStart(GetBattleResultMessage(winnerName));
+    }
+    private string GetBattleResultMessage(string winnerName)
+    {
+        if (winnerName == challengerName) // 배틀 건 애가 이겼을때
+        {
+            return $"{challengerName}님이 {defenderName}님의 땅을 빼앗았습니다!";
+        }
+        else if (winnerName == defenderName) // 배틀당한애가 이겼을때
+        {
+            return $"{defenderName}님이 땅을 지켜 {challengerName}님의 돈을 빼앗았습니다!";
+        }
+        else
+        {
+            return $"{winnerName}님이 승리하였습니다!";
+        }
     }
 
 
