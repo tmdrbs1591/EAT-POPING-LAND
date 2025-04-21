@@ -29,6 +29,7 @@ public class BattleManager : MonoBehaviourPun
     [SerializeField] GameObject battlePanel;
     [SerializeField] public GameObject winnerPanel;
     [SerializeField] TMP_Text winnerNameText;
+    [SerializeField] public GameObject battleEndPanel;
 
 
     private string opponentName = "";

@@ -249,7 +249,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerbattleScript.photonView.RPC("DieCanvasFalseRPC", RpcTarget.All);
         playerbattleScript.hpSlider.gameObject.SetActive(false);
         BattleManager.instance.winnerPanel.SetActive(false);
+     
     }
+
+
     [PunRPC]
     public void RPC_SetRotation(float x, float y, float z)
     {

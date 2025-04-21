@@ -81,6 +81,7 @@ MonoBehaviour:
   - UpdateOtherPlayerMoney
   - PlayerMoneyStealRPC
   - UpdatePlayerMoneyRPC
+  - BattleEndPanel
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

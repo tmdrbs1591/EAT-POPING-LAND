@@ -38,7 +38,7 @@ public class PlayerBattle : MonoBehaviourPun
     private bool isFacingRight = true;
     private bool isDie;
 
-    public Transform dieBattleCameraPos;
+    // public Transform dieBattleCameraPos;
 
     void Start()
     {
@@ -140,12 +140,22 @@ public class PlayerBattle : MonoBehaviourPun
     IEnumerator BattleLoseCor()
     {
         BattleManager.instance.BattleLose();
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(5.5f);
+        photonView.RPC("BattleEndPanel", RpcTarget.All);
+        yield return new WaitForSecondsRealtime(0.5f);
         BattleManager.instance.photonView.RPC("RPC_BattlePanelFalse", RpcTarget.All);
         BattleManager.instance.photonView.RPC("ResetPosPlayerRPC",RpcTarget.All);
 
 
     }
+
+    [PunRPC]
+    public void BattleEndPanel() {
+
+        BattleManager.instance.battleEndPanel.SetActive(false);
+        BattleManager.instance.battleEndPanel.SetActive(true);
+    }
+
     private void Flip()
     {
         photonView.RPC("FlipRPC", RpcTarget.All);
@@ -192,7 +202,7 @@ private void FlipRPC()
     {
         diePtc.Play();
         dieCanvas.SetActive(true);
-        BattleManager.instance.battleCamera.transform.DOMove(dieBattleCameraPos.position, 1f).SetEase(Ease.InOutSine);
+        // BattleManager.instance.battleCamera.transform.DOMove(dieBattleCameraPos.position, 1f).SetEase(Ease.InOutSine);
 
     }
 
