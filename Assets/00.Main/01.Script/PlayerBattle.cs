@@ -183,7 +183,7 @@ private void FlipRPC()
     {
         diePtc.Play();
         dieCanvas.SetActive(true);
-        BattleManager.instance.battleCamera.transform.DOMove(dieBattleCameraPos.position, 0.5f).SetEase(Ease.InOutSine);
+        BattleManager.instance.battleCamera.transform.DOMove(dieBattleCameraPos.position, 1f).SetEase(Ease.InOutSine);
 
     }
 
