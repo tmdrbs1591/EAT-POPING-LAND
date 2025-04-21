@@ -160,10 +160,15 @@ private void FlipRPC()
     [PunRPC]
     public void TakeDamage(float damage)
     {
+
+        AudioManager.instance.PlaySound(transform.position, 6, Random.Range(1f, 1f), 1f);
+
         damagePtc.Play();
         CameraShake.instance.Shake(0.3f, 0.1f);
         curHp -= damage;
         hpSlider.value = curHp/maxHp;
+
+
         
     }
     [PunRPC]
