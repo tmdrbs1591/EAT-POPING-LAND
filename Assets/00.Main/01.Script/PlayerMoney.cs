@@ -10,8 +10,8 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
     public TextMeshProUGUI[] moneyTexts; // 4개의 돈 표시 UI (각 UI 내부)
     public TextMeshProUGUI[] nameTexts; // 4개의 플레이어 이름 UI
 
-    private int money = 100; // 플레이어 초기 돈
-    private int uiIndex; // 이 플레이어가 차지할 UI 위치
+    public int money = 100; // 플레이어 초기 돈
+    public int uiIndex; // 이 플레이어가 차지할 UI 위치
 
     void Start()
     {
@@ -39,30 +39,26 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.I)) AddMoney(10);
-            if (Input.GetKeyDown(KeyCode.Alpha1)) StealMoneyFromPlayer(0, 10);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) StealMoneyFromPlayer(1, 10);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) StealMoneyFromPlayer(2, 10);
-            if (Input.GetKeyDown(KeyCode.Alpha4)) StealMoneyFromPlayer(3, 10);
         }
     }
 
     public void AddMoney(int amount)
     {
-        if (photonView.IsMine)
-        {
             UpdateMoney(amount);
-        }
     }
 
     private void UpdateMoney(int amount)
     {
-        money += amount;
-
-        Hashtable hash = new Hashtable();
+        photonView.RPC("UpdateMoneyRPC", RpcTarget.AllBuffered, amount);
+                 Hashtable hash = new Hashtable();
         hash["Money"] = money;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
-
+    [PunRPC]
+    private void UpdateMoneyRPC(int amount)
+    {
+        money += amount;
+    }
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         int targetIndex = (targetPlayer.ActorNumber - 1) % moneyTexts.Length;
@@ -117,31 +113,6 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         }
     }
 
-    public void StealMoneyFromPlayer(int playerIndex, int amount)
-    {
-        if (!photonView.IsMine) return;
+ 
 
-        Player[] players = PhotonNetwork.PlayerList;
-
-        if (playerIndex < 0 || playerIndex >= players.Length) return;
-
-        Player targetPlayer = players[playerIndex];
-
-        if (targetPlayer.CustomProperties.ContainsKey("Money"))
-        {
-            int targetMoney = (int)targetPlayer.CustomProperties["Money"];
-
-            if (targetMoney >= amount)
-            {
-                UpdateMoney(amount);
-
-                Hashtable hash = new Hashtable();
-                hash["Money"] = targetMoney - amount;
-                targetPlayer.SetCustomProperties(hash);
-
-                // 즉시 UI 반영
-                UpdateAllUI();
-            }
-        }
-    }
 }

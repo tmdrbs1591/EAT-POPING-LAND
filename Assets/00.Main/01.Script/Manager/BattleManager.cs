@@ -170,7 +170,26 @@ public class BattleManager : MonoBehaviourPun
 
         // 모든 클라이언트에게 승자 이름 보여주기
         photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
+        
+         if (winnerName == defenderName) // 배틀당한애가 이겼을때
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+            foreach (GameObject player in players)
+            {
+                PhotonView pv = player.GetComponent<PhotonView>();
+                if (pv != null && pv.Owner.ActorNumber == winner.ActorNumber)
+                {
+                    PlayerMoney winnerMoney = player.GetComponent<PlayerMoney>();
+                    if (winnerMoney != null)
+                    {
+                        Debug.Log("돈추가");
+                        winnerMoney.AddMoney(100); // 예: 보상금 추가
+                    }
+                    break;
+                }
+            }
+        }
 
         SystemMessaageManager.instance.MessageTextStart(GetBattleResultMessage(winnerName));
     }
@@ -253,8 +272,9 @@ public class BattleManager : MonoBehaviourPun
                         // 예: 승자 처리
                         control.WinColorChange();// 원하는 함수 호출
                     }
+                  
                 }
-             
+
             }
         }
 

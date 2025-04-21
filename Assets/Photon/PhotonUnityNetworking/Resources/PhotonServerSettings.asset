@@ -75,6 +75,12 @@ MonoBehaviour:
   - HoldColorChange
   - MessageTextStartRPC
   - TurnUICloseRPC
+  - RPC_UpdateMoneyOnAllClients
+  - RPC_UpdatePlayerMoney
+  - UpdateMoneyRPC
+  - UpdateOtherPlayerMoney
+  - PlayerMoneyStealRPC
+  - UpdatePlayerMoneyRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
