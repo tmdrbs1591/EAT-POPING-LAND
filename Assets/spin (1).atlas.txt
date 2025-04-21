@@ -1,0 +1,37 @@
+spin (1).png
+size:1072,354
+filter:Linear,Linear
+pma:true
+둔
+bounds:464,35,178,64
+offsets:12,1,191,66
+뒷머리
+bounds:2,2,350,363
+rotate:90
+레이어 3
+bounds:644,18,163,19
+offsets:1,1,165,21
+리본
+bounds:651,46,147,92
+머리
+bounds:651,140,237,212
+무기
+bounds:890,3,102,191
+offsets:1,1,104,193
+발
+bounds:994,8,70,93
+앞머리
+bounds:367,101,282,251
+offsets:0,0,283,251
+앞발
+bounds:994,103,76,91
+앞팔
+bounds:800,39,80,99
+offsets:0,1,80,100
+옷
+bounds:890,196,156,141
+rotate:90
+팔
+bounds:367,30,69,95
+offsets:0,0,69,96
+rotate:90
