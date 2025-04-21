@@ -35,9 +35,12 @@ public class BattleManager : MonoBehaviourPun
 
     public bool isBattle; // 배틀중인지
 
+    public Vector3 startPos;
+
     private void Awake()
     {
         instance = this;
+        startPos = battleCamera.transform.position;
     }
 
     private void Update()
@@ -72,6 +75,7 @@ public class BattleManager : MonoBehaviourPun
     {
         isBattle = true;
 
+        battleCamera.transform.position = startPos;
 
         battleScreen.SetActive(true);
         battleCamera.SetActive(true);

@@ -17802,6 +17802,7 @@ MonoBehaviour:
   winnerPanel: {fileID: 2093430403}
   winnerNameText: {fileID: 1580562338}
   isBattle: 0
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1299743501
 MonoBehaviour:
   m_ObjectHideFlags: 0

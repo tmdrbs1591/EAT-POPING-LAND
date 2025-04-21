@@ -35,7 +35,9 @@ public class PlayerBattle : MonoBehaviourPun
     private float inputX;
     private bool isFacingRight = true;
     private bool isDie;
-        
+
+    public Transform dieBattleCameraPos;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -181,8 +183,10 @@ private void FlipRPC()
     {
         diePtc.Play();
         dieCanvas.SetActive(true);
+        BattleManager.instance.battleCamera.transform.DOMove(dieBattleCameraPos.position, 0.5f).SetEase(Ease.InOutSine);
+
     }
-  
+
     [PunRPC]
     public void DieCanvasFalseRPC()
     {
