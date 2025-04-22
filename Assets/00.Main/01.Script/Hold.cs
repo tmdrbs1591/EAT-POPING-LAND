@@ -49,4 +49,9 @@ public class Hold : MonoBehaviour
         holdType = (ColorType)holdTypeInt;
     }
 
+    [PunRPC]
+    public void HoldPriceUp(int price)
+    {
+        holdPrice += price;
+    }
 }

@@ -30,7 +30,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                 {
                     if (hold.holdType == ColorType.Key)
                     {
-                        Debug.Log("key");
+                 
                         EndTurn();
                         return;
                     }
@@ -63,8 +63,9 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         if (holdView != null)
                         {
                             holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
+                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
                         }
-
+                        
                     }
                     if (hold.holdType != playerColorScript.playerColor && !playerControl.isWin)
                     {
@@ -89,7 +90,14 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                             holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                         }
                     }
-                 
+                   else if (hold.holdType == playerColorScript.playerColor)
+                    {
+                        PhotonView holdView = hold.GetComponent<PhotonView>();
+                        if (holdView != null)
+                        {
+                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
+                        }
+                    }
                     else
                     {
                         EndTurn();
