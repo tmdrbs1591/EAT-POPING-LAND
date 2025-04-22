@@ -9488,6 +9488,7 @@ MonoBehaviour:
   levelText: {fileID: 1675699103}
   mainCam: {fileID: 1102561039}
   infoPanelRect: {fileID: 900844794}
+  upgradeEffect: {fileID: 8312275422175415291, guid: d9223c8788e30114cba7d3d0d511dc85, type: 3}
 --- !u!1 &548945385
 GameObject:
   m_ObjectHideFlags: 0
@@ -10650,7 +10651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &580597250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18435,7 +18436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &900844794
 RectTransform:
   m_ObjectHideFlags: 0

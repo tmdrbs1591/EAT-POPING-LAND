@@ -24,6 +24,8 @@ public class HoldInfoManager : MonoBehaviour
     Vector2 infoPanelOriginalPos;
     Vector2 infoPanelHiddenPos;
 
+    public GameObject upgradeEffect;
+
     private void Awake()
     {
         instance = this;

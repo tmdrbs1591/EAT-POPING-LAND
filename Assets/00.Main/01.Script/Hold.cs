@@ -51,10 +51,11 @@ public class Hold : MonoBehaviour
     }
 
     [PunRPC]
-    public void HoldPriceUp(int price)
+    public void HoldPriceUp(int price) // 땅 업그레이드
     {
         holdPrice += price;
         level++;
+       Instantiate(HoldInfoManager.instance.upgradeEffect,transform.position + new Vector3(0,5,0),Quaternion.identity); ;
         Debug.Log("레벨업!");
     }
 }
