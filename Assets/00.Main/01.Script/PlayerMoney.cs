@@ -50,15 +50,22 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
     private void UpdateMoney(int amount)
     {
         photonView.RPC("UpdateMoneyRPC", RpcTarget.AllBuffered, amount);
-                 Hashtable hash = new Hashtable();
-        hash["Money"] = money;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+           
     }
     [PunRPC]
     private void UpdateMoneyRPC(int amount)
     {
         money += amount;
+
+        // RPC 내부에서 바로 CustomProperties 업데이트
+        if (photonView.IsMine) // 내 클라이언트에서만 SetCustomProperties
+        {
+            Hashtable hash = new Hashtable();
+            hash["Money"] = money;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
     }
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         int targetIndex = (targetPlayer.ActorNumber - 1) % moneyTexts.Length;

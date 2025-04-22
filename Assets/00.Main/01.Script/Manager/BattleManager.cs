@@ -199,23 +199,37 @@ public class BattleManager : MonoBehaviourPun
 
         // 모든 클라이언트에게 승자 이름 보여주기
         photonView.RPC("RPC_ShowWinner", RpcTarget.All, winnerName);
-        
-         if (winnerName == defenderName) // 배틀당한애가 이겼을때
+
+        if (winnerName == defenderName) // 배틀 당한 애가 이겼을 때
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
             foreach (GameObject player in players)
             {
                 PhotonView pv = player.GetComponent<PhotonView>();
-                if (pv != null && pv.Owner.ActorNumber == winner.ActorNumber)
+
+                if (pv == null) continue;
+
+                // 이긴 사람에게 돈 100원
+                if (pv.Owner.ActorNumber == winner.ActorNumber)
                 {
-                    PlayerMoney winnerMoney = player.GetComponent<PlayerMoney>();
-                    if (winnerMoney != null)
+                    PlayerMoney money = player.GetComponent<PlayerMoney>();
+                    if (money != null)
                     {
-                        Debug.Log("돈추가");
-                        winnerMoney.AddMoney(100); // 예: 보상금 추가
+                        Debug.Log("이긴 사람 돈 추가");
+                        money.AddMoney(100);
                     }
-                    break;
+                }
+
+                // 진 사람에게도 돈 50원
+                else if (pv.Owner.ActorNumber == loser.ActorNumber)
+                {
+                    PlayerMoney money = player.GetComponent<PlayerMoney>();
+                    if (money != null)
+                    {
+                        Debug.Log("진 사람 돈 빼기");
+                        money.AddMoney(-100);
+                    }
                 }
             }
         }
