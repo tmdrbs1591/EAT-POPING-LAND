@@ -221,12 +221,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     }
 
 
-    public void PlayerTurnEnd()
-    {
-        TurnManager.instance.EndTurn();
-        isMove = false;
-    }
-    
     public void BattleStart()
     {
         BattleManager.instance.BattleStart();

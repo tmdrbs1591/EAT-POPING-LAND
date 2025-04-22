@@ -56,6 +56,7 @@ public class Hold : MonoBehaviour
         holdPrice += price;
         level++;
        Instantiate(HoldInfoManager.instance.upgradeEffect,transform.position + new Vector3(0,5,0),Quaternion.identity); ;
+        AudioManager.instance.PlaySound(transform.position, 7, Random.Range(1f, 1f), 1f);
         Debug.Log("·¹º§¾÷!");
     }
 }

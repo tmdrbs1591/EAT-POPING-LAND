@@ -27298,7 +27298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1377797747}
   - component: {fileID: 1377797750}
-  - component: {fileID: 1377797749}
   - component: {fileID: 1377797748}
   m_Layer: 0
   m_Name: "\uAD00\uC0C1\uC6A9 Hold Camera"
@@ -27355,14 +27354,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1377797749
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377797746}
-  m_Enabled: 1
 --- !u!20 &1377797750
 Camera:
   m_ObjectHideFlags: 0

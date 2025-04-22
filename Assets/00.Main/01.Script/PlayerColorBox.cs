@@ -11,6 +11,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
     public GameObject battleUI;
     public TMP_Text battleUIText;
+    public TMP_Text priceText;
     [SerializeField] private float rayLength = 3f; // 인스펙터에서 조절 가능하게
 
 
@@ -23,94 +24,115 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
         foreach (var hit in hits)
         {
-            if (hit.CompareTag("PointBox"))
+            if (!hit.CompareTag("PointBox")) continue;
+
+            Hold hold = hit.GetComponent<Hold>();
+            if (hold == null) continue;
+
+            PhotonView holdView = hold.GetComponent<PhotonView>();
+
+            switch (hold.holdType)
             {
-                Hold hold = hit.GetComponent<Hold>();
-                if (hold != null)
-                {
-                    if (hold.holdType == ColorType.Key)
-                    {
-                 
-                        EndTurn();
-                        return;
-                    }
-                    else if (hold.holdType == ColorType.Prison)
-                    {
-                        Debug.Log("Prison");
-                        EndTurn();
-                        return;
-                    }
-                    else if (hold.holdType == ColorType.Shop)
-                    {
-                        Debug.Log("Shop");
-                        EndTurn();
-                        return;
-                    }
-                    else if (hold.holdType == ColorType.Money)
-                    {
-                        Debug.Log("Money");
-                        EndTurn();
-                        return;
-                    }
-             
+                case ColorType.Key:
+                    EndTurn();
+                    return;
 
-                    if (hold.holdType == ColorType.Default)
+                case ColorType.Prison:
+                    Debug.Log("Prison");
+                    EndTurn();
+                    return;
+
+                case ColorType.Shop:
+                    Debug.Log("Shop");
+                    EndTurn();
+                    return;
+
+                case ColorType.Money:
+                    Debug.Log("Money");
+                    EndTurn();
+                    return;
+
+                case ColorType.Default:
+                    if (holdView != null)
                     {
-                        int materialIndex = playerColorScript.GetMaterialIndex(); // 미리 지정된 인덱스
+                        int materialIndex = playerColorScript.GetMaterialIndex();
                         int holdTypeInt = (int)playerColorScript.HoldChange();
+                        holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
+                        holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
+                    }
+                    EndTurn();
+                    return;
 
-                        PhotonView holdView = hold.GetComponent<PhotonView>();
-                        if (holdView != null)
-                        {
-                            holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
-                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
-                            EndTurn();  
-                        }
-                        
-                    }
-                    else if (hold.holdType != playerColorScript.playerColor && !playerControl.isWin)
+                default:
+                    // 내 땅일 때
+                    if (hold.holdType == playerColorScript.playerColor)
                     {
-                        if (photonView.IsMine)
-                        {
-                            string playerName = FindPlayerNameByColor(hold.holdType);
-                            Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
-                            BattleManager.instance.SetBattleInfo(playerName);
-                            battleUI.SetActive(true);
-                            battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
-                            BattleManager.instance.holdPrice = hold.holdPrice;
-                        }
-                    }
-                    else if (hold.holdType != playerColorScript.playerColor && playerControl.isWin)
-                    {
-                        int materialIndex = playerColorScript.GetMaterialIndex(); // 미리 지정된 인덱스
-                        int holdTypeInt = (int)playerColorScript.HoldChange();
-
-                        PhotonView holdView = hold.GetComponent<PhotonView>();
-                        if (holdView != null)
-                        {
-                            holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
-                        }
-                    }
-                    else if (hold.holdType == playerColorScript.playerColor)
-                    {
-                        PhotonView holdView = hold.GetComponent<PhotonView>();
                         if (holdView != null)
                         {
                             holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
                         }
-                    }
-                    else
-                    {
                         EndTurn();
+                        return;
                     }
 
-                    return; // 첫 번째 맞은 거 처리하고 종료
-                }
+                    // 다른 사람 땅일 때
+                    if (hold.holdType != playerColorScript.playerColor)
+                    {
+                        if (playerControl.isWin)
+                        {
+                            if (holdView != null)
+                            {
+                                int materialIndex = playerColorScript.GetMaterialIndex();
+                                int holdTypeInt = (int)playerColorScript.HoldChange();
+                                holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
+                            }
+                            EndTurn();
+                        }
+                        else
+                        {
+                            if (photonView.IsMine)
+                            {
+                                string playerName = FindPlayerNameByColor(hold.holdType);
+                                Debug.Log($"[PlayerColorBox] 전투 상대: {playerName}");
+                                BattleManager.instance.SetBattleInfo(playerName);
+                                battleUI.SetActive(true);
+                                battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
+                                priceText.text = "땅값 : " + FormatKoreanCurrency(hold.holdPrice);
+                                BattleManager.instance.holdPrice = hold.holdPrice;
+                            }
+                            // 여기선 EndTurn() 호출 안 함 (전투 신청해야 하니까)
+                        }
+                        return;
+                    }
+
+                    break;
             }
         }
 
+
         Debug.Log("아래에 PointBox 없음");
     }
+    private string FormatKoreanCurrency(int money)
+    {
+        if (money < 10000)
+        {
+            return money.ToString("N0") + "원";
+        }
+
+        int man = money / 10000;
+        int rest = money % 10000;
+
+        if (rest == 0)
+        {
+            return $"{man}만원";
+        }
+        else
+        {
+            return $"{man}만{rest.ToString("N0")}원";
+        }
+    }
+
+   
 
     void EndTurn()
     {

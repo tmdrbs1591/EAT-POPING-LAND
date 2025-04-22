@@ -98,6 +98,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         int nextPlayerIndex = (currentPlayerIndex + 1) % totalPlayers;
         photonView.RPC("StartTurn", RpcTarget.All, nextPlayerIndex);
 
+        Debug.Log("≈œ ≥°");
         DiceManager.instance.isDice = false;
     }
 
