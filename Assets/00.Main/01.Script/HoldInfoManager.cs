@@ -12,6 +12,7 @@ public class HoldInfoManager : MonoBehaviour
     public List<GameObject> holdInfoImage;
 
     [SerializeField] GameObject infoPanel;
+    [SerializeField] GameObject infoVolume;
     [SerializeField] TMP_Text priceText;
 
     [SerializeField] Camera mainCam;
@@ -54,6 +55,7 @@ public class HoldInfoManager : MonoBehaviour
 
         mainCam.DOOrthoSize(zoomOutSize, 0.5f);
 
+        infoVolume.SetActive(true);
         int playerLayerMask = 1 << LayerMask.NameToLayer("Player");
         mainCam.cullingMask &= ~playerLayerMask;
     }
@@ -67,6 +69,7 @@ public class HoldInfoManager : MonoBehaviour
         HoldInfoClose();
         mainCam.DOOrthoSize(originalCamSize, 0.5f);
 
+        infoVolume.SetActive(false);
         int playerLayerMask = 1 << LayerMask.NameToLayer("Player");
         mainCam.cullingMask |= playerLayerMask;
     }

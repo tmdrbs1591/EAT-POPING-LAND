@@ -64,6 +64,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         {
                             holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                             holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
+                            EndTurn(); 
                         }
                         
                     }
