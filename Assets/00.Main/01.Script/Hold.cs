@@ -20,7 +20,10 @@ public class Hold : MonoBehaviour
 {
     Renderer rend;
 
+
     public ColorType holdType = ColorType.Default;
+    public int holdPrice;
+
 
     public Material[] materialList; // 인스펙터에서 등록
 

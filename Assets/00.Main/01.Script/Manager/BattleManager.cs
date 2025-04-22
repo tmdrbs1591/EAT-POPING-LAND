@@ -42,6 +42,8 @@ public class BattleManager : MonoBehaviourPun
 
     public Vector3 startPos;
 
+    public int holdPrice;
+
     private void Awake()
     {
         instance = this;
@@ -217,7 +219,7 @@ public class BattleManager : MonoBehaviourPun
                     if (money != null)
                     {
                         Debug.Log("이긴 사람 돈 추가");
-                        money.AddMoney(100);
+                        money.AddMoney(holdPrice);
                     }
                 }
 
@@ -228,7 +230,7 @@ public class BattleManager : MonoBehaviourPun
                     if (money != null)
                     {
                         Debug.Log("진 사람 돈 빼기");
-                        money.AddMoney(-100);
+                        money.AddMoney(-holdPrice);
                     }
                 }
             }

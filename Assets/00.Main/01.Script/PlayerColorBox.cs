@@ -75,6 +75,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                             BattleManager.instance.SetBattleInfo(playerName);
                             battleUI.SetActive(true);
                             battleUIText.text = $"{playerName} ({hold.holdType})님에게 전투를 신청하시겠습니까?";
+                            BattleManager.instance.holdPrice = hold.holdPrice;
                         }
                     }
                     else if (hold.holdType != playerColorScript.playerColor && playerControl.isWin)
