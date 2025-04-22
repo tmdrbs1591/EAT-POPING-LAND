@@ -1,18 +1,11 @@
 using UnityEngine;
 using Photon.Pun;
 
-public enum PlayerColorType
-{
-    Red,
-    Green,
-    Blue,
-    Yellow,
-    Default,
-}
+
 
 public class PlayerColor : MonoBehaviourPun
 {
-    public PlayerColorType playerColor;
+    public ColorType playerColor;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -33,13 +26,13 @@ public class PlayerColor : MonoBehaviourPun
     {
         switch (playerColor)
         {
-            case PlayerColorType.Red:
+            case ColorType.Red:
                 return redMaterial;
-            case PlayerColorType.Green:
+            case ColorType.Green:
                 return greenMaterial;
-            case PlayerColorType.Blue:
+            case ColorType.Blue:
                 return blueMaterial;
-            case PlayerColorType.Yellow:
+            case ColorType.Yellow:
                 return yellowMaterial;
             default:
                 return null; // 기본값 (오류 방지)
@@ -49,39 +42,39 @@ public class PlayerColor : MonoBehaviourPun
     {
         switch (playerColor)
         {
-            case PlayerColorType.Red:
+            case ColorType.Red:
                 return 0; // Red에 해당하는 인덱스
-            case PlayerColorType.Green:
+            case ColorType.Green:
                 return 1; // Green에 해당하는 인덱스
-            case PlayerColorType.Blue:
+            case ColorType.Blue:
                 return 2; // Blue에 해당하는 인덱스
-            case PlayerColorType.Yellow:
+            case ColorType.Yellow:
                 return 3; // Yellow에 해당하는 인덱스
             default:
                 return -1; // Default일 경우 인덱스 -1 (잘못된 값)
         }
     }
 
-    public PlayerColorType HoldChange() // 타입변경
+    public ColorType HoldChange() // 타입변경
     {
         switch (playerColor)
         {
-            case PlayerColorType.Red:
-                return PlayerColorType.Red;
-            case PlayerColorType.Green:
-                return PlayerColorType.Green; 
-            case PlayerColorType.Blue:
-                return PlayerColorType.Blue; 
-            case PlayerColorType.Yellow:
-                return PlayerColorType.Yellow; 
+            case ColorType.Red:
+                return ColorType.Red;
+            case ColorType.Green:
+                return ColorType.Green; 
+            case ColorType.Blue:
+                return ColorType.Blue; 
+            case ColorType.Yellow:
+                return ColorType.Yellow; 
             default:
-                return PlayerColorType.Default; // 기본값 (오류 방지)
+                return ColorType.Default; // 기본값 (오류 방지)
         }
     }
     [PunRPC]
     void SetColor(int colorIndex)
     {
-        playerColor = (PlayerColorType)colorIndex;
+        playerColor = (ColorType)colorIndex;
         ApplyColor();
     }
 
@@ -91,16 +84,16 @@ public class PlayerColor : MonoBehaviourPun
 
         switch (playerColor)
         {
-            case PlayerColorType.Red:
+            case ColorType.Red:
                 newColor = Color.red;
                 break;
-            case PlayerColorType.Green:
+            case ColorType.Green:
                 newColor = Color.green;
                 break;
-            case PlayerColorType.Blue:
+            case ColorType.Blue:
                 newColor = Color.blue;
                 break;
-            case PlayerColorType.Yellow:
+            case ColorType.Yellow:
                 newColor = Color.yellow;
                 break;
             default:

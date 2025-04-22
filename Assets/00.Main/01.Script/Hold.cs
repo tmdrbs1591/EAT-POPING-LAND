@@ -2,13 +2,25 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ColorType
+{
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Default,
+    Key,
+    Shop,
+    Money,
+    Prison
 
+}
 
 public class Hold : MonoBehaviour
 {
     Renderer rend;
 
-    public PlayerColorType holdType = PlayerColorType.Default;
+    public ColorType holdType = ColorType.Default;
 
     public Material[] materialList; // 인스펙터에서 등록
 
@@ -16,7 +28,6 @@ public class Hold : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();    
-        holdType = PlayerColorType.Default;
     }
 
     // Update is called once per frame
@@ -32,7 +43,7 @@ public class Hold : MonoBehaviour
         {
             rend.material = materialList[materialIndex];
         }
-        holdType = (PlayerColorType)holdTypeInt;
+        holdType = (ColorType)holdTypeInt;
     }
 
 }

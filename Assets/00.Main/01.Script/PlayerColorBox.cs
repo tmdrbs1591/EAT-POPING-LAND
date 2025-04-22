@@ -28,7 +28,33 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                 Hold hold = hit.GetComponent<Hold>();
                 if (hold != null)
                 {
-                    if (hold.holdType == PlayerColorType.Default)
+                    if (hold.holdType == ColorType.Key)
+                    {
+                        Debug.Log("key");
+                        EndTurn();
+                        return;
+                    }
+                    else if (hold.holdType == ColorType.Prison)
+                    {
+                        Debug.Log("Prison");
+                        EndTurn();
+                        return;
+                    }
+                    else if (hold.holdType == ColorType.Shop)
+                    {
+                        Debug.Log("Shop");
+                        EndTurn();
+                        return;
+                    }
+                    else if (hold.holdType == ColorType.Money)
+                    {
+                        Debug.Log("Money");
+                        EndTurn();
+                        return;
+                    }
+             
+
+                    if (hold.holdType == ColorType.Default)
                     {
                         int materialIndex = playerColorScript.GetMaterialIndex(); // 미리 지정된 인덱스
                         int holdTypeInt = (int)playerColorScript.HoldChange();
@@ -62,13 +88,10 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                             holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                         }
                     }
+                 
                     else
                     {
-                        if (photonView.IsMine)
-                        {
-                            TurnManager.instance.EndTurn();
-                            playerControl.isMove = false;
-                        }
+                        EndTurn();
                     }
 
                     return; // 첫 번째 맞은 거 처리하고 종료
@@ -79,7 +102,15 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
         Debug.Log("아래에 PointBox 없음");
     }
 
-    private string FindPlayerNameByColor(PlayerColorType colorType)
+    void EndTurn()
+    {
+        if (photonView.IsMine)
+        {
+            TurnManager.instance.EndTurn();
+            playerControl.isMove = false;
+        }
+    }
+    private string FindPlayerNameByColor(ColorType colorType)
     {
         PlayerColor[] allPlayers = FindObjectsOfType<PlayerColor>(); // 모든 PlayerColor 스크립트 찾기
 

@@ -48,7 +48,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             var player = PhotonNetwork.Instantiate("Player", spawnPoint.position, Quaternion.identity);
             var playerColorScript = player.GetComponent<PlayerColor>();
 
-            PlayerColorType color = (PlayerColorType)playerIndex;
+            ColorType color = (ColorType)playerIndex;
 
             if (playerColorScript.photonView.IsMine)
             {

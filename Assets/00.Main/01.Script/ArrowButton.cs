@@ -5,6 +5,7 @@ using DG.Tweening;
 public class ArrowButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Material highlightMaterial;
+    [SerializeField] private Material originalMaterial;
     [SerializeField] private float scaleDuration = 0.3f;
     [SerializeField] private float highlightScale = 1.2f;
 
@@ -24,8 +25,13 @@ public class ArrowButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (image != null)
         {
+            image.material = originalMaterial;
+        }
+        else
+        {
             image.material = null;
         }
+
 
         rectTransform.DOScale(originalScale, scaleDuration).SetEase(Ease.InOutQuad);
     }
@@ -43,6 +49,10 @@ public class ArrowButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         if (image != null)
+        {
+            image.material = originalMaterial;
+        }
+        else
         {
             image.material = null;
         }
