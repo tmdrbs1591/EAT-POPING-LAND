@@ -68,7 +68,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         }
                         
                     }
-                    if (hold.holdType != playerColorScript.playerColor && !playerControl.isWin)
+                    else if (hold.holdType != playerColorScript.playerColor && !playerControl.isWin)
                     {
                         if (photonView.IsMine)
                         {
@@ -91,7 +91,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                             holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                         }
                     }
-                   else if (hold.holdType == playerColorScript.playerColor)
+                    else if (hold.holdType == playerColorScript.playerColor)
                     {
                         PhotonView holdView = hold.GetComponent<PhotonView>();
                         if (holdView != null)

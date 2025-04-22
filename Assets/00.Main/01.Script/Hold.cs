@@ -55,5 +55,6 @@ public class Hold : MonoBehaviour
     {
         holdPrice += price;
         level++;
+        Debug.Log("·¹º§¾÷!");
     }
 }
