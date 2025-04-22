@@ -193,9 +193,9 @@ private void FlipRPC()
 
     // 바라보는 방향에 따라 정확한 회전값 설정
     if (isFacingRight)
-        charSprite.transform.rotation = Quaternion.Euler(60f, 0f, 0f);
+        charSprite.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
     else
-        charSprite.transform.rotation = Quaternion.Euler(-60f, 180f, 0f);
+        charSprite.transform.rotation = Quaternion.Euler(-40f, 180f, 0f);
 
     // 공격 박스 위치 반전
     Vector3 attackPos = attackBoxPos.localPosition;

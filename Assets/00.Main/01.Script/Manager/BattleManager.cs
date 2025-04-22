@@ -171,7 +171,7 @@ public class BattleManager : MonoBehaviourPun
             if (pv != null && pv.Owner.NickName == playerName)
             {
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
-                pv.RPC("RPC_SetRotation", RpcTarget.All, 60f, 0f,0f);
+                pv.RPC("RPC_SetRotation", RpcTarget.All, 40f, 0f,0f);
                 pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f,2.8f);
                 
                 break;
