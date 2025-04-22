@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class HoldInfoManager : MonoBehaviour
 {
@@ -11,23 +12,31 @@ public class HoldInfoManager : MonoBehaviour
     public List<GameObject> holdInfoImage;
 
     [SerializeField] GameObject infoPanel;
-
     [SerializeField] TMP_Text priceText;
+
+    [SerializeField] Camera mainCam;
+    [SerializeField] RectTransform infoPanelRect; // infoPanel의 RectTransform
+    float originalCamSize;
+    float zoomOutSize; // 확대될 크기
+
+    Vector2 infoPanelOriginalPos;
+    Vector2 infoPanelHiddenPos;
 
     private void Awake()
     {
         instance = this;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        originalCamSize = mainCam.orthographicSize;
+        zoomOutSize = originalCamSize + 1f; // 확대될 크기
+
+        infoPanelOriginalPos = infoPanelRect.anchoredPosition; // 원래 위치
+        infoPanelHiddenPos = infoPanelOriginalPos + new Vector2(400f, 0f); // 오른쪽으로 숨겨놓을 위치 (400f는 UI 크기에 맞게 조절)
+        infoPanelRect.anchoredPosition = infoPanelHiddenPos; // 시작할 때 오른쪽으로 숨겨놓기
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)){
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
             HoldInfoIconOpen();
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
@@ -38,31 +47,42 @@ public class HoldInfoManager : MonoBehaviour
 
     void HoldInfoIconOpen()
     {
-        for(int i = 0; i < holdInfoImage.Count; i++)
+        foreach (GameObject img in holdInfoImage)
         {
-            holdInfoImage[i].SetActive(true);
+            img.SetActive(true);
         }
+
+        mainCam.DOOrthoSize(zoomOutSize, 0.5f);
+
+        int playerLayerMask = 1 << LayerMask.NameToLayer("Player");
+        mainCam.cullingMask &= ~playerLayerMask;
     }
 
     void HoldInfoIconClose()
     {
-        for (int i = 0; i < holdInfoImage.Count; i++)
+        foreach (GameObject img in holdInfoImage)
         {
-            holdInfoImage[i].SetActive(false);
+            img.SetActive(false);
         }
-    }
+        HoldInfoClose();
+        mainCam.DOOrthoSize(originalCamSize, 0.5f);
 
+        int playerLayerMask = 1 << LayerMask.NameToLayer("Player");
+        mainCam.cullingMask |= playerLayerMask;
+    }
 
     public void HoldInfoOpen(int prices)
     {
         priceText.text = "땅값 : " + FormatKoreanCurrency(prices);
         infoPanel.SetActive(true);
+        infoPanelRect.DOAnchorPos(infoPanelOriginalPos, 0.4f).SetEase(Ease.OutExpo); // 오른쪽에서 왼쪽으로 슬라이드 인
     }
+
     private string FormatKoreanCurrency(int money)
     {
         if (money < 10000)
         {
-            return money.ToString("N0") + "원"; // 천 단위 쉼표
+            return money.ToString("N0") + "원";
         }
 
         int man = money / 10000;
@@ -78,9 +98,12 @@ public class HoldInfoManager : MonoBehaviour
         }
     }
 
-
     public void HoldInfoClose()
     {
-        infoPanel.SetActive(false);
+        // 오른쪽으로 슬라이드 아웃한 후 SetActive(false)
+        infoPanelRect.DOAnchorPos(infoPanelHiddenPos, 0.4f).SetEase(Ease.InExpo).OnComplete(() =>
+        {
+            infoPanel.SetActive(false);
+        });
     }
 }

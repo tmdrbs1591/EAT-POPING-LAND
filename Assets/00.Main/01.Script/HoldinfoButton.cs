@@ -8,7 +8,6 @@ public class HoldinfoButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private Material originalMaterial;
     [SerializeField] private float scaleDuration = 0.3f;
     [SerializeField] private float highlightScale = 1.2f;
-    [SerializeField] private GameObject holdInfoPanel;
 
     private RectTransform rectTransform;
     private Vector3 originalScale;
@@ -17,11 +16,12 @@ public class HoldinfoButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public int hightlightAudioIndex;
     public int clickIndex;
 
-    [SerializeField]Hold hold;
+    [SerializeField] Hold hold;
 
     
     void Start()
     {
+        hold = transform.parent.parent.GetComponent<Hold>();
         rectTransform = GetComponent<RectTransform>();
         originalScale = rectTransform.localScale;
         image = GetComponent<UnityEngine.UI.Image>();
@@ -37,7 +37,6 @@ public class HoldinfoButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             image.material = null;
         }
 
-        holdInfoPanel.SetActive(false);
         rectTransform.DOScale(originalScale, scaleDuration).SetEase(Ease.InOutQuad);
     }
     public void OnPointerEnter(PointerEventData eventData)
@@ -66,7 +65,6 @@ public class HoldinfoButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        holdInfoPanel.SetActive(true);
         HoldInfoManager.instance.HoldInfoOpen(hold.holdPrice);
       //  AudioManager.instance.PlaySound(transform.position, clickIndex, Random.Range(1f, 1f), 1f);
     }
