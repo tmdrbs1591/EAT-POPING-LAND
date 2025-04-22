@@ -37,7 +37,8 @@ public class PlayerBattle : MonoBehaviourPun
     public enum AnimState
     {
         Idle,
-        Walk
+        Walk,
+        Attack
     }
     public AnimState animState; // 현재 애니메이션 처리가 무엇인가에 대한 변수
     private string currentAnimation; //현재 어떤 애니메이션이 재생되고 있는가에 대한 변수
@@ -89,8 +90,11 @@ public class PlayerBattle : MonoBehaviourPun
         {
             nextAttackTime = Time.time + attackCooldown;
             Damage();
+            StartCoroutine(BackToIdleAfterAttack(0.2f));
             photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
+            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Attack);
         }
+
 
         //if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
         //{
@@ -103,14 +107,17 @@ public class PlayerBattle : MonoBehaviourPun
         if (moveDir != Vector3.zero)
         {
             rb.velocity = moveDir * moveSpeed;
-            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
+            if (animState != AnimState.Attack) // 공격 중엔 애니메이션 덮지 않게
+                photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
         }
         else
         {
-            rb.velocity = Vector3.zero; //입력 없을 때 즉시 멈춤
-            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
+            rb.velocity = Vector3.zero;
+            if (animState != AnimState.Attack)
+                photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
         }
-       
+
+
     }
     [PunRPC]
     void SetAnimStateRPC(int state)
@@ -265,9 +272,18 @@ private void FlipRPC()
                 AsncAnimation(animClip[(int)AnimState.Idle], true, 1f);
                 break;
             case AnimState.Walk:
-                AsncAnimation(animClip[(int)AnimState.Walk], true, 1f);
+                AsncAnimation(animClip[(int)AnimState.Walk], true, 1.4f);
+                break;
+            case AnimState.Attack:
+                AsncAnimation(animClip[(int)AnimState.Attack], true, 2f);
                 break;
         }
+    }
+    IEnumerator BackToIdleAfterAttack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (animState == AnimState.Attack) // 여전히 공격 중이면 Idle로
+            photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
     }
 
     private void OnDrawGizmos()
