@@ -887,9 +887,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -2070,9 +2072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -3552,9 +3556,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -3920,9 +3926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -4077,9 +4085,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -4445,9 +4455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -5259,9 +5271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 6
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -6989,9 +7003,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -8360,9 +8376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -8595,9 +8613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -9059,9 +9079,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 6
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -9261,9 +9283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -9486,6 +9510,8 @@ MonoBehaviour:
   infoVolume: {fileID: 602071427}
   priceText: {fileID: 1734801871}
   levelText: {fileID: 1675699103}
+  holdPlayerNameText: {fileID: 1440055895}
+  cubeRender: {fileID: 1491537830}
   mainCam: {fileID: 1102561039}
   infoPanelRect: {fileID: 900844794}
   upgradeEffect: {fileID: 8312275422175415291, guid: d9223c8788e30114cba7d3d0d511dc85, type: 3}
@@ -9825,9 +9851,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -10884,9 +10912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -11373,9 +11403,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -11855,9 +11887,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -12012,9 +12046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -13080,9 +13116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -13403,9 +13441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -14187,9 +14227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -14528,9 +14570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -15951,9 +15995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -16108,9 +16154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -16864,9 +16912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -17963,9 +18013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -18299,9 +18351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -19176,9 +19230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -19988,9 +20044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -20876,9 +20934,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -21129,9 +21189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -21640,9 +21702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -21893,9 +21957,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -22050,9 +22116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -22888,9 +22956,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 6
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -24415,9 +24485,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -24873,9 +24945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 5
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -25619,9 +25693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -28241,9 +28317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 5
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -30660,9 +30738,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -31396,9 +31476,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -32756,9 +32838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -32913,9 +32997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -33070,9 +33156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -34294,9 +34382,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -34527,9 +34617,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -34939,9 +35031,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -35231,9 +35325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -36785,9 +36881,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -37837,9 +37935,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -37993,9 +38093,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 8
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -38764,9 +38866,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -39084,9 +39188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -39959,9 +40065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 8
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -40709,9 +40817,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -40865,9 +40975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 7
   holdPrice: 10000
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -41773,9 +41885,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
@@ -42633,9 +42747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0928198ee738d47a10dc4c420ee757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 0}
   holdType: 4
   holdPrice: 0
   level: 0
+  holdPlayerName: 
   materialList:
   - {fileID: 2100000, guid: 2b2ee7917bddcab488bb1783f3603320, type: 2}
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}

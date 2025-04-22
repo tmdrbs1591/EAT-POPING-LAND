@@ -58,7 +58,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         int materialIndex = playerColorScript.GetMaterialIndex();
                         int holdTypeInt = (int)playerColorScript.HoldChange();
                         holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
-                        holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
+                        holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
                     }
                     EndTurn();
                     return;
@@ -69,7 +69,8 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     {
                         if (holdView != null)
                         {
-                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000);
+                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
+
                         }
                         EndTurn();
                         return;
@@ -85,6 +86,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                                 int materialIndex = playerColorScript.GetMaterialIndex();
                                 int holdTypeInt = (int)playerColorScript.HoldChange();
                                 holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
+                                holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
                             }
                             EndTurn();
                         }
