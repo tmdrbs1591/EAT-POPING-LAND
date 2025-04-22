@@ -73,7 +73,7 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         if (changedProps.ContainsKey("Money"))
         {
             int updatedMoney = (int)changedProps["Money"];
-            moneyTexts[targetIndex].text = $"P{targetPlayer.ActorNumber}: {updatedMoney}G";
+            moneyTexts[targetIndex].text = $"P{targetPlayer.ActorNumber}: {FormatKoreanMoney(updatedMoney)}";
         }
 
         if (changedProps.ContainsKey("PlayerName"))
@@ -115,11 +115,23 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
             if (player.CustomProperties.ContainsKey("Money"))
             {
                 int playerMoney = (int)player.CustomProperties["Money"];
-                moneyTexts[index].text = $"P{player.ActorNumber}: {playerMoney}G";
+                moneyTexts[index].text = $"P{player.ActorNumber}: {FormatKoreanMoney(playerMoney)}";
             }
         }
     }
+    private string FormatKoreanMoney(int amount)
+    {
+        int man = amount / 10000;
+        int remain = amount % 10000;
 
- 
+        if (man > 0 && remain > 0)
+            return $"{man}만{remain}원";
+        else if (man > 0)
+            return $"{man}만원";
+        else
+            return $"{remain}원";
+    }
+
+
 
 }
