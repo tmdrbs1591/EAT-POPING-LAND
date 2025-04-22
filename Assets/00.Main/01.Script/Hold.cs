@@ -23,6 +23,7 @@ public class Hold : MonoBehaviour
 
     public ColorType holdType = ColorType.Default;
     public int holdPrice;
+    public int level; // 단계
 
 
     public Material[] materialList; // 인스펙터에서 등록
@@ -53,5 +54,6 @@ public class Hold : MonoBehaviour
     public void HoldPriceUp(int price)
     {
         holdPrice += price;
+        level++;
     }
 }

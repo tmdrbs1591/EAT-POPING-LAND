@@ -14,6 +14,7 @@ public class HoldInfoManager : MonoBehaviour
     [SerializeField] GameObject infoPanel;
     [SerializeField] GameObject infoVolume;
     [SerializeField] TMP_Text priceText;
+    [SerializeField] TMP_Text levelText;
 
     [SerializeField] Camera mainCam;
     [SerializeField] RectTransform infoPanelRect; // infoPanel의 RectTransform
@@ -74,9 +75,10 @@ public class HoldInfoManager : MonoBehaviour
         mainCam.cullingMask |= playerLayerMask;
     }
 
-    public void HoldInfoOpen(int prices)
+    public void HoldInfoOpen(int prices , int level)
     {
         priceText.text = "땅값 : " + FormatKoreanCurrency(prices);
+        levelText.text = "Lv. " + level.ToString();
         infoPanel.SetActive(true);
         infoPanelRect.DOAnchorPos(infoPanelOriginalPos, 0.4f).SetEase(Ease.OutExpo); // 오른쪽에서 왼쪽으로 슬라이드 인
     }

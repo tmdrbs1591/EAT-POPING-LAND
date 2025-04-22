@@ -65,7 +65,7 @@ public class HoldinfoButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        HoldInfoManager.instance.HoldInfoOpen(hold.holdPrice);
+        HoldInfoManager.instance.HoldInfoOpen(hold.holdPrice,hold.level);
       //  AudioManager.instance.PlaySound(transform.position, clickIndex, Random.Range(1f, 1f), 1f);
     }
 }
