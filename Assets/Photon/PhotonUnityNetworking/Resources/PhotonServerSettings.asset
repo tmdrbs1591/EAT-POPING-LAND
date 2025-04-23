@@ -85,6 +85,7 @@ MonoBehaviour:
   - SetAnimStateRPC
   - RPC_SetUIPosition
   - HoldPriceUp
+  - AudioRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

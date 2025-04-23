@@ -59,6 +59,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         string playerNickName = photonView.Owner.NickName;
                         SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300캔디코인을 획득했습니다!");
                     }
+                    Instantiate(moneyEffect,transform.position, Quaternion.identity);
                    photonView.RPC("AudioRPC", RpcTarget.AllBuffered,8);
                     EndTurn();
                     return;
