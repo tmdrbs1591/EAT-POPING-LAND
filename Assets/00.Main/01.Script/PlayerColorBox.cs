@@ -60,6 +60,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300캔디코인을 획득했습니다!");
                     }
                     Instantiate(moneyEffect, transform.position, Quaternion.identity);
+                    AudioManager.instance.PlaySound(transform.position, 8, Random.Range(1f, 1f), 1f);
                     EndTurn();
                     return;
 

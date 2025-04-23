@@ -247,7 +247,7 @@ public class BattleManager : MonoBehaviourPun
         }
         else if (winnerName == defenderName) // 배틀당한애가 이겼을때
         {
-            return $"{defenderName}님이 땅을 지켜 {challengerName}님의 돈을 빼앗았습니다!";
+            return $"{defenderName}님이 땅을 지켜 {challengerName}님의 캔디코인을 빼앗았습니다!";
         }
         else
         {
