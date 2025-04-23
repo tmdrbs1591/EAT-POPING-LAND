@@ -29,10 +29,29 @@ public class Hold : MonoBehaviour
 
     public Material[] materialList; // 인스펙터에서 등록
 
-    // Start is called before the first frame update
+    [SerializeField] private GameObject level1Effect;
+    [SerializeField] private GameObject level2Effect;
+    [SerializeField] private GameObject level3Effect;
+    [SerializeField] private GameObject level4Effect;
+    [SerializeField] private GameObject level5Effect;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
+
+        if (holdType == ColorType.Default)
+        {
+            // 2번째 자식
+            Transform secondChild = transform.GetChild(1); // 인덱스 1 = 두 번째
+       
+            level1Effect = secondChild.GetChild(0).gameObject;
+            level2Effect = secondChild.GetChild(1).gameObject;
+            level3Effect = secondChild.GetChild(2).gameObject;
+            level4Effect = secondChild.GetChild(3).gameObject;
+            level5Effect = secondChild.GetChild(4).gameObject;
+        }
+            // 그 자식의 1~5번째 자식 할당
+         
     }
 
     // Update is called once per frame
@@ -50,15 +69,57 @@ public class Hold : MonoBehaviour
         }
         holdType = (ColorType)holdTypeInt;
     }
+    private void UpdateLevelEffect()
+    {
+        // 모든 이펙트 비활성화
+        level1Effect.SetActive(false);
+        level2Effect.SetActive(false);
+        level3Effect.SetActive(false);
+        level4Effect.SetActive(false);
+        level5Effect.SetActive(false);
+
+        // 현재 레벨에 맞는 이펙트만 활성화
+        switch (level)
+        {
+            case 1:
+                break;
+            case 2:
+                level1Effect.SetActive(true);
+                break;
+            case 3:
+                level2Effect.SetActive(true);
+                break;
+            case 4:
+                level3Effect.SetActive(true);
+                break;
+            case 5:
+                level4Effect.SetActive(true);
+                break;
+            case 6:
+                level5Effect.SetActive(true);
+                break;
+        }
+    }
 
     [PunRPC]
-    public void HoldPriceUp(int price,string playerName) // 땅 업그레이드
+    public void HoldPriceUp(int price, string playerName)
     {
-        holdPrice += price;
+        if(level <= 0)
+        {
+            holdPrice += price;
+        }
+        else
+        {
+            holdPrice *= 2;
+        }
         level++;
-        holdPlayerName = playerName;    
-       Instantiate(HoldInfoManager.instance.upgradeEffect,transform.position + new Vector3(0,5,0),Quaternion.identity); ;
+        holdPlayerName = playerName;
+
+        UpdateLevelEffect(); // 이펙트 갱신
+
+        Instantiate(HoldInfoManager.instance.upgradeEffect, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
         AudioManager.instance.PlaySound(transform.position, 7, Random.Range(1f, 1f), 1f);
         Debug.Log("레벨업!");
     }
+
 }
