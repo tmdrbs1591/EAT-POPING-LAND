@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerColorBox : MonoBehaviourPunCallbacks
 {
     public PlayerColor playerColorScript;
     public PlayerControl playerControl;
+    public PlayerMoney playerMoneyScript;
 
     public GameObject battleUI;
     public TMP_Text battleUIText;
@@ -34,6 +36,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
             switch (hold.holdType)
             {
                 case ColorType.Key:
+                 
                     EndTurn();
                     return;
 
@@ -49,6 +52,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
                 case ColorType.Money:
                     Debug.Log("Money");
+                    if (photonView.IsMine)
+                    {
+                        playerMoneyScript.AddMoney(3000000);
+                        string playerNickName = photonView.Owner.NickName;
+                        SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300만원을 획득했습니다!");
+
+                    }
                     EndTurn();
                     return;
 
