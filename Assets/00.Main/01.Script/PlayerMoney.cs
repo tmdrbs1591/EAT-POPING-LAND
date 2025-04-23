@@ -1,79 +1,79 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using ExitGames.Client.Photon;
+using System.Collections;
+using DG.Tweening;
 
 public class PlayerMoney : MonoBehaviourPunCallbacks
 {
-    public GameObject[] uiPositions; // 4°³ÀÇ UI ¿ÀºêÁ§Æ® (¿ì»ó´Ü, ÁÂ»ó´Ü, ¿ìÇÏ´Ü, ÁÂÇÏ´Ü)
-    public TextMeshProUGUI[] moneyTexts; // 4°³ÀÇ µ· Ç¥½Ã UI (°¢ UI ³»ºÎ)
-    public TextMeshProUGUI[] nameTexts; // 4°³ÀÇ ÇÃ·¹ÀÌ¾î ÀÌ¸§ UI
+    public GameObject[] uiPositions; // UI ìœ„ì¹˜ë“¤ (ìš°ìƒë‹¨, ì¢Œìƒë‹¨ ë“±)
+    public TextMeshProUGUI[] moneyTexts; // ëˆ í…ìŠ¤íŠ¸
+    public TextMeshProUGUI[] nameTexts;  // ì´ë¦„ í…ìŠ¤íŠ¸
 
-    public int money = 100; // ÇÃ·¹ÀÌ¾î ÃÊ±â µ·
-    public int uiIndex; // ÀÌ ÇÃ·¹ÀÌ¾î°¡ Â÷ÁöÇÒ UI À§Ä¡
+    public int money = 100; // ì´ˆê¸° ëˆ
+    public int uiIndex;     // UI ì¸ë±ìŠ¤
 
     void Start()
     {
-        // ¸ğµç UI¸¦ ²¨µÒ (ÇöÀç Á¢¼ÓÇÑ ÇÃ·¹ÀÌ¾î¸¸ º¸ÀÌµµ·Ï)
         foreach (var ui in uiPositions)
         {
             ui.SetActive(false);
         }
 
-        // ³» UI À§Ä¡ ¼³Á¤
         uiIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % uiPositions.Length;
         uiPositions[uiIndex].SetActive(true);
 
-        // ´Ğ³×ÀÓ ¼³Á¤
-        Hashtable hash = new Hashtable();
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
         hash["PlayerName"] = PhotonNetwork.LocalPlayer.NickName;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
-        UpdateMoney(0); // µ· ÃÊ±âÈ­
-        UpdateAllUI();  // UI ¾÷µ¥ÀÌÆ®
+        UpdateMoney(0);
+        UpdateAllUI();
     }
 
     void Update()
     {
         if (photonView.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.I)) AddMoney(10);
+            if (Input.GetKeyDown(KeyCode.I))
+                AddMoney(10);
         }
     }
 
     public void AddMoney(int amount)
     {
-            UpdateMoney(amount);
+        UpdateMoney(amount);
     }
 
     private void UpdateMoney(int amount)
     {
         photonView.RPC("UpdateMoneyRPC", RpcTarget.AllBuffered, amount);
-           
     }
+
     [PunRPC]
     private void UpdateMoneyRPC(int amount)
     {
         money += amount;
 
-        // RPC ³»ºÎ¿¡¼­ ¹Ù·Î CustomProperties ¾÷µ¥ÀÌÆ®
-        if (photonView.IsMine) // ³» Å¬¶óÀÌ¾ğÆ®¿¡¼­¸¸ SetCustomProperties
+        if (photonView.IsMine)
         {
-            Hashtable hash = new Hashtable();
+            ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
             hash["Money"] = money;
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
         }
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         int targetIndex = (targetPlayer.ActorNumber - 1) % moneyTexts.Length;
 
         if (changedProps.ContainsKey("Money"))
         {
             int updatedMoney = (int)changedProps["Money"];
-            moneyTexts[targetIndex].text = $"P{targetPlayer.ActorNumber}: {FormatKoreanMoney(updatedMoney)}";
+            StopCoroutine(nameof(AnimateMoneyText));
+            StartCoroutine(AnimateMoneyText(moneyTexts[targetIndex], updatedMoney, targetPlayer.ActorNumber));
         }
 
         if (changedProps.ContainsKey("PlayerName"))
@@ -105,33 +105,73 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
             int index = (player.ActorNumber - 1) % uiPositions.Length;
             uiPositions[index].SetActive(true);
 
-            // ´Ğ³×ÀÓ UI ¹İ¿µ
             if (player.CustomProperties.ContainsKey("PlayerName"))
             {
                 nameTexts[index].text = (string)player.CustomProperties["PlayerName"];
             }
 
-            // µ· UI ¹İ¿µ
             if (player.CustomProperties.ContainsKey("Money"))
             {
                 int playerMoney = (int)player.CustomProperties["Money"];
-                moneyTexts[index].text = $"P{player.ActorNumber}: {FormatKoreanMoney(playerMoney)}";
+                StopCoroutine(nameof(AnimateMoneyText));
+                StartCoroutine(AnimateMoneyText(moneyTexts[index], playerMoney, player.ActorNumber));
             }
         }
     }
+
+    private IEnumerator AnimateMoneyText(TextMeshProUGUI text, int targetMoney, int actorNumber)
+    {
+        string prefix = "ëˆ : ";
+        int currentMoney = ParseMoneyFromText(text.text);
+        float duration = 0.5f;
+        float timer = 0f;
+
+        text.transform.DOKill(); // ê¸°ì¡´ tween ì œê±°
+        text.transform.localScale = Vector3.one;
+
+        text.transform.DOScale(1.4f, 0.3f).SetEase(Ease.OutBack)
+            .OnComplete(() =>
+            {
+                text.transform
+                    .DOScale(1f, 0.15f)
+                    .SetEase(Ease.InOutSine)
+                    .SetDelay(0.2f); // ì—¬ê¸°ê°€ 'ì»¤ì§„ ìƒíƒœ ìœ ì§€ ì‹œê°„'
+            });
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            int displayMoney = Mathf.RoundToInt(Mathf.Lerp(currentMoney, targetMoney, t));
+            text.text = prefix + FormatKoreanMoney(displayMoney);
+            yield return null;
+        }
+
+        text.text = prefix + FormatKoreanMoney(targetMoney);
+    }
+
+    private int ParseMoneyFromText(string text)
+    {
+        // ì˜ˆ: "P2: 1ë§Œ2000ì›"ì—ì„œ ìˆ«ìë§Œ ì¶”ì¶œ
+        string[] parts = text.Split(':');
+        if (parts.Length < 2) return 0;
+
+        string moneyStr = parts[1].Trim().Replace("ë§Œì›", "0000").Replace("ë§Œ", "0000").Replace("ì›", "");
+        int result = 0;
+        int.TryParse(moneyStr, out result);
+        return result;
+    }
+
     private string FormatKoreanMoney(int amount)
     {
         int man = amount / 10000;
         int remain = amount % 10000;
 
         if (man > 0 && remain > 0)
-            return $"{man}¸¸{remain}¿ø";
+            return $"{man}ë§Œ{remain}ì›";
         else if (man > 0)
-            return $"{man}¸¸¿ø";
+            return $"{man}ë§Œì›";
         else
-            return $"{remain}¿ø";
+            return $"{remain}ì›";
     }
-
-
-
 }
