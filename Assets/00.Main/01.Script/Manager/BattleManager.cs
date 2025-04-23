@@ -122,7 +122,7 @@ public class BattleManager : MonoBehaviourPun
                 break;
             }
         }
-            
+
         foreach (GameObject go in allPlayers)
         {
             var view = go.GetComponent<PhotonView>();
@@ -171,14 +171,14 @@ public class BattleManager : MonoBehaviourPun
             if (pv != null && pv.Owner.NickName == playerName)
             {
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
-                pv.RPC("RPC_SetRotation", RpcTarget.All, 40f, 0f,0f);
-                pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f,2.8f);
-                
+                pv.RPC("RPC_SetRotation", RpcTarget.All, 40f, 0f, 0f);
+                pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f, 2.8f);
+
                 break;
             }
         }
 
-    
+
     }
 
     //public void BattleWin()
@@ -295,6 +295,9 @@ public class BattleManager : MonoBehaviourPun
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+        // 🏆 승자 닉네임 가져오기
+        string winnerName = PhotonNetwork.CurrentRoom.GetPlayer(winnerActorID).NickName;
+
         foreach (var player in players)
         {
             PhotonView pv = player.GetComponent<PhotonView>();
@@ -310,18 +313,21 @@ public class BattleManager : MonoBehaviourPun
                     pv.RPC("RPC_SetUIPosition", RpcTarget.All, 1.1f, 3.36f, 0.53f);
                 }
 
-                // ✅ 승자일 경우 PlayerControl 스크립트 접근
-                if (playerID == winnerActorID)
+                if (winnerName == defenderName) // 배틀당한애가 이겼을때
                 {
-                    PlayerControl control = player.GetComponent<PlayerControl>();
-                    if (control != null)
-                    {
-                        // 예: 승자 처리
-                        control.WinColorChange();// 원하는 함수 호출
-                    }
-                  
+                    return;
                 }
-
+                else if (winnerName == challengerName) // 배틀 당한 애가 이겼을 때
+                {
+                    if (playerID == winnerActorID)
+                    {
+                        PlayerControl control = player.GetComponent<PlayerControl>();
+                        if (control != null)
+                        {
+                            control.WinColorChange();
+                        }
+                    }
+                }
             }
         }
 
