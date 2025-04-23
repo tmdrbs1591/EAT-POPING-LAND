@@ -152,7 +152,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             photonView.RPC("OnMoveButtonClicked", RpcTarget.All, currentDirection);
             remainingMoveCount--;
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.3f);
         }
 
         isMove = false;

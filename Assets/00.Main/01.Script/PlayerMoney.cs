@@ -121,7 +121,7 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
 
     private IEnumerator AnimateMoneyText(TextMeshProUGUI text, int targetMoney, int actorNumber)
     {
-        string prefix = "돈 : ";
+        string prefix = "";
         int currentMoney = ParseMoneyFromText(text.text);
         float duration = 0.5f;
         float timer = 0f;
