@@ -37,8 +37,8 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
             switch (hold.holdType)
             {
                 case ColorType.Key:
-
-                    EndTurn();
+                    KeyCardManager.instance.KeyCardPanelOpenColose(true);
+                    playerControl.isMove = false;
                     return;
 
                 case ColorType.Prison:
