@@ -93,7 +93,7 @@ public class HoldInfoManager : MonoBehaviour
     {
         if (money < 10000)
         {
-            return money.ToString("N0") + "원";
+            return money.ToString("N0") + "캔디코인";
         }
 
         int man = money / 10000;
@@ -101,11 +101,11 @@ public class HoldInfoManager : MonoBehaviour
 
         if (rest == 0)
         {
-            return $"{man}만원";
+            return $"{man}만캔디코인";
         }
         else
         {
-            return $"{man}만{rest.ToString("N0")}원";
+            return $"{man}만{rest.ToString("N0")}캔디코인";
         }
     }
 

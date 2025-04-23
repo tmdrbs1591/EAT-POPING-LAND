@@ -156,7 +156,7 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         string[] parts = text.Split(':');
         if (parts.Length < 2) return 0;
 
-        string moneyStr = parts[1].Trim().Replace("만원", "0000").Replace("만", "0000").Replace("원", "");
+        string moneyStr = parts[1].Trim().Replace("만", "0000").Replace("만", "0000").Replace("", "");
         int result = 0;
         int.TryParse(moneyStr, out result);
         return result;
@@ -168,10 +168,10 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         int remain = amount % 10000;
 
         if (man > 0 && remain > 0)
-            return $"{man}만{remain}원";
+            return $"{man}만{remain}";
         else if (man > 0)
-            return $"{man}만원";
+            return $"{man}만";
         else
-            return $"{remain}원";
+            return $"{remain}";
     }
 }

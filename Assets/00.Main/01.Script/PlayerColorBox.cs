@@ -55,9 +55,9 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     Debug.Log("Money");
                     if (photonView.IsMine)
                     {
-                        playerMoneyScript.AddMoney(3000000);
+                        playerMoneyScript.AddMoney(300);
                         string playerNickName = photonView.Owner.NickName;
-                        SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300만원을 획득했습니다!");
+                        SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300캔디코인을 획득했습니다!");
                     }
                     Instantiate(moneyEffect, transform.position, Quaternion.identity);
                     EndTurn();
@@ -69,7 +69,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         int materialIndex = playerColorScript.GetMaterialIndex();
                         int holdTypeInt = (int)playerColorScript.HoldChange();
                         holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
-                        holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
+                        holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, PhotonNetwork.NickName);
                     }
                     EndTurn();
                     return;
@@ -80,7 +80,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     {
                         if (holdView != null)
                         {
-                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
+                            holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, PhotonNetwork.NickName);
 
                         }
                         EndTurn();
@@ -97,7 +97,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                                 int materialIndex = playerColorScript.GetMaterialIndex();
                                 int holdTypeInt = (int)playerColorScript.HoldChange();
                                 holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
-                                holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 1000000, PhotonNetwork.NickName);
+                                holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, PhotonNetwork.NickName);
                             }
                             EndTurn();
                         }
