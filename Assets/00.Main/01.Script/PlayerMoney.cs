@@ -129,18 +129,23 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         text.transform.DOKill(); // 기존 tween 제거
         text.transform.localScale = Vector3.one;
 
-        text.transform.DOScale(1.4f, 0.3f).SetEase(Ease.OutBack)
+        // 애니메이션이 timeScale 무시하게 설정
+        text.transform.DOScale(1.4f, 0.3f)
+            .SetEase(Ease.OutBack)
+            .SetUpdate(true) // <- 여기가 중요
             .OnComplete(() =>
             {
                 text.transform
                     .DOScale(1f, 0.15f)
                     .SetEase(Ease.InOutSine)
-                    .SetDelay(0.2f); // 여기가 '커진 상태 유지 시간'
+                    .SetDelay(0.2f)
+                    .SetUpdate(true); // <- 이것도 중요
             });
 
+        // Coroutine도 unscaledDeltaTime 사용
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime; // <- 핵심 변경
             float t = timer / duration;
             int displayMoney = Mathf.RoundToInt(Mathf.Lerp(currentMoney, targetMoney, t));
             text.text = prefix + FormatKoreanMoney(displayMoney);

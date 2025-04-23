@@ -37,7 +37,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
             switch (hold.holdType)
             {
                 case ColorType.Key:
-                 
+
                     EndTurn();
                     return;
 
@@ -59,8 +59,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         string playerNickName = photonView.Owner.NickName;
                         SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300캔디코인을 획득했습니다!");
                     }
-                    Instantiate(moneyEffect, transform.position, Quaternion.identity);
-                    AudioManager.instance.PlaySound(transform.position, 8, Random.Range(1f, 1f), 1f);
+                   photonView.RPC("AudioRPC", RpcTarget.AllBuffered,8);
                     EndTurn();
                     return;
 
@@ -146,7 +145,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
         }
     }
 
-   
+
 
     void EndTurn()
     {
@@ -170,8 +169,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
         return "알 수 없음";
     }
 
+    [PunRPC]
+    public void AudioRPC(int index)
+    {
+        AudioManager.instance.PlaySound(transform.position, index, Random.Range(1f, 1f), 1f);
+    }
 
-    private void OnDrawGizmos()
+private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Vector3 center = transform.position + Vector3.down * (rayLength / 2f);
