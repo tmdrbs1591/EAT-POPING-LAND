@@ -12,6 +12,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
     public PlayerMoney playerMoneyScript;
 
     public GameObject battleUI;
+    public GameObject moneyEffect;
     public TMP_Text battleUIText;
     public TMP_Text priceText;
     [SerializeField] private float rayLength = 3f; // 인스펙터에서 조절 가능하게
@@ -57,8 +58,8 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         playerMoneyScript.AddMoney(3000000);
                         string playerNickName = photonView.Owner.NickName;
                         SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300만원을 획득했습니다!");
-
                     }
+                    Instantiate(moneyEffect, transform.position, Quaternion.identity);
                     EndTurn();
                     return;
 
