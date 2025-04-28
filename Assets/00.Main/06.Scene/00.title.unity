@@ -407,7 +407,7 @@ MonoBehaviour:
   startOffsetY: 2000
   moveDuration: 0.5
   waitTime: 0.1
-  punchScale: {x: 1.2, y: 1.2, z: 1.2}
+  punchScale: {x: 1, y: 1, z: 1}
   scaleDuration: 0.3
 --- !u!1 &391507377
 GameObject:
@@ -846,8 +846,8 @@ RectTransform:
   - {fileID: 1410823154}
   - {fileID: 288178476}
   - {fileID: 255390673}
-  - {fileID: 2126922108}
   - {fileID: 1474620078}
+  - {fileID: 2126922108}
   - {fileID: 704017671}
   - {fileID: 1953773235}
   m_Father: {fileID: 0}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   startOffsetY: 2000
   moveDuration: 0.5
   waitTime: 0.2
-  punchScale: {x: 1.2, y: 1.2, z: 1.2}
+  punchScale: {x: 1, y: 1, z: 1}
   scaleDuration: 0.3
 --- !u!1 &1474620077
 GameObject:
@@ -1172,7 +1172,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 886526669}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOffsetY: 2000
   moveDuration: 0.5
-  waitTime: 0.44
+  waitTime: 0.37
   punchScale: {x: 1.2, y: 1.2, z: 1.2}
   scaleDuration: 0.3
 --- !u!1 &1679608627
@@ -1639,7 +1639,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 886526669}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1698,6 +1698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOffsetY: 2000
   moveDuration: 0.5
-  waitTime: 0.37
+  waitTime: 0.44
   punchScale: {x: 1.2, y: 1.2, z: 1.2}
   scaleDuration: 0.3
