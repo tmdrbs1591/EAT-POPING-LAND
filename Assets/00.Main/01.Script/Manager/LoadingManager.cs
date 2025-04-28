@@ -11,10 +11,13 @@ public class LoadingManager : MonoBehaviour
 
     public static void LoadScene(string sceneName)
     {
+        FadeManager.instance.FadeIn();
         nextScene = sceneName;// 다음 씬 이름 설정
         SceneManager.LoadScene("LoadingScene");// 다음 씬 이름 설정
     }
 
+
+    
     void Start()
     {
         StartCoroutine(LoadSceneProgress()); // 씬 로딩 진행 상황을 관리하는 코루틴 시작
@@ -26,7 +29,7 @@ public class LoadingManager : MonoBehaviour
         op.allowSceneActivation = false;// 씬 활성화를 막음
 
         float timer = 0f; // 타이머 변수 초기화
-        float fakeLoadTime = 2f; // 로딩 속도를 조절하기 위한 변수
+        float fakeLoadTime = 2.5f; // 로딩 속도를 조절하기 위한 변수
 
         while (!op.isDone)// 씬 로드가 완료될 때까지 반복
         {

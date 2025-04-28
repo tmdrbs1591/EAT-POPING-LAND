@@ -10,6 +10,8 @@ public class TitleSceneLoad : MonoBehaviour
     public Slider loadingBar; // 로딩 바 슬라이더 참조
     public float messageInterval = 1.0f; // 메시지가 변경되는 간격 (좀 더 빠르게)
 
+    bool iskey;
+
     private string[] loadingMessages = new string[]
     {
         "리소스를 불러오는 중입니다...",
@@ -73,6 +75,16 @@ public class TitleSceneLoad : MonoBehaviour
         // 로딩이 완료된 후 키를 눌렀을 때 씬 로드
         if (loadingFinished && Input.anyKey)
         {
+            StartCoroutine(SceneLoad());
+        }
+    }
+
+    IEnumerator SceneLoad()
+    {
+        if (!iskey)
+        {
+            FadeManager.instance.FadeIn();
+            yield return new WaitForSeconds(1f);
             LoadingManager.LoadScene(SceneName); // 씬 로드
         }
     }
