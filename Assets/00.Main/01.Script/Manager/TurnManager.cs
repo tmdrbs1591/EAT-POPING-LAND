@@ -26,6 +26,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         instance = this;
+        isPrison = false;
     }
 
     private void Start()
@@ -83,6 +84,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
                 prisonUI.SetActive(true);
                 EndTurn();
                 isPrison = false;
+                return;
             }
             else
             {
