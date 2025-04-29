@@ -21,6 +21,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
     public GameObject diceUI;
     public GameObject otherDiceUI;
+    public GameObject prisonUI;
     private void Awake()
     {
         instance = this;
