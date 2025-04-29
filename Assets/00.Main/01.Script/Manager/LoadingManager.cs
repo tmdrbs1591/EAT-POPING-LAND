@@ -20,6 +20,7 @@ public class LoadingManager : MonoBehaviour
     
     void Start()
     {
+        SongManager.instance.SongChange(4);
         StartCoroutine(LoadSceneProgress()); // 씬 로딩 진행 상황을 관리하는 코루틴 시작
     }
 

@@ -72,6 +72,8 @@ public class BattleManager : MonoBehaviourPun
         if (string.IsNullOrEmpty(opponentName))
             return;
 
+        SongManager.instance.SongChange(3);
+
         challengerName = PhotonNetwork.NickName;
         defenderName = opponentName;
 
@@ -280,6 +282,7 @@ public class BattleManager : MonoBehaviourPun
     public void ResetPosPlayerRPC() //플레이어 위치 다시 제자리로
     {
         ResetPlayerPositions();
+        SongManager.instance.SongChange(2);
     }
 
     [PunRPC]

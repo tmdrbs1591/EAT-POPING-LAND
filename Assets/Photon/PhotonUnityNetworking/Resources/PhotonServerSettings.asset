@@ -87,6 +87,7 @@ MonoBehaviour:
   - HoldPriceUp
   - AudioRPC
   - DestroyRPC
+  - InitUI
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

@@ -11,8 +11,13 @@ public class SongStart : MonoBehaviour
     private void Start()
     {
     }
-    public void AudioStart()
+    public void SongStarts()
     {
-        audioSource.Play();
+        SongManager.instance.SongChange(2);
     }
+    public void LodingSongStarts()
+    {
+        SongManager.instance.SongChange(4);
+    }
+
 }
