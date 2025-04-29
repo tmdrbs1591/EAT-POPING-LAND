@@ -132,7 +132,7 @@ public class BattleManager : MonoBehaviourPun
                 break;
             }
         }
-        StartCoroutine(DicePanelCloseUICor());
+       // StartCoroutine(DicePanelCloseUICor());
 
 
     }
@@ -172,7 +172,6 @@ public class BattleManager : MonoBehaviourPun
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
                 pv.RPC("RPC_SetRotation", RpcTarget.All, 40f, 0f, 0f);
                 pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f, 2.8f);
-
                 break;
             }
         }
@@ -323,7 +322,12 @@ public class BattleManager : MonoBehaviourPun
                         PlayerControl control = player.GetComponent<PlayerControl>();
                         if (control != null)
                         {
-                            control.WinColorChange();
+                            if (photonView.IsMine)
+                            {
+                                control.WinColorChange();
+                                Debug.Log("<color=red>Red</color>컬러 체인지");
+                            }
+                        
                         }
                     }
                 }

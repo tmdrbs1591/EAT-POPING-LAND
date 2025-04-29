@@ -149,7 +149,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
 
 
-    void EndTurn()
+    public void EndTurn()
     {
         if (photonView.IsMine)
         {
