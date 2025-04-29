@@ -72,7 +72,6 @@ public class BattleManager : MonoBehaviourPun
         if (string.IsNullOrEmpty(opponentName))
             return;
 
-        SongManager.instance.SongChange(3);
 
         challengerName = PhotonNetwork.NickName;
         defenderName = opponentName;
@@ -89,6 +88,7 @@ public class BattleManager : MonoBehaviourPun
     private void RPC_BattleStart(string attacker, string defender)
     {
         isBattle = true;
+        SongManager.instance.SongChange(3);
 
         battleCamera.transform.position = startPos;
         battleScreen.SetActive(true);

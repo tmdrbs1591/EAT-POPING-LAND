@@ -17,22 +17,25 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        // 모든 UI 비활성화
         foreach (var ui in uiPositions)
         {
             ui.SetActive(false);
         }
 
-        uiIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % uiPositions.Length;
+        // 로컬 플레이어의 PhotonView.ActorNumber를 기반으로 자신에게 해당하는 UI 인덱스 계산
+        uiIndex = (photonView.Owner.ActorNumber - 1) % uiPositions.Length;
+
+        // 자신의 UI만 활성화
         uiPositions[uiIndex].SetActive(true);
 
+        // 플레이어 이름 설정
         ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
         hash["PlayerName"] = PhotonNetwork.LocalPlayer.NickName;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
         UpdateMoney(0);
-        UpdateAllUI();
     }
-
     void Update()
     {
         if (photonView.IsMine)
@@ -95,31 +98,29 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
 
     private void UpdateAllUI()
     {
+        // 자신의 UI만 활성화
         foreach (var ui in uiPositions)
         {
             ui.SetActive(false);
         }
 
-        foreach (Player player in PhotonNetwork.PlayerList)
+        uiPositions[uiIndex].SetActive(true);  // 자신의 UI만 켬
+
+        // 이름 및 돈 업데이트
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerName"))
         {
-            int index = (player.ActorNumber - 1) % uiPositions.Length;
-            uiPositions[index].SetActive(true);
+            nameTexts[uiIndex].text = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerName"];
+        }
 
-            if (player.CustomProperties.ContainsKey("PlayerName"))
-            {
-                nameTexts[index].text = (string)player.CustomProperties["PlayerName"];
-            }
-
-            if (player.CustomProperties.ContainsKey("Money"))
-            {
-                int playerMoney = (int)player.CustomProperties["Money"];
-                StopCoroutine(nameof(AnimateMoneyText));
-                StartCoroutine(AnimateMoneyText(moneyTexts[index], playerMoney, player.ActorNumber));
-            }
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Money"))
+        {
+            int playerMoney = (int)PhotonNetwork.LocalPlayer.CustomProperties["Money"];
+            StopCoroutine(nameof(AnimateMoneyText));
+            StartCoroutine(AnimateMoneyText(moneyTexts[uiIndex], playerMoney, PhotonNetwork.LocalPlayer.ActorNumber));
         }
     }
 
-    private IEnumerator AnimateMoneyText(TextMeshProUGUI text, int targetMoney, int actorNumber)
+        private IEnumerator AnimateMoneyText(TextMeshProUGUI text, int targetMoney, int actorNumber)
     {
         string prefix = "";
         int currentMoney = ParseMoneyFromText(text.text);
