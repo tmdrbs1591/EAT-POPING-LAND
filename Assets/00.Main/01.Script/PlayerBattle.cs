@@ -102,19 +102,19 @@ public class PlayerBattle : MonoBehaviourPun
         //    Jump();
         //}
 
-        Vector3 moveDir = new Vector3(inputX, 0, inputZ).normalized;
-
-        if (moveDir != Vector3.zero)
-        {
-            rb.velocity = moveDir * moveSpeed;
-            if (animState != AnimState.Attack) // 공격 중엔 애니메이션 덮지 않게
-                photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
-        }
-        else
+        Vector3 moveDir = new Vector3(inputX, 0, inputZ);
+        if (moveDir.magnitude < 0.1f) // 거의 0에 가까우면
         {
             rb.velocity = Vector3.zero;
             if (animState != AnimState.Attack)
                 photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
+        }
+        else
+        {
+            moveDir.Normalize();
+            rb.velocity = moveDir * moveSpeed;
+            if (animState != AnimState.Attack)
+                photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
         }
 
 
