@@ -59,7 +59,6 @@ public class BattleManager : MonoBehaviourPun
         //}
         if (Input.GetKeyDown(KeyCode.L))
         {
-            BattleLose();
         }
     }
 

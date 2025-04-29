@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PointBox
   - Ground
+  - Object
   layers:
   - Default
   - TransparentFX
