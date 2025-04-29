@@ -18,6 +18,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
     public bool isCountingDown = false; // 카운트다운 중인지 확인
     private bool isFirstTurn = true; // 첫 턴인지 확인
+    public bool isPrison = true; // 감옥인지확인
 
     public GameObject diceUI;
     public GameObject otherDiceUI;
@@ -76,10 +77,21 @@ public class TurnManager : MonoBehaviourPunCallbacks
         // 내 차례일 때
         if (PhotonNetwork.LocalPlayer.ActorNumber == playerIndex + 1)
         {
-            DiceManager.instance.enabled = true; // 주사위 활성화
-            myTurnPanel.SetActive(true);
-            Debug.Log("나의 턴!");
-            diceUI.SetActive(true);
+            if (isPrison)
+            {
+                prisonUI.SetActive(false);
+                prisonUI.SetActive(true);
+                EndTurn();
+                isPrison = false;
+            }
+            else
+            {
+                DiceManager.instance.enabled = true; // 주사위 활성화
+                myTurnPanel.SetActive(true);
+                Debug.Log("나의 턴!");
+                diceUI.SetActive(true);
+            }
+           
 
 
         }
