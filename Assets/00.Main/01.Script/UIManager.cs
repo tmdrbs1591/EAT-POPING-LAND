@@ -14,12 +14,12 @@ public class UIManager : MonoBehaviour
         {
             CloseTopUI();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             currentIndex = Mathf.Clamp(currentIndex + 1, 0, buttons.Count - 1);
             UpdateButtonPositions();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             currentIndex = Mathf.Clamp(currentIndex - 1, 0, buttons.Count - 1);
             UpdateButtonPositions();
@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     void UpdateButtonPositions()
     {
+        AudioManager.instance.PlaySound(transform.position, 3, Random.Range(1f, 1f), 1f);
         for (int i = 0; i < buttons.Count; i++)
         {
             int relativePos = i - currentIndex;
