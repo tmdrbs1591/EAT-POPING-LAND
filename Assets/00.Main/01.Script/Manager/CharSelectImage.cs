@@ -6,7 +6,9 @@ using Spine;
 
 public class CharSelectImage : MonoBehaviour
 {
+    [Header("Spine 컴포넌트")]
     [SerializeField] private SkeletonAnimation skeletonAnimation;
+    [SerializeField] private SkeletonGraphic skeletonGraphic;
 
     [Header("Skin 설정")]
     [SerializeField] private string redSkin = "skin3";
@@ -24,7 +26,7 @@ public class CharSelectImage : MonoBehaviour
 
     void Start()
     {
-        lastCharacterType = CharacterType.Red - 1; // 무조건 다른 값으로 시작해서 무조건 한 번은 실행됨
+        lastCharacterType = CharacterType.Red - 1; // 항상 첫 실행 유도
         UpdateSkinAndAnimation();
     }
 
@@ -38,19 +40,34 @@ public class CharSelectImage : MonoBehaviour
 
     void UpdateSkinAndAnimation()
     {
+        if (skeletonAnimation == null && skeletonGraphic == null)
+            return;
+
         lastCharacterType = CharacterManager.instance.characterType;
 
-        // 스킨 적용
         string skinName = GetSkinNameFromCharacterType(lastCharacterType);
-        skeletonAnimation.Skeleton.SetSkin(skinName);
-        skeletonAnimation.Skeleton.SetSlotsToSetupPose();
-        skeletonAnimation.AnimationState.Apply(skeletonAnimation.Skeleton);
-
-        // 애니메이션 적용
         AnimationReferenceAsset animAsset = GetAnimationAssetFromCharacterType(lastCharacterType);
-        if (animAsset != null)
+
+        // SkeletonAnimation 적용
+        if (skeletonAnimation != null)
         {
-            skeletonAnimation.AnimationState.SetAnimation(0, animAsset, true);
+            skeletonAnimation.Skeleton.SetSkin(skinName);
+            skeletonAnimation.Skeleton.SetSlotsToSetupPose();
+            skeletonAnimation.AnimationState.Apply(skeletonAnimation.Skeleton);
+
+            if (animAsset != null)
+                skeletonAnimation.AnimationState.SetAnimation(0, animAsset, true);
+        }
+
+        // SkeletonGraphic 적용
+        if (skeletonGraphic != null)
+        {
+            skeletonGraphic.Skeleton.SetSkin(skinName);
+            skeletonGraphic.Skeleton.SetSlotsToSetupPose();
+            skeletonGraphic.AnimationState.Apply(skeletonGraphic.Skeleton);
+
+            if (animAsset != null)
+                skeletonGraphic.AnimationState.SetAnimation(0, animAsset, true);
         }
     }
 
@@ -58,16 +75,11 @@ public class CharSelectImage : MonoBehaviour
     {
         switch (type)
         {
-            case CharacterType.Red:
-                return redSkin;
-            case CharacterType.Blue:
-                return blueSkin;
-            case CharacterType.Yellow:
-                return yellowSkin;
-            case CharacterType.Black:
-                return blackSkin;
-            default:
-                return redSkin;
+            case CharacterType.Red: return redSkin;
+            case CharacterType.Blue: return blueSkin;
+            case CharacterType.Yellow: return yellowSkin;
+            case CharacterType.Black: return blackSkin;
+            default: return redSkin;
         }
     }
 
@@ -75,16 +87,11 @@ public class CharSelectImage : MonoBehaviour
     {
         switch (type)
         {
-            case CharacterType.Red:
-                return redAnim;
-            case CharacterType.Blue:
-                return blueAnim;
-            case CharacterType.Yellow:
-                return yellowAnim;
-            case CharacterType.Black:
-                return blackAnim;
-            default:
-                return redAnim;
+            case CharacterType.Red: return redAnim;
+            case CharacterType.Blue: return blueAnim;
+            case CharacterType.Yellow: return yellowAnim;
+            case CharacterType.Black: return blackAnim;
+            default: return redAnim;
         }
     }
 }

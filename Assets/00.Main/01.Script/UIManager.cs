@@ -14,15 +14,18 @@ public class UIManager : MonoBehaviour
         {
             CloseTopUI();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (CharacterManager.instance.isCharSelect)
         {
-            currentIndex = Mathf.Clamp(currentIndex + 1, 0, buttons.Count - 1);
-            UpdateButtonPositions();
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            currentIndex = Mathf.Clamp(currentIndex - 1, 0, buttons.Count - 1);
-            UpdateButtonPositions();
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                currentIndex = Mathf.Clamp(currentIndex + 1, 0, buttons.Count - 1);
+                UpdateButtonPositions();
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                currentIndex = Mathf.Clamp(currentIndex - 1, 0, buttons.Count - 1);
+                UpdateButtonPositions();
+            }
         }
     }
 

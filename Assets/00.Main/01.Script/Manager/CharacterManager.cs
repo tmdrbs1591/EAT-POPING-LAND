@@ -20,6 +20,7 @@ public class CharacterManager : MonoBehaviour
 
     private int currentIndex = 0;
 
+    public bool isCharSelect;
 
     void Awake()
     {

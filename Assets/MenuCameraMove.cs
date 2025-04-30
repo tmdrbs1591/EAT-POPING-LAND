@@ -13,6 +13,9 @@ public class MenuCameraMove : MonoBehaviour
     [SerializeField] private GameObject charSelectBtn;
     [SerializeField] private GameObject charSelectPanel;
 
+
+
+
     void Start()
     {
         // 원래 위치와 회전 값을 저장
@@ -36,6 +39,8 @@ public class MenuCameraMove : MonoBehaviour
         charSelectBtn.SetActive(false);
         charSelectPanel.SetActive(true);
 
+        CharacterManager.instance.isCharSelect = true;
+
     }
 
     // 원래 위치로 카메라를 자연스럽게 이동시키는 함수
@@ -46,6 +51,8 @@ public class MenuCameraMove : MonoBehaviour
         transform.DORotate(originalRotation.eulerAngles, 1f).SetEase(Ease.InOutQuad);
         charSelectBtn.SetActive(true);
         charSelectPanel.SetActive(false);
+
+        CharacterManager.instance.isCharSelect = false;
 
     }
 }
