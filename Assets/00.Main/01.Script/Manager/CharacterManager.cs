@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public enum CharacterType
 {
@@ -9,21 +11,22 @@ public enum CharacterType
     Yellow,
     Black
 }
+
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
     public CharacterType characterType;
-    // Start is called before the first frame update
+
+    private int currentIndex = 0;
+
+
     void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
