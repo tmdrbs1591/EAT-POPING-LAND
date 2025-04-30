@@ -563,6 +563,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2834896052586593871}
+  skeletonGraphic: {fileID: 8951778775501858275}
+  redSkin: skin3
+  blueSkin: skin2
+  yellowSkin: skin4
+  blackSkin: skin1
+  redAnim: {fileID: 11400000, guid: fbfa0a48fec4ba246a01d66e51764a45, type: 2}
+  blueAnim: {fileID: 11400000, guid: 11f7fbae26e23d7409097c450d49f334, type: 2}
+  yellowAnim: {fileID: 11400000, guid: 278289857f112104dbd65e2f1ec09e58, type: 2}
+  blackAnim: {fileID: 11400000, guid: a1fbd2de031a43445a56317c3956f02e, type: 2}
 --- !u!1 &5446851133586880131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,12 +1034,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: 65c520601935ec34582022134f65c013, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 37273ee651af9844187cc75e6f08804a, type: 2}
   additiveMaterial: {fileID: 0}
   multiplyMaterial: {fileID: 0}
   screenMaterial: {fileID: 0}
   m_SkeletonColor: {r: 1, g: 1, b: 1, a: 1}
-  initialSkinName: 
+  initialSkinName: skin1
   initialFlipX: 0
   initialFlipY: 0
   startingAnimation: idle

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -78,6 +79,11 @@ public class UIManager : MonoBehaviour
 
         // currentIndex 기준으로 캐릭터 타입 설정
         CharacterManager.instance.characterType = (CharacterType)currentIndex;
+
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+        hash["CharacterType"] = (int)CharacterManager.instance.characterType; // enum은 int로 변환해서 저장
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
         Debug.Log("선택된 캐릭터 타입: " + CharacterManager.instance.characterType);
     }
 
