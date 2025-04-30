@@ -7,6 +7,7 @@ using System.Linq;
 using Photon.Realtime;
 using Photon.Pun.Demo.PunBasics;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using Spine.Unity;
 
 public class BattleManager : MonoBehaviourPun
 {
@@ -44,6 +45,21 @@ public class BattleManager : MonoBehaviourPun
     public Vector3 startPos;
 
     public int holdPrice;
+
+    [SerializeField] private SkeletonGraphic player1SkeletonGraphic;
+    [SerializeField] private SkeletonGraphic player2SkeletonGraphic;
+
+    [Header("Skin 설정")]
+    [SerializeField] private string redSkin = "skin3";
+    [SerializeField] private string blueSkin = "skin2";
+    [SerializeField] private string yellowSkin = "skin4";
+    [SerializeField] private string blackSkin = "skin1";
+
+    [Header("애니메이션 설정")]
+    [SerializeField] private AnimationReferenceAsset redAnim;
+    [SerializeField] private AnimationReferenceAsset blueAnim;
+    [SerializeField] private AnimationReferenceAsset yellowAnim;
+    [SerializeField] private AnimationReferenceAsset blackAnim;
 
     private void Awake()
     {
@@ -110,7 +126,57 @@ public class BattleManager : MonoBehaviourPun
         player1ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == attacker).ActorNumber;
         player2ID = PhotonNetwork.CurrentRoom.Players.Values.First(p => p.NickName == defender).ActorNumber;
 
+        // player1ID에 해당하는 플레이어 처리
+        if (PhotonNetwork.CurrentRoom.Players.TryGetValue(player1ID, out Player player1))
+        {
+            if (player1.CustomProperties.TryGetValue("CharacterType", out object charTypeObj))
+            {
+                int charTypeInt = (int)charTypeObj;
+                CharacterType characterType = (CharacterType)charTypeInt;
+                Debug.Log($"[{player1.NickName}] 캐릭터 타입: {characterType}");
 
+                // SkeletonGraphic이 비어있지 않다면 적용
+                if (player1SkeletonGraphic != null && player1SkeletonGraphic.Skeleton != null)
+                {
+                    string skinName = GetSkinName(characterType);
+                    player1SkeletonGraphic.Skeleton.SetSkin(skinName);
+                    player1SkeletonGraphic.Skeleton.SetSlotsToSetupPose();
+                    player1SkeletonGraphic.AnimationState.Apply(player1SkeletonGraphic.Skeleton);
+
+                    AnimationReferenceAsset anim = GetAnimation(characterType);
+                    if (anim != null)
+                    {
+                        player1SkeletonGraphic.AnimationState.SetAnimation(0, anim, true);
+                    }
+                }
+            }
+        }
+
+        // player2ID에 해당하는 플레이어 처리
+        if (PhotonNetwork.CurrentRoom.Players.TryGetValue(player2ID, out Player player2))
+        {
+            if (player2.CustomProperties.TryGetValue("CharacterType", out object charTypeObj2)) // 여기 수정
+            {
+                int charTypeInt = (int)charTypeObj2;
+                CharacterType characterType = (CharacterType)charTypeInt;
+                Debug.Log($"[{player2.NickName}] 캐릭터 타입: {characterType}");
+
+                // SkeletonGraphic이 비어있지 않다면 적용
+                if (player2SkeletonGraphic != null && player2SkeletonGraphic.Skeleton != null)
+                {
+                    string skinName = GetSkinName(characterType);
+                    player2SkeletonGraphic.Skeleton.SetSkin(skinName);
+                    player2SkeletonGraphic.Skeleton.SetSlotsToSetupPose();
+                    player2SkeletonGraphic.AnimationState.Apply(player2SkeletonGraphic.Skeleton);
+
+                    AnimationReferenceAsset anim = GetAnimation(characterType);
+                    if (anim != null)
+                    {
+                        player2SkeletonGraphic.AnimationState.SetAnimation(0, anim, true);
+                    }
+                }
+            }
+        }
 
         GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player"); // 배틀 카메라에 플레이어 위치들 넣기
         foreach (GameObject go in allPlayers)
@@ -282,7 +348,6 @@ public class BattleManager : MonoBehaviourPun
     public void ResetPosPlayerRPC() //플레이어 위치 다시 제자리로
     {
         ResetPlayerPositions();
-        SongManager.instance.SongChange(2);
     }
 
     [PunRPC]
@@ -338,6 +403,29 @@ public class BattleManager : MonoBehaviourPun
         }
 
         playerOriginalPositions.Clear();
+    }
+    private string GetSkinName(CharacterType type)
+    {
+        switch (type)
+        {
+            case CharacterType.Red: return redSkin;
+            case CharacterType.Blue: return blueSkin;
+            case CharacterType.Yellow: return yellowSkin;
+            case CharacterType.Black: return blackSkin;
+            default: return redSkin;
+        }
+    }
+
+    private AnimationReferenceAsset GetAnimation(CharacterType type)
+    {
+        switch (type)
+        {
+            case CharacterType.Red: return redAnim;
+            case CharacterType.Blue: return blueAnim;
+            case CharacterType.Yellow: return yellowAnim;
+            case CharacterType.Black: return blackAnim;
+            default: return redAnim;
+        }
     }
 
 }

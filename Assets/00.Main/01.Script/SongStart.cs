@@ -5,7 +5,6 @@ using UnityEngine;
 public class SongStart : MonoBehaviour
 {
 
-   public AudioSource audioSource;
 
 
     private void Start()
@@ -19,5 +18,8 @@ public class SongStart : MonoBehaviour
     {
         SongManager.instance.SongChange(4);
     }
-
+    public void SongChanges(int index)
+    {
+        SongManager.instance.SongChange(index);
+    }
 }
