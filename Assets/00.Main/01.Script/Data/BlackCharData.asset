@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f070ad2ef13da84c91d4eb35aa1c01c, type: 3}
+  m_Name: BlackCharData
+  m_EditorClassIdentifier: 
+  characterName: "\uAC80\uC815\uACF5\uC8FC"
+  characterInfo: "\uAC80\uC815\uC0C9\uAE54\uACF5\uC8FC"
+  characteristic: "\uAC80\uC815\uC0C9\uAE54\uC774\uB2E4"
+  moveSpeed: 6
+  hp: 9

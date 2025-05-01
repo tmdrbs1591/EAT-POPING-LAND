@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class MenuCameraMove : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] private Transform charSelectCameraPos;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
+    [Header("UI")]
     [SerializeField] private GameObject charSelectBtn;
     [SerializeField] private RectTransform charSelectPanel;
     [SerializeField] private RectTransform charImfoPanel;
 
+    [Header("Vector")]
     private Vector2 charSelectPanelOriginalPos;
     private Vector2 charImfoPanelOriginalPos;
 

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f070ad2ef13da84c91d4eb35aa1c01c, type: 3}
+  m_Name: RedCharData
+  m_EditorClassIdentifier: 
+  characterName: "\uD551\uD06C\uACF5\uC8FC"
+  characterInfo: "\uC774 \uCE94\uB514\uB098\uB77C\uB97C \uB9CC\uB4E0 \uC7A5\uBCF8\uC778\uC774\uB77C\uACE0
+    \uC544\uBB34 \uADFC\uAC70\uB3C4 \uC5C6\uC774 \uC8FC\uC7A5\uD558\uB294 \uC815\uC2E0\uBCD1\uC790
+    \uBBF8\uCE5C\uACF5\uC8FC"
+  characteristic: "\uC804\uD22C\uB54C 2\uB2E8 \uB300\uC26C\uAC00 \uAC00\uB2A5\uD558\uB2E4"
+  moveSpeed: 5
+  hp: 7

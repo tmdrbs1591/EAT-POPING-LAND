@@ -2,12 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     private Stack<GameObject> uiStack = new Stack<GameObject>();
+
+    [Header("캐릭터 선택 버튼")]
+    [SerializeField] Button redButton;
+    [SerializeField] Button blueButton;
+    [SerializeField] Button yellowButton;
+    [SerializeField] Button blackButton;
+
+    [Header("Data")]
+    [SerializeField] CharacterInfoData redCharacterInfoData;
+    [SerializeField] CharacterInfoData yellowCharacterInfoData;
+    [SerializeField] CharacterInfoData blueCharacterInfoData;
+    [SerializeField] CharacterInfoData blackCharacterInfoData;
+
+    [Header("UI")]
+    [SerializeField] TMP_Text chracterNameText;
+    [SerializeField] TMP_Text chracterInfoText;
+    [SerializeField] TMP_Text chracteristiclText;
+    [SerializeField] Slider moveSpeedSldier;
+    [SerializeField] Slider hpSldier;
+
+    private Coroutine hpCoroutine;
+    private Coroutine moveSpeedCoroutine;
+
+    private List<Button> buttons = new List<Button>();
+    private int currentIndex = 0;
+
+    private Vector3 buttonSpacing = new Vector3(180f, 0, 0); // 버튼 간 간격
+
+    void Awake()
+    {
+
+        buttons.Add(redButton);
+        buttons.Add(blueButton);
+        buttons.Add(yellowButton);
+        buttons.Add(blackButton);
+    }
+
+    void Start()
+    {
+        UpdateButtonPositions();
+    }
 
     void Update()
     {
@@ -29,32 +71,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
-
-    [SerializeField] Button redButton;
-    [SerializeField] Button blueButton;
-    [SerializeField] Button yellowButton;
-    [SerializeField] Button blackButton;
-
-    private List<Button> buttons = new List<Button>();
-    private int currentIndex = 0;
-
-    private Vector3 buttonSpacing = new Vector3(180f, 0, 0); // 버튼 간 간격
-
-    void Awake()
-    {
-
-        buttons.Add(redButton);
-        buttons.Add(blueButton);
-        buttons.Add(yellowButton);
-        buttons.Add(blackButton);
-    }
-
-    void Start()
-    {
-        UpdateButtonPositions();
-    }
-
 
     void UpdateButtonPositions()
     {
@@ -85,8 +101,53 @@ public class UIManager : MonoBehaviour
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
         Debug.Log("선택된 캐릭터 타입: " + CharacterManager.instance.characterType);
+
+
+        switch (CharacterManager.instance.characterType)
+        {
+            case CharacterType.Red:
+                InfoUIUpdate(redCharacterInfoData);
+                break;
+            case CharacterType.Yellow:
+                InfoUIUpdate(yellowCharacterInfoData);
+                break;
+            case CharacterType.Blue:
+                InfoUIUpdate(blueCharacterInfoData);
+                break;
+            case CharacterType.Black:
+                InfoUIUpdate(blackCharacterInfoData);
+                break;
+        }
+
+    }
+    public void InfoUIUpdate(CharacterInfoData cid)
+    {
+        chracterNameText.text = cid.characterName;
+        chracterInfoText.text = cid.characterInfo;
+        chracteristiclText.text = cid.characteristic;
+
+        if (hpCoroutine != null) StopCoroutine(hpCoroutine);
+        if (moveSpeedCoroutine != null) StopCoroutine(moveSpeedCoroutine);
+
+        hpCoroutine = StartCoroutine(SmoothSliderUpdate(hpSldier, cid.hp / 10f));
+        moveSpeedCoroutine = StartCoroutine(SmoothSliderUpdate(moveSpeedSldier, cid.moveSpeed / 10f));
     }
 
+    private IEnumerator SmoothSliderUpdate(Slider slider, float targetValue)
+    {
+        float duration = 0.1f;
+        float elapsed = 0f;
+        float startValue = slider.value;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            slider.value = Mathf.Lerp(startValue, targetValue, elapsed / duration);
+            yield return null;
+        }
+
+        slider.value = targetValue;
+    }
 
     // UI 오브젝트를 스택에 추가하면서 활성화
     public void OpenUI(GameObject uiObject)
