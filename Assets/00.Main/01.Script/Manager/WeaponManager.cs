@@ -19,6 +19,9 @@ public class WeaponManager : MonoBehaviour
     public WeaponType currentWeaponType;
 
     public WeaponUI weaponUIScript;
+
+    [SerializeField] private GameObject shopPanel;
+
     private void Awake()
     {
         instance = this;
@@ -30,5 +33,9 @@ public class WeaponManager : MonoBehaviour
         currentWeaponType = newWeaponType;
         weaponUIScript.UIUpate();
         Debug.Log("¹«±â º¯°æµÊ: " + currentWeaponType);
+    }
+    public void ShopPanelOpen()
+    {
+        shopPanel.gameObject.SetActive(true);
     }
 }

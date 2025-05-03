@@ -49,7 +49,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
 
                 case ColorType.Shop:
                     Debug.Log("Shop");
-                    EndTurn();
+                    WeaponManager.instance.ShopPanelOpen();
                     return;
 
                 case ColorType.Money:
