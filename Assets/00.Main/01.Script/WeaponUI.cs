@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon;
+using Photon.Pun;
 
-public class WeaponUI : MonoBehaviour
+public class WeaponUI : MonoBehaviourPunCallbacks
 {
+    public PhotonView pv;
     [SerializeField] Image[] weaponImage;
 
     [SerializeField] Sprite candySprite;
@@ -16,7 +19,11 @@ public class WeaponUI : MonoBehaviour
 
     private void Awake()
     {
-        WeaponManager.instance.weaponUIScript = this;
+        if (pv.IsMine)
+        {
+            WeaponManager.instance.weaponUIScript = this;
+
+        }
     }
     public void UIUpate()
     {
