@@ -25,11 +25,11 @@ public class WeaponUI : MonoBehaviourPunCallbacks
 
         }
     }
-    public void UIUpate()
+    public void UIUpate(WeaponType weaponType)
     {
         for (int i = 0; i < weaponImage.Length; i++)
         {
-            switch (WeaponManager.instance.currentWeaponType)
+            switch (weaponType)
             {
                 case WeaponType.Candy:
                     weaponImage[i].sprite = candySprite;
@@ -52,4 +52,5 @@ public class WeaponUI : MonoBehaviourPunCallbacks
             }
         }
     }
+
 }

@@ -14,7 +14,9 @@ public class TitleUIBounce : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 originalScale;
 
-    private void Start()
+
+
+    private void OnEnable()
     {
         originalPosition = transform.localPosition;
         originalScale = transform.localScale;
@@ -22,7 +24,6 @@ public class TitleUIBounce : MonoBehaviour
         transform.localPosition = originalPosition - new Vector3(0, startOffsetY, 0); // ¹Ø¿¡ ´ë±â
         Invoke(nameof(StartBounce), waitTime); // waitTime ±â´Ù·È´Ù Æ¢¾î¿À¸§
     }
-
     private void StartBounce()
     {
         Sequence bounceSequence = DOTween.Sequence();
