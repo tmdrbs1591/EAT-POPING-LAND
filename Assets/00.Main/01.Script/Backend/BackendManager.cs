@@ -7,9 +7,15 @@ public class BackendManager : MonoBehaviour
 {
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         BackendSetup();
     }
-
+    private void Update()
+    {
+        if (Backend.IsInitialized) {
+            Backend.AsyncPoll();
+        }
+    }
     private void BackendSetup()
     {
         var bro = Backend.Initialize(true);
