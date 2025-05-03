@@ -10,6 +10,8 @@ public class TitleSceneLoad : MonoBehaviour
     public Slider loadingBar; // 로딩 바 슬라이더 참조
     public float messageInterval = 1.0f; // 메시지가 변경되는 간격 (좀 더 빠르게)
 
+    [SerializeField] GameObject loginButton;
+
     bool iskey;
 
     private string[] loadingMessages = new string[]
@@ -68,14 +70,15 @@ public class TitleSceneLoad : MonoBehaviour
             {
                 loadingFinished = true;
                 loadingBar.gameObject.SetActive(false); // 슬라이더 숨기기
-                loadingText.text = "-아무 키나 눌러주세요-"; // 로딩 완료 메시지 표시
+                loadingText.gameObject.SetActive(false);
+                loginButton.SetActive(true);
             }
         }
 
         // 로딩이 완료된 후 키를 눌렀을 때 씬 로드
         if (loadingFinished && Input.anyKey)
         {
-            StartCoroutine(SceneLoad());
+            //StartCoroutine(SceneLoad());
         }
     }
 
