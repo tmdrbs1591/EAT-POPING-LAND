@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using BackEnd;
-
+using System.Collections;
+using System.Collections.Generic;
 public class Nickname : LoginBase
 {
 	[System.Serializable]
@@ -17,7 +18,10 @@ public class Nickname : LoginBase
 	[SerializeField]
 	private Button btnUpdateNickname;  // "닉네임 설정" 버튼 (상호작용 가능/불가능)
 
-	private void OnEnable()
+    [SerializeField] GameObject nickNameInputPanel;
+
+
+    private void OnEnable()
 	{
 		// 닉네임 변경에 실패해 에러 메시지를 출력한 상태에서
 		// 닉네임 변경 팝업을 닫았다가 열 수 있기 때문에 상태를 초기화
@@ -56,6 +60,8 @@ public class Nickname : LoginBase
 
 				// 닉네임 변경에 성공했을 때 onNicknameEvent에 등록되어 있는 이벤트 메소드 호출
 				onNicknameEvent?.Invoke();
+
+				StartCoroutine(ExitCor());
 			}
 			// 닉네임 변경 실패
 			else
@@ -79,5 +85,11 @@ public class Nickname : LoginBase
 			}
 		});
 	}
+	IEnumerator ExitCor()
+	{
+		yield return new WaitForSeconds(1f);
+		nickNameInputPanel.SetActive(false);
+	}
+
 }
 
