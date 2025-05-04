@@ -198,7 +198,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-
+        PhotonNetwork.LocalPlayer.NickName = UserInfo.Data.nickname;
         Player[] players = PhotonNetwork.PlayerList;
         for (int i = 0; i < players.Count(); i++)
         {
