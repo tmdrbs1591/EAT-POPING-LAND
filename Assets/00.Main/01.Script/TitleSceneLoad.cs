@@ -82,13 +82,5 @@ public class TitleSceneLoad : MonoBehaviour
         }
     }
 
-    IEnumerator SceneLoad()
-    {
-        if (!iskey)
-        {
-            FadeManager.instance.FadeIn();
-            yield return new WaitForSeconds(1f);
-            LoadingManager.LoadScene(SceneName); // ¾À ·Îµå
-        }
-    }
+   
 }

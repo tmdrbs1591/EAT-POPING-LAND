@@ -45,6 +45,7 @@ public class Login : LoginBase
             if (callback.IsSuccess())
             {
                 SetMessage($"{inputFieldID.text}님 환영합니다.");
+                StartCoroutine(SceneLoad());
             }
             else
             {
@@ -90,5 +91,12 @@ public class Login : LoginBase
             SetMessage($"로그인 중입니다 ... {time:F1}");
             yield return null;
         }
+    }
+
+    IEnumerator SceneLoad()
+    {
+            FadeManager.instance.FadeIn();
+            yield return new WaitForSeconds(1f);
+            LoadingManager.LoadScene("00.Room"); // 씬 로드
     }
 }

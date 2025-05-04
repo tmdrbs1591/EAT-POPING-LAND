@@ -51,6 +51,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
+        Disconnect();
+        Connect();
         Screen.SetResolution(960, 540, false);
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "asia";
@@ -59,6 +61,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void Start()
     {
+        
         if (!PhotonNetwork.IsMasterClient)
         {
             StartButton.SetActive(false);
@@ -135,7 +138,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         LobbyPanel.SetActive(true);
         RoomPanel.SetActive(false);
-        PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
+        PhotonNetwork.LocalPlayer.NickName = UserInfo.Data.nickname;
+        Debug.Log("UserInfo 닉네임: " + UserInfo.Data.nickname);  // 확인용 로그
         WelcomeText.text = PhotonNetwork.LocalPlayer.NickName + "님 환영합니다";
         myList.Clear();
     }
