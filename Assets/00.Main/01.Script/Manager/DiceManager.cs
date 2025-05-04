@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,12 +27,16 @@ public class DiceManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isDice && !BattleManager.instance.isBattle)
+        Player[] players = PhotonNetwork.PlayerList;
+
+        if (Input.GetKeyDown(KeyCode.Space)
+            && players[TurnManager.instance.currentPlayerIndex] == PhotonNetwork.LocalPlayer
+            && !isDice
+            && !BattleManager.instance.isBattle)
         {
-            AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1);// 오디오 재생
+            AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1); // 오디오 재생
 
             TurnManager.instance.diceUI.SetActive(false);
-
             isDice = true;
             RollDice();
             StartCoroutine(ResultTextCor());
@@ -39,6 +44,7 @@ public class DiceManager : MonoBehaviour
 
         diceResultText.text = diceResult.ToString();
     }
+
 
     void RollDice()
     {

@@ -29,6 +29,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     [SerializeField] GameObject playerSprite;
     [SerializeField] GameObject playerNickUI;
 
+    public int currentPlayerIndex;
 
     private List<string> currentValidDirections = new List<string>(); // 현재 감지된 방향 리스트
     private string lastDirection = ""; // 마지막 이동한 방향
@@ -80,9 +81,9 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             return;
 
         if (Input.GetKeyDown(KeyCode.Space) &&
-            TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 &&
-            !isMove &&
-            !TurnManager.instance.isCountingDown && !BattleManager.instance.isBattle)
+       TurnManager.instance.IsMyTurn() &&
+       !isMove &&
+       !TurnManager.instance.isCountingDown && !BattleManager.instance.isBattle)
         {
             StartCoroutine(DiceResultCor());
             uiCanvas.SetActive(true);
