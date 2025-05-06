@@ -22,9 +22,8 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         {
             ui.SetActive(false);
         }
+        uiIndex = GetPlayerIndex(photonView.Owner);
 
-        // 로컬 플레이어의 PhotonView.ActorNumber를 기반으로 자신에게 해당하는 UI 인덱스 계산
-        uiIndex = (photonView.Owner.ActorNumber - 1) % uiPositions.Length;
 
         // 자신의 UI만 활성화
         uiPositions[uiIndex].SetActive(true);
@@ -70,7 +69,7 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        int targetIndex = (targetPlayer.ActorNumber - 1) % moneyTexts.Length;
+        int targetIndex = GetPlayerIndex(targetPlayer);
 
         if (changedProps.ContainsKey("Money"))
         {
@@ -180,4 +179,16 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         else
             return $"{remain}";
     }
+
+    private int GetPlayerIndex(Player player)
+    {
+        Player[] players = PhotonNetwork.PlayerList; // 현재 룸에 있는 플레이어 목록 (Join 순)
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].ActorNumber == player.ActorNumber)
+                return i;
+        }
+        return -1; // 에러 처리
+    }
+
 }

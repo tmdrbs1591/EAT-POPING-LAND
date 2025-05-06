@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using System.IO;
+using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -39,10 +40,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (scene.name == "01.Ingame")
         {
 
-         //   PhotonNetwork.SendRate = 100; // 기본값은 10
-          //  PhotonNetwork.SerializationRate = 100; // 기본값은 10
+            //   PhotonNetwork.SendRate = 100; // 기본값은 10
+            //  PhotonNetwork.SerializationRate = 100; // 기본값은 10
 
-            int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            // RoomManager.cs 안 StartGame 이후, 플레이어 스폰 시점에 실행
+            Player[] players = PhotonNetwork.PlayerList; // 이건 자동 정렬됨 (입장 순서)
+
+            // 나의 인덱스를 입장 순서로 계산
+            int playerIndex = System.Array.IndexOf(players, PhotonNetwork.LocalPlayer);
+
+            // 스폰 포인트 가져오기
             Transform spawnPoint = SpawnPoint.instance.GetSpawnPoint(playerIndex);
 
             var player = PhotonNetwork.Instantiate(CharacterManager.instance.characterType.ToString()+"Player", spawnPoint.position, Quaternion.identity);
