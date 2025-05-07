@@ -89,6 +89,9 @@ MonoBehaviour:
   - DestroyRPC
   - InitUI
   - SetCharacterSkinAndAnimation
+  - AnimateUIHighlightRPC
+  - ToggleTurnUIRPC
+  - MyTurnUIRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

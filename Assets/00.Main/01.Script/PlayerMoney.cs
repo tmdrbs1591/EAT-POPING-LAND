@@ -12,9 +12,21 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
     public TextMeshProUGUI[] moneyTexts; // 돈 텍스트
     public TextMeshProUGUI[] nameTexts;  // 이름 텍스트
 
+
     public int money = 100; // 초기 돈
     public int uiIndex;     // UI 인덱스
 
+    public GameObject[] myTurnUI; 
+
+
+    private void Awake()
+    {
+       if (photonView.IsMine)
+        {
+            TurnManager.instance.playerMoneyScript = this;
+
+        }
+    }
     void Start()
     {
         // 모든 UI 비활성화
@@ -190,5 +202,43 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         }
         return -1; // 에러 처리
     }
+public void SetTurnHighlight(bool isMyTurn)
+{
+    photonView.RPC("AnimateUIHighlightRPC", RpcTarget.AllBuffered, uiIndex, isMyTurn);
+
+    if (photonView.IsMine)
+    {
+    photonView.RPC("MyTurnUIRPC", RpcTarget.AllBuffered,isMyTurn);
+        }
+    }
+    [PunRPC]
+    private void AnimateUIHighlightRPC(int index, bool isHighlight)
+    {
+        Transform uiTransform = uiPositions[index].transform;
+        uiTransform.DOKill(); // 기존 tween 제거
+
+        if (isHighlight)
+        {
+            uiTransform.DOScale(5.5f, 0.3f)
+                .SetEase(Ease.OutBack)
+                .SetUpdate(true);
+        }
+        else
+        {
+            uiTransform.DOScale(5f, 0.3f)
+                .SetEase(Ease.InOutSine)
+                .SetUpdate(true);
+         
+        }
+    }
+
+    [PunRPC]
+    private void MyTurnUIRPC(bool isMyTurn)
+    {
+        foreach (var ui in myTurnUI)
+        {
+            ui.SetActive(isMyTurn);
+        }
+    } 
 
 }

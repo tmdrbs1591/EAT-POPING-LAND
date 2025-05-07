@@ -23,6 +23,8 @@ public class TurnManager : MonoBehaviourPunCallbacks
     public GameObject diceUI;
     public GameObject otherDiceUI;
     public GameObject prisonUI;
+
+    public PlayerMoney playerMoneyScript; // 내 턴때 ui 커지게 하기위해 
     private void Awake()
     {
         instance = this;
@@ -78,7 +80,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         // 내 차례일 때
         if (PhotonNetwork.LocalPlayer.ActorNumber == playerIndex + 1)
         {
-            if (isPrison)
+            if (isPrison) // 감옥일때
             {
                 prisonUI.SetActive(false);
                 prisonUI.SetActive(true);
@@ -90,6 +92,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
             {
                 diceUI.SetActive(true);
                 DiceManager.instance.enabled = true; // 주사위 활성화
+                playerMoneyScript.SetTurnHighlight(true);
                 myTurnPanel.SetActive(true);
                 Debug.Log("나의 턴!");
             }
@@ -115,6 +118,9 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
         Debug.Log("턴 끝");
         DiceManager.instance.isDice = false;
+        playerMoneyScript.SetTurnHighlight(false);
+
+
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
