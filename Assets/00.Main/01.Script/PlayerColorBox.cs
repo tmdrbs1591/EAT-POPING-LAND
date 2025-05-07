@@ -101,7 +101,6 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                                 holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                                 holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, photonView.Owner.NickName);
                             }
-                            EndTurn();
                         }
                         else
                         {
