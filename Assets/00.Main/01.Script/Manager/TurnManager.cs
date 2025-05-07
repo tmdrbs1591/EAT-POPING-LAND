@@ -75,16 +75,8 @@ public class TurnManager : MonoBehaviourPunCallbacks
     {
         currentPlayerIndex = playerIndex;
 
-        Player[] players = PhotonNetwork.PlayerList;
-        if (playerIndex >= players.Length)
-        {
-            Debug.LogWarning("playerIndex가 현재 플레이어 수보다 큽니다.");
-            return;
-        }
-
-        Player currentTurnPlayer = players[playerIndex];
-
-        if (PhotonNetwork.LocalPlayer == currentTurnPlayer)
+        // 내 차례일 때
+        if (PhotonNetwork.LocalPlayer.ActorNumber == playerIndex + 1)
         {
             if (isPrison)
             {
@@ -97,22 +89,22 @@ public class TurnManager : MonoBehaviourPunCallbacks
             else
             {
                 diceUI.SetActive(true);
-                DiceManager.instance.enabled = true;
+                DiceManager.instance.enabled = true; // 주사위 활성화
                 myTurnPanel.SetActive(true);
                 Debug.Log("나의 턴!");
             }
+           
+
+
         }
         else
         {
             DiceManager.instance.enabled = false;
             myTurnPanel.SetActive(false);
             otherDiceUI.SetActive(true);
-        }
-    }
 
-    public bool IsMyTurn()
-    {
-        return PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[currentPlayerIndex];
+
+        }
     }
 
     public void EndTurn()
