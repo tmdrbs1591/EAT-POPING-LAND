@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.34472525, b: 0.36946774, a: 1}
+  m_Color: {r: 0.735849, g: 0.32974365, b: 0.35111773, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -47855,8 +47855,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAYER1 WIN!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8ee6b85852e42c46b7d7b937352764a, type: 2}
-  m_sharedMaterial: {fileID: -759619409155714407, guid: e8ee6b85852e42c46b7d7b937352764a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a1dec540da8171541b3bb44637a2ca16, type: 2}
+  m_sharedMaterial: {fileID: 4694938459003218641, guid: a1dec540da8171541b3bb44637a2ca16, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -47886,7 +47886,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

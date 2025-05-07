@@ -101,7 +101,7 @@ public class PlayerColor : MonoBehaviourPun
                 break;
         }
 
-        newColor.a = 0.5f; // 알파값을 반으로 줄임
+        newColor.a = 0.8f; // 알파값을 반으로 줄임
         spriteRenderer.color = newColor;
     } // 발 밑에 색깔
 
