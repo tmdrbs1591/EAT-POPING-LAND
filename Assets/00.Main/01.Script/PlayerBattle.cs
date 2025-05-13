@@ -342,7 +342,7 @@ private void FlipRPC()
                 AsncAnimation(animClip[(int)AnimState.Walk], true, 1.4f);
                 break;
             case AnimState.Attack:
-                AsncAnimation(animClip[(int)AnimState.Attack], true, 1.4f);
+                AsncAnimation(animClip[(int)AnimState.Attack], true, 1.25f);
                 break;
         }
     }
