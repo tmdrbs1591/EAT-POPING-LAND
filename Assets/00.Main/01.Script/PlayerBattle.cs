@@ -5,6 +5,12 @@ using Photon.Pun;
 using UnityEngine.UI;
 using Spine.Unity;
 
+public enum AttackType
+{
+    Melee,
+    Distance,
+
+}
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBattle : MonoBehaviourPun
 {
@@ -39,6 +45,8 @@ public class PlayerBattle : MonoBehaviourPun
     public AnimationReferenceAsset[] animClip;
 
     public Animator meleeWeaponAnim;
+
+    public AttackType attackType;
 
     public enum AnimState
     {
@@ -96,8 +104,10 @@ public class PlayerBattle : MonoBehaviourPun
         {
             nextAttackTime = Time.time + attackCooldown;
 
+            if(attackType == AttackType.Melee)
             Attack();
-            //   Fire();
+            else if (attackType == AttackType.Distance)
+             Fire();
         }
 
 

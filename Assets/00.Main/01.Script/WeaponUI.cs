@@ -11,6 +11,7 @@ public class WeaponUI : MonoBehaviourPunCallbacks
     [SerializeField] Image[] weaponImage;
 
     [SerializeField] SpriteRenderer meleeWeaponRen;
+    [SerializeField] SpriteRenderer distanceWeaponRen;
 
     [SerializeField] Sprite candySprite;
     [SerializeField] Sprite knifeSprite;
@@ -19,6 +20,7 @@ public class WeaponUI : MonoBehaviourPunCallbacks
     [SerializeField] Sprite bubbleGunSprite;
     [SerializeField] Sprite magicWandSprite;
 
+    public PlayerBattle playerBattleScript;
     private void Awake()
     {
         if (pv.IsMine)
@@ -36,25 +38,44 @@ public class WeaponUI : MonoBehaviourPunCallbacks
                 case WeaponType.Candy:
                     weaponImage[i].sprite = candySprite;
                     meleeWeaponRen.sprite = candySprite;
+                    playerBattleScript.attackType = AttackType.Melee;
+                    meleeWeaponRen.gameObject.SetActive(true);
+                    distanceWeaponRen.gameObject.SetActive(false);
                     break;
                 case WeaponType.Knife:
                     weaponImage[i].sprite = knifeSprite;
                     meleeWeaponRen.sprite = knifeSprite;
-
+                    playerBattleScript.attackType = AttackType.Melee;
+                    meleeWeaponRen.gameObject.SetActive(true);
+                    distanceWeaponRen.gameObject.SetActive(false);
                     break;
                 case WeaponType.Bat:
                     weaponImage[i].sprite = batSprite;
                     meleeWeaponRen.sprite = batSprite;
-
+                    playerBattleScript.attackType = AttackType.Melee;
+                    meleeWeaponRen.gameObject.SetActive(true);
+                    distanceWeaponRen.gameObject.SetActive(false);
                     break;
                 case WeaponType.BoomGun:
                     weaponImage[i].sprite = boomGunSprite;
+                    distanceWeaponRen.sprite = boomGunSprite;
+                    playerBattleScript.attackType = AttackType.Distance;
+                    meleeWeaponRen.gameObject.SetActive(false);
+                    distanceWeaponRen.gameObject.SetActive(true);
                     break;
                 case WeaponType.BubbleGun:
                     weaponImage[i].sprite = bubbleGunSprite;
+                    distanceWeaponRen.sprite = bubbleGunSprite;
+                    playerBattleScript.attackType = AttackType.Distance;
+                    meleeWeaponRen.gameObject.SetActive(false);
+                    distanceWeaponRen.gameObject.SetActive(true);
                     break;
                 case WeaponType.MagicWand:
                     weaponImage[i].sprite = magicWandSprite;
+                    distanceWeaponRen.sprite = magicWandSprite;
+                    playerBattleScript.attackType = AttackType.Distance;
+                    meleeWeaponRen.gameObject.SetActive(false);
+                    distanceWeaponRen.gameObject.SetActive(true);
                     break;
             }
         }
