@@ -219,13 +219,13 @@ public void SetTurnHighlight(bool isMyTurn)
 
         if (isHighlight)
         {
-            uiTransform.DOScale(5.5f, 0.3f)
+            uiTransform.DOScale(4.8f, 0.3f)
                 .SetEase(Ease.OutBack)
                 .SetUpdate(true);
         }
         else
         {
-            uiTransform.DOScale(5f, 0.3f)
+            uiTransform.DOScale(4.4f, 0.3f)
                 .SetEase(Ease.InOutSine)
                 .SetUpdate(true);
          
