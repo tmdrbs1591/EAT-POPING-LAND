@@ -6,7 +6,6 @@ using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
 using Photon.Pun.Demo.PunBasics;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Spine.Unity;
 
 public class BattleManager : MonoBehaviourPun

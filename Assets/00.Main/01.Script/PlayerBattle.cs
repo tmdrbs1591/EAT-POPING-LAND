@@ -38,6 +38,8 @@ public class PlayerBattle : MonoBehaviourPun
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] animClip;
 
+    public Animator meleeWeaponAnim;
+
     public enum AnimState
     {
         Idle,
@@ -93,12 +95,11 @@ public class PlayerBattle : MonoBehaviourPun
         if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
         {
             nextAttackTime = Time.time + attackCooldown;
-            //Damage();
-            //StartCoroutine(BackToIdleAfterAttack(0.2f));
-            //photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
-            //photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Attack);
-            Fire();
+
+            Attack();
+            //   Fire();
         }
+
 
 
         //if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
@@ -124,6 +125,21 @@ public class PlayerBattle : MonoBehaviourPun
 
 
     }
+
+    public void Attack()
+    {
+        StartCoroutine(AttackCor());
+    }
+    IEnumerator  AttackCor()
+    {
+        meleeWeaponAnim.SetTrigger("Attack");
+        photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
+        StartCoroutine(BackToIdleAfterAttack(0.2f));
+        photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Attack);
+        yield return new WaitForSeconds(0.2f);
+        Damage();
+    }
+
     [PunRPC]
     void SetAnimStateRPC(int state)
     {
@@ -281,6 +297,7 @@ private void FlipRPC()
     {
         Collider[] colliders = Physics.OverlapBox(attackBoxPos.position, attackBoxSize / 2f);
 
+
         foreach (var collider in colliders)
         {
             if (collider.CompareTag("Player"))
@@ -315,7 +332,7 @@ private void FlipRPC()
                 AsncAnimation(animClip[(int)AnimState.Walk], true, 1.4f);
                 break;
             case AnimState.Attack:
-                AsncAnimation(animClip[(int)AnimState.Attack], true, 2f);
+                AsncAnimation(animClip[(int)AnimState.Attack], true, 1.4f);
                 break;
         }
     }
