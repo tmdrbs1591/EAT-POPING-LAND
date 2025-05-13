@@ -94,6 +94,7 @@ MonoBehaviour:
   - MyTurnUIRPC
   - UFOMove
   - AudioRealRPC
+  - ExplodeRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

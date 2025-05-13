@@ -110,7 +110,7 @@ public class PlayerBattle : MonoBehaviourPun
             else if (WeaponManager.instance.currentWeaponType == WeaponType.BubbleGun)
                 BubbleGunFire();
             else if (WeaponManager.instance.currentWeaponType == WeaponType.BoomGun)
-                Fire();
+                BoomGunFire();
         }
 
 
@@ -342,38 +342,27 @@ private void FlipRPC()
 
     #endregion
     #region 폭탄총
-    private void BooㅡGunFire()
+    private void BoomGunFire()
     {
         var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
-        // 1. 마우스 스크린 위치에서 Ray 쏘기
         Ray ray = battleCam.ScreenPointToRay(Input.mousePosition);
 
         CameraShake.instance.Shake(0.5f, 0.1f);
 
-        // 2. Ray를 쏴서 어디를 향할지 결정
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            // 목표 지점
             Vector3 targetPoint = hitInfo.point;
 
-            // 3. 방향 계산
-            Vector3 direction = (targetPoint - firePoint.position).normalized;
-            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, transform.rotation);
+            GameObject bombObj = PhotonNetwork.Instantiate("BoomBullet", firePoint.position, firePoint.rotation);
 
-            var bulletScript = bullet.GetComponent<PlayerBullet>();
-            if (bulletScript != null)
+            var bombScript = bombObj.GetComponent<BoomBullet>();
+            if (bombScript != null)
             {
-                bulletScript.shooterViewID = photonView.ViewID;
+                bombScript.targetPoint = targetPoint;
             }
 
             // 자기 자신과 충돌 무시
-            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
-
-            // 5. 총알에 힘 주기
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = direction * bulletSpeed;
-
-
+            Physics.IgnoreCollision(bombObj.GetComponent<Collider>(), GetComponent<Collider>());
         }
     }
     #endregion
