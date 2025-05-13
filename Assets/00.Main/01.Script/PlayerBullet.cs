@@ -7,6 +7,8 @@ public class PlayerBullet : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject destroyPtc;
 
+    [SerializeField] float damage;
+
     public int shooterViewID = -1; // 총알 만든 사람의 ViewID
     public Collider collider;
 
@@ -38,7 +40,7 @@ public class PlayerBullet : MonoBehaviourPunCallbacks
                 {
                     var otherPlayerScript = target.GetComponent<PlayerBattle>();
                     if (otherPlayerScript != null)
-                        otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 1f);
+                        otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, damage);
                          photonView.RPC("DestroyRPC", RpcTarget.All);
                 }
             }

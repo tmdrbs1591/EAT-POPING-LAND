@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using Spine.Unity;
+using System.Linq;
 
 public enum AttackType
 {
@@ -106,8 +107,10 @@ public class PlayerBattle : MonoBehaviourPun
 
             if(attackType == AttackType.Melee)
             Attack();
-            else if (attackType == AttackType.Distance)
-             Fire();
+            else if (WeaponManager.instance.currentWeaponType == WeaponType.BubbleGun)
+                BubbleGunFire();
+            else if (WeaponManager.instance.currentWeaponType == WeaponType.BoomGun)
+                Fire();
         }
 
 
@@ -268,6 +271,112 @@ private void FlipRPC()
     {
         dieCanvas.SetActive(false);
     }
+    #region 버블건
+
+    public int bulletCountPerShot = 5;
+    public float spreadAngle = 30f;
+    public float shotInterval = 0.1f;
+
+    public void BubbleGunFire()
+    {
+        StartCoroutine(RandomOrderFanFire());
+    }
+
+    IEnumerator RandomOrderFanFire()
+    {
+        var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
+        Ray ray = battleCam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            Vector3 targetPoint = hitInfo.point;
+            Vector3 baseDirection = (targetPoint - firePoint.position).normalized;
+
+            CameraShake.instance.Shake(0.5f, 0.1f);
+
+            // 부채꼴 방향 미리 계산
+            float angleStep = spreadAngle / (bulletCountPerShot - 1);
+            float startAngle = -spreadAngle / 2f;
+            List<Vector3> directions = new List<Vector3>();
+
+            for (int i = 0; i < bulletCountPerShot; i++)
+            {
+                float angle = startAngle + angleStep * i;
+                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
+                directions.Add(rotation * baseDirection);
+            }
+
+            // 순서를 랜덤하게 섞음
+            directions = directions.OrderBy(x => Random.value).ToList();
+
+            // 하나씩 시간차 발사
+            foreach (var direction in directions)
+            {
+                FireSingleBullet(direction);
+                yield return new WaitForSeconds(shotInterval);
+            }
+        }
+    }
+
+    void FireSingleBullet(Vector3 direction)
+    {
+        // 회전 유지: firePoint.rotation 사용
+        GameObject bullet = PhotonNetwork.Instantiate(
+            "BubbleBullet",
+            firePoint.position,
+            firePoint.rotation
+        );
+        AudioRPC(10);
+        var bulletScript = bullet.GetComponent<PlayerBullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.shooterViewID = photonView.ViewID;
+        }
+
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.velocity = direction * bulletSpeed;
+    }
+
+
+    #endregion
+    #region 폭탄총
+    private void BooㅡGunFire()
+    {
+        var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
+        // 1. 마우스 스크린 위치에서 Ray 쏘기
+        Ray ray = battleCam.ScreenPointToRay(Input.mousePosition);
+
+        CameraShake.instance.Shake(0.5f, 0.1f);
+
+        // 2. Ray를 쏴서 어디를 향할지 결정
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            // 목표 지점
+            Vector3 targetPoint = hitInfo.point;
+
+            // 3. 방향 계산
+            Vector3 direction = (targetPoint - firePoint.position).normalized;
+            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, transform.rotation);
+
+            var bulletScript = bullet.GetComponent<PlayerBullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.shooterViewID = photonView.ViewID;
+            }
+
+            // 자기 자신과 충돌 무시
+            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+            // 5. 총알에 힘 주기
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.velocity = direction * bulletSpeed;
+
+
+        }
+    }
+    #endregion
     private void Fire()
     {
         var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
@@ -360,5 +469,16 @@ private void FlipRPC()
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(attackBoxPos.position, attackBoxSize);
+    }
+
+    public void AudioRPC(int index)
+    {
+        photonView.RPC("AudioRealRPC", RpcTarget.All, index);
+    }
+
+    [PunRPC]
+    public void AudioRealRPC(int index)
+    {
+        AudioManager.instance.PlaySound(transform.position, index, Random.Range(1f, 1.2f), 1f);
     }
 }

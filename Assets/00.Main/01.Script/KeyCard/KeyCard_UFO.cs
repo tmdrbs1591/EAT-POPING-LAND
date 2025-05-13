@@ -102,6 +102,7 @@ public class KeyCard_UFO : MonoBehaviourPunCallbacks, KeyCardEvents
             if (index == 1)
             {
                 playerGO.SetActive(false);
+                AudioManager.instance.PlaySound(transform.position, 9, Random.Range(1f, 1f), 1f);
             }
         });
 
@@ -116,7 +117,8 @@ public class KeyCard_UFO : MonoBehaviourPunCallbacks, KeyCardEvents
                 var playerScript = targetPhotonView.GetComponent<PlayerControl>();
                 playerScript.ColorChange();
             }
-      
+
+            AudioManager.instance.PlaySound(transform.position, 9, Random.Range(1f, 1f), 1f);
 
             // UFO »ó½Â ¿¬Ãâ
             ufoTr.DOMoveY(40f, 1f).SetEase(Ease.InOutSine);
