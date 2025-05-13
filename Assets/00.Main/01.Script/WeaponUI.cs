@@ -10,6 +10,8 @@ public class WeaponUI : MonoBehaviourPunCallbacks
     public PhotonView pv;
     [SerializeField] Image[] weaponImage;
 
+    [SerializeField] SpriteRenderer meleeWeaponRen;
+
     [SerializeField] Sprite candySprite;
     [SerializeField] Sprite knifeSprite;
     [SerializeField] Sprite batSprite;
@@ -33,12 +35,17 @@ public class WeaponUI : MonoBehaviourPunCallbacks
             {
                 case WeaponType.Candy:
                     weaponImage[i].sprite = candySprite;
+                    meleeWeaponRen.sprite = candySprite;
                     break;
                 case WeaponType.Knife:
                     weaponImage[i].sprite = knifeSprite;
+                    meleeWeaponRen.sprite = knifeSprite;
+
                     break;
                 case WeaponType.Bat:
                     weaponImage[i].sprite = batSprite;
+                    meleeWeaponRen.sprite = batSprite;
+
                     break;
                 case WeaponType.BoomGun:
                     weaponImage[i].sprite = boomGunSprite;
