@@ -47,6 +47,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     private void Awake()
     {
         playerbattleScript = GetComponent<PlayerBattle>();
+        if (photonView.IsMine)
+        {
+            GameManager.instance.playerScript = this;
+        }
     }
     void Start()
     {

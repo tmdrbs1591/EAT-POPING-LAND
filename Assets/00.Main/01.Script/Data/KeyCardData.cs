@@ -18,6 +18,12 @@ public enum KeyCardType
 {
     None,
     UFO,
+    ShopOpen,
+    HoldLevelUp,
+    RandomPVP,
+    WeaponUpgrade,
+    Prison
+
 }
 
 [CreateAssetMenu(fileName = "New KeyCardDataList", menuName = "KeyCard/KeyCardDataList")]

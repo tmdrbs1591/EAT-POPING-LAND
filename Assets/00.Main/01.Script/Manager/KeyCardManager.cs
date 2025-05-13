@@ -18,6 +18,8 @@ public class KeyCardManager : MonoBehaviour
     public TMP_Text keyCardInfo;
     public Image keyCardImage; // Image -> Sprite로 변경
 
+    [Header("이벤트들")]
+   public KeyCard_UFO keycardUFO;
     private void Awake()
     {
         instance = this;
@@ -72,5 +74,30 @@ public class KeyCardManager : MonoBehaviour
         }
 
         keyCardLists = randomKeyCards; // 최종적으로 선택된 10개의 카드를 keyCardLists에 저장
+    }
+
+
+    public void KeyEventStart()
+    {
+        switch (keyCardType)
+        {
+            case KeyCardType.UFO:
+                keycardUFO.EventStart();
+                break;
+            case KeyCardType.ShopOpen:
+                break;
+            case KeyCardType.HoldLevelUp:
+                break;
+            case KeyCardType.RandomPVP:
+                break;
+            case KeyCardType.WeaponUpgrade:
+                break;
+            case KeyCardType.Prison:
+
+                break;
+
+
+
+        }
     }
 }
