@@ -353,18 +353,15 @@ private void FlipRPC()
         {
             Vector3 targetPoint = hitInfo.point;
 
-            GameObject bombObj = PhotonNetwork.Instantiate("BoomBullet", firePoint.position, firePoint.rotation);
+            object[] instantiationData = new object[] { targetPoint.x, targetPoint.y, targetPoint.z };
 
-            var bombScript = bombObj.GetComponent<BoomBullet>();
-            if (bombScript != null)
-            {
-                bombScript.targetPoint = targetPoint;
-            }
+            GameObject bombObj = PhotonNetwork.Instantiate("BoomBullet", firePoint.position, firePoint.rotation, 0, instantiationData);
 
             // 자기 자신과 충돌 무시
             Physics.IgnoreCollision(bombObj.GetComponent<Collider>(), GetComponent<Collider>());
         }
     }
+
     #endregion
     private void Fire()
     {

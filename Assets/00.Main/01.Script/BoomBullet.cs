@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using Photon.Pun;
 
 public class BoomBullet : MonoBehaviourPun
@@ -9,8 +9,22 @@ public class BoomBullet : MonoBehaviourPun
     public float damage = 50f;
     public GameObject explosionEffect;
 
+    private void Start()
+    {
+        // Instantiate Ïãú Ï†ÑÎã¨Îêú Îç∞Ïù¥ÌÑ∞ Ï≤òÎ¶¨
+        if (photonView.InstantiationData != null && photonView.InstantiationData.Length == 3)
+        {
+            float x = (float)photonView.InstantiationData[0];
+            float y = (float)photonView.InstantiationData[1];
+            float z = (float)photonView.InstantiationData[2];
+            targetPoint = new Vector3(x, y, z);
+        }
+    }
+
     private void Update()
     {
+        if (targetPoint == Vector3.zero) return;
+
         Vector3 dir = (targetPoint - transform.position).normalized;
         transform.position += dir * speed * Time.deltaTime;
 
@@ -31,7 +45,6 @@ public class BoomBullet : MonoBehaviourPun
         if (explosionEffect != null)
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
-        // π¸¿ß ≥ª ¿˚ ≈Ωªˆ
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var hit in hits)
         {
@@ -40,13 +53,15 @@ public class BoomBullet : MonoBehaviourPun
                 var pv = hit.GetComponent<PhotonView>();
                 if (pv != null && pv.ViewID != photonView.ViewID)
                 {
-                    pv.RPC("TakeDamage", RpcTarget.All, damage);
+                    if (!PhotonNetwork.IsMasterClient)
+                        pv.RPC("TakeDamage", RpcTarget.All, damage);
                 }
             }
         }
 
         Destroy(gameObject);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Object"))
@@ -55,4 +70,4 @@ public class BoomBullet : MonoBehaviourPun
             Destroy(gameObject);
         }
     }
-    }
+}
