@@ -8,6 +8,8 @@ public class CrownManager : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject resultPanel;
+
     public bool isOpen;
     public void Open()
     {
@@ -23,4 +25,14 @@ public class CrownManager : MonoBehaviour
         }
     }
 
+    public void GameEnd()
+    {
+        PlayerMoney playerMoney = GameManager.instance.playerScript.gameObject.GetComponent<PlayerMoney>();
+
+        if (playerMoney.money >= 10000)
+        {
+            playerMoney.AddMoney(-10000);
+            resultPanel.SetActive(true);
+        }
+    }
 }

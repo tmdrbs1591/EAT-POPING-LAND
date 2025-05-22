@@ -52,7 +52,7 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.I))
-                AddMoney(10);
+                AddMoney(1000);
         }
     }
 

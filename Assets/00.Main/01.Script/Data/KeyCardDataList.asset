@@ -17,20 +17,20 @@ MonoBehaviour:
     keyCardName: "\uCEA1\uC290\uC774\uC758 UFO"
     keyCardInfo: "\uCEA1\uC290\uC774\uAC00 UFO\uB97C \uD0DC\uC6CC \uC6D0\uD558\uB294
       \uB545\uC73C\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4"
-    keyCardImage: {fileID: 21300000, guid: 2faeaa41e2e98b14a9a1fe7400266d0b, type: 3}
+    keyCardImage: {fileID: 21300000, guid: fcf3e0b8dbdc2ff4f9808f7f48eccece, type: 3}
   - keyCardType: 2
     keyCardName: "\uC0C1\uC810\uC5F4\uAE30"
     keyCardInfo: "\uC0C1\uC810\uC744 \uC5FD\uB2C8\uB2E4."
-    keyCardImage: {fileID: 21300000, guid: 5ad5971e0bfb5124195be28157b6173a, type: 3}
+    keyCardImage: {fileID: 21300000, guid: ce682498ef75cdf49ac5b5414231866b, type: 3}
   - keyCardType: 1
     keyCardName: "\uB545 \uB808\uBCA8\uC5C5"
     keyCardInfo: "\uC6D0\uD558\uB294 \uB545\uC758 \uB808\uBCA8\uC744 1 \uC62C\uB9BD\uB2C8\uB2E4."
-    keyCardImage: {fileID: 21300000, guid: d3af0efec72c0794896e6085d47f49d1, type: 3}
+    keyCardImage: {fileID: 21300000, guid: 50d6c396806476f4daeff943267521cb, type: 3}
   - keyCardType: 1
     keyCardName: "\uBB34\uAE30 \uAC15\uD654"
     keyCardInfo: "\uBB34\uAE30 \uB808\uBCA8\uC744 1 \uC62C\uB9BD\uB2C8\uB2E4."
-    keyCardImage: {fileID: 21300000, guid: b866ef1255bd39349b14478d6fd914cb, type: 3}
+    keyCardImage: {fileID: 21300000, guid: 03334e4cd6609c8469c7e929de8698f7, type: 3}
   - keyCardType: 1
     keyCardName: "\uBC94\uC8C4\uC790"
     keyCardInfo: "\uAC10\uC625\uC73C\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4"
-    keyCardImage: {fileID: 21300000, guid: c43077ae59766224bbe29fe9c2397d75, type: 3}
+    keyCardImage: {fileID: 21300000, guid: 2acf9148f9ea9d64fa50d6e3b257f285, type: 3}

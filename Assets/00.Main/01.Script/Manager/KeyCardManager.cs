@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class KeyCardManager : MonoBehaviour
     public TMP_Text  keyCardName;
     public TMP_Text keyCardInfo;
     public Image keyCardImage; // Image -> Sprite로 변경
+
+    public Transform pricePos;
 
     [Header("이벤트들")]
    public KeyCard_UFO keycardUFO;
@@ -92,6 +95,8 @@ public class KeyCardManager : MonoBehaviour
             case KeyCardType.WeaponUpgrade:
                 break;
             case KeyCardType.Prison:
+                int targetViewID = GameManager.instance.playerScript.GetComponent<PhotonView>().ViewID;
+                keycardUFO.CallUFOMove(targetViewID, pricePos.transform);
 
                 break;
 
