@@ -35,6 +35,7 @@ public class WeaponManager : MonoBehaviourPunCallbacks
         props["WeaponType"] = (int)newWeaponType;
         props["WeaponOwner"] = PhotonNetwork.LocalPlayer.ActorNumber; // 누가 바꿨는지 표시
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+       
     }
 
     public override void OnRoomPropertiesUpdate(Hashtable changedProps)

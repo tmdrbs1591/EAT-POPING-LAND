@@ -9,6 +9,7 @@ public class WeaponButton : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float delayBeforeFade = 0.1f; // 알파 변화 시작 전 딜레이
     [SerializeField] private float fadeDuration = 0.5f;    // 알파가 1로 되기까지 걸리는 시간
+    [SerializeField] private int price;
 
     private void Awake()
     {
@@ -28,6 +29,12 @@ public class WeaponButton : MonoBehaviour
 
     public void OnClickChangeWeapon()
     {
-        WeaponManager.instance.WeaponChange(weaponTypeToSelect);
+        PlayerMoney playerMoney = GameManager.instance.playerScript.gameObject.GetComponent<PlayerMoney>();
+
+        if (playerMoney.money >= price)
+        {
+            WeaponManager.instance.WeaponChange(weaponTypeToSelect);
+        playerMoney.AddMoney(-price);
+        }
     }
 }
