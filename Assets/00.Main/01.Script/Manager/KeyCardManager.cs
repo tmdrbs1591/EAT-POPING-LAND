@@ -85,10 +85,9 @@ public class KeyCardManager : MonoBehaviour
                 keycardUFO.EventStart();
                 break;
             case KeyCardType.ShopOpen:
+                WeaponManager.instance.ShopPanelOpen(); 
                 break;
             case KeyCardType.HoldLevelUp:
-                break;
-            case KeyCardType.RandomPVP:
                 break;
             case KeyCardType.WeaponUpgrade:
                 break;

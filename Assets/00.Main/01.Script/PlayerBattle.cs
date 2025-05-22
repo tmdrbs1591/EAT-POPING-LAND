@@ -149,7 +149,7 @@ public class PlayerBattle : MonoBehaviourPun
         photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
         StartCoroutine(BackToIdleAfterAttack(0.2f));
         photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Attack);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         Damage();
     }
 
