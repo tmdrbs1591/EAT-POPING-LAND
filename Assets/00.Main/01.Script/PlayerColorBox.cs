@@ -44,6 +44,8 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                 case ColorType.Prison:
                     Debug.Log("Prison");
                     TurnManager.instance.isPrison = true;
+                    TurnManager.instance.prisonStartUI.SetActive(false);
+                    TurnManager.instance.prisonStartUI.SetActive(true);
                     EndTurn();
                     return;
 

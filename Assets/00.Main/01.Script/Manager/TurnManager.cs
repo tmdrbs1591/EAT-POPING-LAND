@@ -23,6 +23,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
     public GameObject diceUI;
     public GameObject otherDiceUI;
     public GameObject prisonUI;
+    public GameObject prisonStartUI;
 
     public PlayerMoney playerMoneyScript; // 내 턴때 ui 커지게 하기위해 
     private void Awake()

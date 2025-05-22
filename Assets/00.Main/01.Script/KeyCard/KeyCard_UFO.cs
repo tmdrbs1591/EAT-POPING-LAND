@@ -85,7 +85,7 @@ public class KeyCard_UFO : MonoBehaviourPunCallbacks, KeyCardEvents
 
         // 이동 경로 설정
         Vector3 midPos = playerPos.position + Vector3.up * 3f;
-        Vector3 endPos = holdPosPosition +Vector3.up * 2f; ;
+        Vector3 endPos = holdPosPosition +Vector3.up * 1f; ;
         Vector3[] path = new[] { startPos, midPos, endPos };
 
         // 부드러운 곡선 경로 이동
