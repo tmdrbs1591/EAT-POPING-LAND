@@ -1,11 +1,9 @@
 using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
-public class DiceManager : MonoBehaviour
+public class DiceManager : MonoBehaviourPunCallbacks
 {
     public static DiceManager instance;
 
@@ -19,6 +17,7 @@ public class DiceManager : MonoBehaviour
     public TMP_Text diceResultText;
 
     public bool isDice; // 주사위를 굴렸는가
+
     private void Awake()
     {
         instance = this;
@@ -26,47 +25,59 @@ public class DiceManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 && !isDice && !BattleManager.instance.isBattle)
+        // 자신의 턴이고, 아직 주사위를 안 굴렸으며, 전투 중이 아닐 때
+        if (Input.GetKeyDown(KeyCode.Space) &&
+            TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 &&
+            !isDice && !BattleManager.instance.isBattle)
         {
-            AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1);// 오디오 재생
-
+            isDice = true;
+            photonView.RPC(nameof(RPC_PlayDiceSound), RpcTarget.All);
             TurnManager.instance.diceUI.SetActive(false);
 
-            isDice = true;
-            RollDice();
-            StartCoroutine(ResultTextCor());
+            // 주사위 값 생성 및 모든 클라이언트에게 전송
+            int diceValue1 = Random.Range(1, 7);
+            int diceValue2 = Random.Range(1, 7);
+            photonView.RPC(nameof(RPC_SyncDice), RpcTarget.All, diceValue1, diceValue2);
         }
-
-        diceResultText.text = diceResult.ToString();
     }
 
-    void RollDice()
+    [PunRPC]
+    void RPC_SyncDice(int value1, int value2)
     {
-        int diceValue1 = Random.Range(1, 7);
-        int diceValue2 = Random.Range(1, 7);
+        diceResult = value1 + value2;
 
-        diceResult = diceValue1 + diceValue2;
-
-        dice1.SetValue(diceValue1);
-        dice2.SetValue(diceValue2);
+        dice1.SetValue(value1);
+        dice2.SetValue(value2);
 
         StartCoroutine(dice1.RollDiceAnimation());
         StartCoroutine(dice2.RollDiceAnimation());
 
-        Debug.Log($"주사위1: {diceValue1}, 주사위2: {diceValue2}, 합계: {diceResult}");
+        StartCoroutine(ResultTextCor());
+
+        Debug.Log($"[RPC] 주사위1: {value1}, 주사위2: {value2}, 합계: {diceResult}");
+    }
+
+    [PunRPC]
+    void RPC_PlayDiceSound()
+    {
+        AudioManager.instance.PlaySound(transform.position, 0, Random.Range(1f, 1.1f), 1f);
     }
 
     IEnumerator ResultTextCor()
     {
         DiceCamera.SetActive(true);
         dicePanel.SetActive(true);
+
+        diceResultText.text = diceResult.ToString();
         diceResultText.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1f);
+
         diceResultText.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(1f);
+
         dicePanel.SetActive(false);
         DiceCamera.SetActive(false);
-
-
     }
 }
