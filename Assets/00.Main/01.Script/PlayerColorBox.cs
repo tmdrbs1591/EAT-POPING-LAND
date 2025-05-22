@@ -17,7 +17,32 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
     public TMP_Text priceText;
     [SerializeField] private float rayLength = 3f; // 인스펙터에서 조절 가능하게
 
+    private void Update()
+    {
+       
+    }
+    public void HoldDown()
+    {
+        Vector3 center = transform.position + Vector3.down * (rayLength / 2f);
+        Vector3 halfExtents = new Vector3(0.5f, rayLength / 2f, 0.5f); // 너비, 높이 반절
+        Collider[] hits = Physics.OverlapBox(center, halfExtents);
 
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag("PointBox"))
+            {
+                Hold hold = hit.GetComponent<Hold>();
+                if (hold != null)
+                {
+                    hold.PlaySteppedAnimation();
+                }
+                else
+                {
+                    Debug.LogWarning($"'{hit.name}' 오브젝트에 Hold 컴포넌트가 없습니다.");
+                }
+            }
+        }
+    }
 
     public void CheckPointBelow()
     {

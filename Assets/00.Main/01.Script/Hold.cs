@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 public enum ColorType
 {
     Red,
@@ -120,6 +121,17 @@ public class Hold : MonoBehaviour
         Instantiate(HoldInfoManager.instance.upgradeEffect, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
         AudioManager.instance.PlaySound(transform.position, 7, Random.Range(1f, 1f), 1f);
         Debug.Log("레벨업!");
+    }
+
+    public void PlaySteppedAnimation()
+    {
+        // 처음 위치
+        Vector3 originalPos = transform.localPosition;
+
+        // 내려갔다가 올라오는 시퀀스
+        Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOLocalMoveY(originalPos.y - 1f, 0.1f).SetEase(Ease.OutQuad)); // 아래로
+        seq.Append(transform.DOLocalMoveY(originalPos.y, 0.13f).SetEase(Ease.InQuad));         // 다시 위로
     }
 
 }
