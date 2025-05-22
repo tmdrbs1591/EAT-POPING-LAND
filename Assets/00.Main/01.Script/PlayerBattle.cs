@@ -36,6 +36,8 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
     [SerializeField] TMP_Text hptext;
+    [SerializeField] GameObject damageText;
+
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackCooldown = 1f;
@@ -252,8 +254,15 @@ private void FlipRPC()
         hpSlider.value = curHp/maxHp;
         hptext.text = curHp.ToString() + "/" + maxHp.ToString();
 
+        Vector3 randomOffset = new Vector3(
+         Random.Range(-1f, 2f),   // X 범위
+         Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
+         -0.2f                      // Z 고정
+     );
 
+        var tmp = Instantiate(damageText, transform.position + randomOffset, transform.rotation).GetComponent<TMP_Text>();
 
+        tmp.text = damage.ToString();
     }
     [PunRPC]
     public void SlashPtcOnRPC()

@@ -9,7 +9,7 @@ public class UILookAt : MonoBehaviourPunCallbacks
     void Start()
     {
         // 메인 카메라를 찾습니다.
-        Camera mainCamera = Camera.main;
+        Camera mainCamera = BattleManager.instance.battleCamera.GetComponent<Camera>(); 
 
         if (mainCamera == null)
         {
@@ -42,7 +42,7 @@ public class UILookAt : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         // 메인 카메라를 찾습니다.
-        Camera mainCamera = Camera.main;
+        Camera mainCamera = BattleManager.instance.battleCamera.GetComponent<Camera>();
 
         if (mainCamera == null)
         {
@@ -61,9 +61,9 @@ public class UILookAt : MonoBehaviourPunCallbacks
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-            Camera mainCamera = Camera.main;
+            Camera mainCamera = BattleManager.instance.battleCamera.GetComponent<Camera>();
 
-            if (mainCamera == null)
+        if (mainCamera == null)
             {
                 Debug.LogError("Main camera not found. Make sure it is tagged as 'MainCamera'.");
                 return;
