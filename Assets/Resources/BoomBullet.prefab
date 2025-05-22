@@ -283,7 +283,7 @@ MonoBehaviour:
   targetPoint: {x: 0, y: 0, z: 0}
   speed: 30
   explosionRadius: 3
-  damage: 1
+  damage: 10
   explosionEffect: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!1 &8654939898640415729
 GameObject:

@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyPtc: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
-  damage: 0.3
+  damage: 3
   shooterViewID: -1
   collider: {fileID: 4344224830074223418}
 --- !u!1 &8654939898640415729

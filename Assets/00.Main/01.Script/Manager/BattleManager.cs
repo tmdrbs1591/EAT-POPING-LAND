@@ -238,7 +238,7 @@ public class BattleManager : MonoBehaviourPun
             {
                 pv.RPC("RPC_SetBattlePosition", RpcTarget.All, position);
                 pv.RPC("RPC_SetRotation", RpcTarget.All, 40f, 0f, 0f);
-                pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0f, 1.8f, 2.8f);
+                pv.RPC("RPC_SetUIPosition", RpcTarget.All, -0.3f, 4f, 2.8f);
                 break;
             }
         }

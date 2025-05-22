@@ -5,6 +5,7 @@ using Photon.Pun;
 using UnityEngine.UI;
 using Spine.Unity;
 using System.Linq;
+using TMPro;
 
 public enum AttackType
 {
@@ -34,6 +35,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] ParticleSystem diePtc;
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
+    [SerializeField] TMP_Text hptext;
 
     [Header("공격 쿨타임")]
     [SerializeField] private float attackCooldown = 1f;
@@ -248,9 +250,10 @@ private void FlipRPC()
         CameraShake.instance.Shake(0.3f, 0.1f);
         curHp -= damage;
         hpSlider.value = curHp/maxHp;
+        hptext.text = curHp.ToString() + "/" + maxHp.ToString();
 
 
-        
+
     }
     [PunRPC]
     public void SlashPtcOnRPC()
@@ -409,7 +412,7 @@ private void FlipRPC()
             {
                 var otherPlayerScript = collider.GetComponent<PlayerBattle>();
                 if (otherPlayerScript != null)
-                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 1f);
+                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 10f);
             }
         }
     }
