@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Spine.Unity;
 using System.Linq;
 using TMPro;
+using DG.Tweening.Core.Easing;
 
 public enum AttackType
 {
@@ -38,6 +39,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] GameObject charSprite;
     [SerializeField] public Slider hpSlider;
     [SerializeField] ParticleSystem slashPtc;
+    [SerializeField] ParticleSystem slashPtc2;
     [SerializeField] ParticleSystem diePtc;
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
@@ -154,14 +156,28 @@ public class PlayerBattle : MonoBehaviourPun
     {
         StartCoroutine(AttackCor());
     }
-    IEnumerator  AttackCor()
+    private bool useFirstAttack = true; // Toggle용 변수
+
+    IEnumerator AttackCor()
     {
-        meleeWeaponAnim.SetTrigger("Attack");
+        photonView.RPC("WeaponAnimationRPC", RpcTarget.All);
         photonView.RPC("SlashPtcOnRPC", RpcTarget.All);
         StartCoroutine(BackToIdleAfterAttack(0.2f));
         photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Attack);
-        yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(0.05f);
         Damage();
+    }
+
+    [PunRPC]
+    void WeaponAnimationRPC()// 근접 애니메이션 동기화
+    {
+        // 애니메이션 트리거 번갈아 실행
+        string triggerName = useFirstAttack ? "Attack1" : "Attack2";
+        meleeWeaponAnim.SetTrigger(triggerName);
+
+        // 다음 공격 때 바뀌도록 토글
+        useFirstAttack = !useFirstAttack;
     }
 
     [PunRPC]
@@ -257,7 +273,7 @@ private void FlipRPC()
             AudioManager.instance.PlaySound(transform.position, 6, Random.Range(1f, 1f), 1f);
 
             damagePtc.Play();
-            CameraShake.instance.Shake(0.3f, 0.1f);
+            CameraShake.instance.Shake(0.7f, 0.1f);
             curHp -= damage;
             hpSlider.value = curHp / maxHp;
             hptext.text = curHp.ToString() + "/" + maxHp.ToString();
@@ -281,14 +297,26 @@ private void FlipRPC()
           Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
           -0.2f                      // Z 고정
       );
-            CameraShake.instance.Shake(0.5f, 0.1f);
+            CameraShake.instance.Shake(0.7f, 0.1f);
            Destroy(Instantiate(shieldText, transform.position + randomOffset, transform.rotation),2f);
         }
     }
+    private bool useFirstSlash = true;
+
     [PunRPC]
     public void SlashPtcOnRPC()
     {
-        slashPtc.Play();
+        AudioManager.instance.PlaySound(transform.position, 12, Random.Range(1f, 1.2f), 1f);
+        if (useFirstSlash)
+        {
+            slashPtc.Play();
+        }
+        else
+        {
+            slashPtc2.Play();
+        }
+
+        useFirstSlash = !useFirstSlash; // 다음 호출 때 번갈아
     }
     [PunRPC]
     public void DiePtcOnRPC()

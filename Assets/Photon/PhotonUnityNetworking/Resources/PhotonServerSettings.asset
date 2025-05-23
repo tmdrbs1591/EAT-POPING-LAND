@@ -100,6 +100,7 @@ MonoBehaviour:
   - RPC_SyncDice
   - ShieldRPC
   - SetShieldState
+  - WeaponAnimationRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

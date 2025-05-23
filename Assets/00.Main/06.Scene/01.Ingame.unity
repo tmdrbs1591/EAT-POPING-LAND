@@ -1003,6 +1003,7 @@ GameObject:
   - component: {fileID: 20446994}
   - component: {fileID: 20446996}
   - component: {fileID: 20446995}
+  - component: {fileID: 20446997}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1023,6 +1024,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1949630331}
+  - {fileID: 1580562337}
   m_Father: {fileID: 2093430404}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.7}
@@ -1069,6 +1071,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20446993}
   m_CullTransparentMesh: 1
+--- !u!95 &20446997
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20446993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 242be361f8d965f40a56f22b0306543e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &23056215
 GameObject:
   m_ObjectHideFlags: 0
@@ -25151,7 +25174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -38060,7 +38083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -48860,7 +48883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -62424,7 +62447,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2093430404}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -70253,17 +70276,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580562336}
-  m_LocalRotation: {x: -0, y: -0, z: 0.09515381, w: 0.9954626}
+  m_LocalRotation: {x: -0, y: -0, z: 0.04302551, w: 0.999074}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2093430404}
-  m_RootOrder: 4
+  m_Father: {fileID: 20446994}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.582}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.18176, y: 239.80865}
+  m_AnchoredPosition: {x: 303.9975, y: 30.258286}
   m_SizeDelta: {x: 1443.4767, y: 169.161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580562338
@@ -78024,7 +78047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -87470,7 +87493,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950171287}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -36.00888, y: 0, z: -115.05169}
   m_LocalScale: {x: 42, y: 42, z: 42}
   m_ConstrainProportionsScale: 1
@@ -87557,7 +87580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -94964,7 +94987,6 @@ RectTransform:
   - {fileID: 2077207839}
   - {fileID: 1932805561}
   - {fileID: 20446994}
-  - {fileID: 1580562337}
   - {fileID: 1412701948}
   m_Father: {fileID: 1972684168}
   m_RootOrder: 0

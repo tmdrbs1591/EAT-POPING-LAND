@@ -17,7 +17,6 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         if (player1 == null || player2 == null) return;
-
         Move();
     }
 
@@ -27,12 +26,17 @@ public class CameraFollow : MonoBehaviour
         float distance = GetGreatestDistance();
 
         float targetDistance = Mathf.Lerp(minDistance, maxDistance, distance / zoomLimiter);
-        Vector3 zoomDir = new Vector3(0, 0, -1).normalized; // 고정된 방향으로 줌 (z-방향)
+
+        // 카메라의 바라보는 방향 기준 뒤쪽으로 줌
+        Vector3 zoomDir = -transform.forward;
 
         Vector3 targetPosition = centerPoint + zoomDir * targetDistance + offset;
 
+        // Y값 고정 또는 제한하고 싶다면 아래 코드 사용 (선택)
+        // targetPosition.y = Mathf.Clamp(targetPosition.y, minY, maxY);
+
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-        transform.LookAt(centerPoint); // 항상 중심 바라보게
+        transform.LookAt(centerPoint);
     }
 
     Vector3 GetCenterPoint()
