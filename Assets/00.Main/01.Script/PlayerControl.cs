@@ -241,6 +241,9 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerbattleScript.hpSlider.gameObject.SetActive(true);
 
        playerbattleScript.hptext.text = playerbattleScript.curHp.ToString() + "/" + playerbattleScript.maxHp.ToString();
+
+        Debug.Log("배틀위치 이동 ~ ");
+
     }
     [PunRPC]
     public void RPC_SetRePosition(Vector3 newPosition) //원래 위치 이동
@@ -250,7 +253,10 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerbattleScript.photonView.RPC("DieCanvasFalseRPC", RpcTarget.All);
         playerbattleScript.hpSlider.gameObject.SetActive(false);
         BattleManager.instance.winnerPanel.SetActive(false);
-     
+
+        Debug.Log("위치 이동 ~ ");
+
+
     }
 
 

@@ -246,7 +246,6 @@ public class PlayerBattle : MonoBehaviourPun
         Time.fixedDeltaTime = 0.02f;
     }
 
-
     IEnumerator BattleLoseCor()
     {
         BattleManager.instance.BattleLose();
@@ -256,6 +255,7 @@ public class PlayerBattle : MonoBehaviourPun
         BattleManager.instance.photonView.RPC("RPC_BattlePanelFalse", RpcTarget.All);
         BattleManager.instance.photonView.RPC("ResetPosPlayerRPC",RpcTarget.All);
 
+        Debug.Log("제ㅔㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ");
 
     }
 

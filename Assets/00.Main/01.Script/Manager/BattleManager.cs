@@ -377,11 +377,17 @@ public class BattleManager : MonoBehaviourPun
                     pv.RPC("RPC_SetRotation", RpcTarget.All, 31.7f, 42.8f, 0f);
                     pv.RPC("RPC_SetUIPosition", RpcTarget.All, 1.1f, 3.36f, 0.53f);
                 }
-
-                if (winnerName == defenderName) // 배틀당한애가 이겼을때
+                else
                 {
-                    return;
+                    Debug.Log("해당 플레이어 ID의 위치 정보 없음!");
                 }
+
+                if (winnerName == defenderName)
+                {
+                    Debug.Log("배틀에서 디펜더가 승리. 위치 리셋 후 계속 진행.");
+                    continue;
+                }
+
                 else if (winnerName == challengerName) // 배틀 당한 애가 이겼을 때
                 {
                     if (playerID == winnerActorID)
