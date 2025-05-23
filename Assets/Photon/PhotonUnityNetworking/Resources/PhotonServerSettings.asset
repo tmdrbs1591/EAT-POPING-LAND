@@ -98,6 +98,8 @@ MonoBehaviour:
   - RollDiceStartRPC
   - RPC_PlayDiceSound
   - RPC_SyncDice
+  - ShieldRPC
+  - SetShieldState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

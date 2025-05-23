@@ -28,6 +28,12 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] private Transform firePoint; // 총알 발사 위치
     [SerializeField] private float bulletSpeed = 20f;
 
+    [Header("방패")]
+    [SerializeField] GameObject shield;
+    [SerializeField] bool isShielding;
+    [SerializeField] private float shieldCooldown = 1f;
+    private float nextShieldTime = 0f;
+
     [Header("UI")]
     [SerializeField] GameObject charSprite;
     [SerializeField] public Slider hpSlider;
@@ -37,6 +43,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] GameObject dieCanvas;
     [SerializeField] TMP_Text hptext;
     [SerializeField] GameObject damageText;
+    [SerializeField] GameObject shieldText;
 
 
     [Header("공격 쿨타임")]
@@ -104,7 +111,7 @@ public class PlayerBattle : MonoBehaviourPun
             return;
 
         Die();
-
+        ShieldOn();
         if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
         {
             nextAttackTime = Time.time + attackCooldown;
@@ -245,24 +252,38 @@ private void FlipRPC()
     [PunRPC]
     public void TakeDamage(float damage)
     {
+        if (!isShielding)
+        {
+            AudioManager.instance.PlaySound(transform.position, 6, Random.Range(1f, 1f), 1f);
 
-        AudioManager.instance.PlaySound(transform.position, 6, Random.Range(1f, 1f), 1f);
+            damagePtc.Play();
+            CameraShake.instance.Shake(0.3f, 0.1f);
+            curHp -= damage;
+            hpSlider.value = curHp / maxHp;
+            hptext.text = curHp.ToString() + "/" + maxHp.ToString();
 
-        damagePtc.Play();
-        CameraShake.instance.Shake(0.3f, 0.1f);
-        curHp -= damage;
-        hpSlider.value = curHp/maxHp;
-        hptext.text = curHp.ToString() + "/" + maxHp.ToString();
+            Vector3 randomOffset = new Vector3(
+             Random.Range(-1f, 2f),   // X 범위
+             Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
+             -0.2f                      // Z 고정
+         );
 
-        Vector3 randomOffset = new Vector3(
-         Random.Range(-1f, 2f),   // X 범위
-         Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
-         -0.2f                      // Z 고정
-     );
+            var tmp = Instantiate(damageText, transform.position + randomOffset, transform.rotation).GetComponent<TMP_Text>();
+            tmp.text = damage.ToString();
+            Destroy(tmp, 2f);
 
-        var tmp = Instantiate(damageText, transform.position + randomOffset, transform.rotation).GetComponent<TMP_Text>();
-
-        tmp.text = damage.ToString();
+        }
+        else
+        {
+            AudioManager.instance.PlaySound(transform.position, 11, Random.Range(1f, 1f), 1f);
+            Vector3 randomOffset = new Vector3(
+          Random.Range(-1f, 2f),   // X 범위
+          Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
+          -0.2f                      // Z 고정
+      );
+            CameraShake.instance.Shake(0.5f, 0.1f);
+           Destroy(Instantiate(shieldText, transform.position + randomOffset, transform.rotation),2f);
+        }
     }
     [PunRPC]
     public void SlashPtcOnRPC()
@@ -408,6 +429,34 @@ private void FlipRPC()
 
 
         }
+    }
+
+    public void ShieldOn()
+    {
+        if (Input.GetMouseButton(1) && Time.time >= nextShieldTime)
+        {
+            nextShieldTime = Time.time + shieldCooldown;
+            photonView.RPC(nameof(ShieldRPC), RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void ShieldRPC()
+    {
+        StartCoroutine(ShieldCor());
+
+    }
+    IEnumerator ShieldCor()
+    {
+        photonView.RPC(nameof(SetShieldState), RpcTarget.All, true);
+        yield return new WaitForSeconds(3f);
+        photonView.RPC(nameof(SetShieldState), RpcTarget.All, false);
+    }
+    [PunRPC]
+    void SetShieldState(bool state)
+    {
+        isShielding = state;
+        shield.gameObject.SetActive(state);
     }
 
     private void Damage()
