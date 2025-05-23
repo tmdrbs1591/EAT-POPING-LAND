@@ -14,31 +14,34 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
-        if (player1 == null || player2 == null)
-            return;
+        if (player1 == null || player2 == null) return;
 
         Move();
     }
 
     void Move()
     {
-        // 중간 지점
-        Vector3 centerPoint = (player1.position + player2.position) / 2f;
+        Vector3 centerPoint = GetCenterPoint();
+        float distance = GetGreatestDistance();
 
-        // 두 플레이어 사이 거리
-        float distance = (player1.position - player2.position).magnitude;
+        float targetDistance = Mathf.Lerp(minDistance, maxDistance, distance / zoomLimiter);
+        Vector3 zoomDir = new Vector3(0, 0, -1).normalized; // 고정된 방향으로 줌 (z-방향)
 
-        // 거리 기반으로 줌 거리 계산
-        float desiredDistance = Mathf.Lerp(minDistance, maxDistance, distance / zoomLimiter);
-
-        // 카메라가 뒤로 빠지는 방향 (카메라의 바라보는 방향 기준)
-        Vector3 zoomDirection = -transform.forward * desiredDistance;
-
-        // 최종 위치 계산
-        Vector3 targetPosition = centerPoint + zoomDirection + offset;
+        Vector3 targetPosition = centerPoint + zoomDir * targetDistance + offset;
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.LookAt(centerPoint); // 항상 중심 바라보게
+    }
+
+    Vector3 GetCenterPoint()
+    {
+        return (player1.position + player2.position) / 2f;
+    }
+
+    float GetGreatestDistance()
+    {
+        return Vector3.Distance(player1.position, player2.position);
     }
 }
