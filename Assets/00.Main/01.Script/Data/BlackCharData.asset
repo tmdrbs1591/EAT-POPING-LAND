@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f070ad2ef13da84c91d4eb35aa1c01c, type: 3}
   m_Name: BlackCharData
   m_EditorClassIdentifier: 
-  characterName: "\uAC80\uC815\uACF5\uC8FC"
+  characterName: "\uD398\uB2C8"
   characterInfo: "\uAC80\uC815\uC0C9\uAE54\uACF5\uC8FC"
   characteristic: "\uAC80\uC815\uC0C9\uAE54\uC774\uB2E4"
   moveSpeed: 6

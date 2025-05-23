@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f070ad2ef13da84c91d4eb35aa1c01c, type: 3}
   m_Name: YellowCharData
   m_EditorClassIdentifier: 
-  characterName: "\uB178\uB791\uACF5\uC8FC"
+  characterName: "\uBC08\uBBF8"
   characterInfo: "\uC790\uAE30\uAC00 \uC7A5\uC6D0\uC601 \uB2EE\uC558\uB2E4\uACE0
     \uC0DD\uAC01\uD558\uB294 \uC790\uC544\uB3C4\uCDE8\uC758 \uACF5\uC8FC \uC544\uBB34\uB9AC
     \uD604\uC2E4\uC774 \uC544\uB2C8\uC5B4\uB3C4 \uC0C1\uAD00 \uC5C6\uB2E4 \uADF8\uB140\uC5D0\uAC8C\uB294

@@ -30,7 +30,7 @@ MonoBehaviour:
     keyCardName: "\uBB34\uAE30 \uAC15\uD654"
     keyCardInfo: "\uBB34\uAE30 \uB808\uBCA8\uC744 1 \uC62C\uB9BD\uB2C8\uB2E4."
     keyCardImage: {fileID: 21300000, guid: 03334e4cd6609c8469c7e929de8698f7, type: 3}
-  - keyCardType: 1
+  - keyCardType: 6
     keyCardName: "\uBC94\uC8C4\uC790"
     keyCardInfo: "\uAC10\uC625\uC73C\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4"
     keyCardImage: {fileID: 21300000, guid: 2acf9148f9ea9d64fa50d6e3b257f285, type: 3}
