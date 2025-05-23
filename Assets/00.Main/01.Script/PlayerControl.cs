@@ -239,6 +239,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerbattleScript.Init();
         playerbattleScript.enabled = true;
         playerbattleScript.hpSlider.gameObject.SetActive(true);
+
+       playerbattleScript.hptext.text = playerbattleScript.curHp.ToString() + "/" + playerbattleScript.maxHp.ToString();
     }
     [PunRPC]
     public void RPC_SetRePosition(Vector3 newPosition) //원래 위치 이동

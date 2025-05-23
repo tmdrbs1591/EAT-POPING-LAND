@@ -19,8 +19,8 @@ public class PlayerBattle : MonoBehaviourPun
 {
     [Header("스텟")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float curHp;
-    [SerializeField] private float maxHp;
+    [SerializeField] public float curHp;
+    [SerializeField] public float maxHp;
     [SerializeField] private float jumpForce = 7f;
     [Header("공격")]
     [SerializeField] private Vector3 attackBoxSize;
@@ -43,9 +43,10 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] ParticleSystem diePtc;
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
-    [SerializeField] TMP_Text hptext;
+    [SerializeField] public TMP_Text hptext;
     [SerializeField] GameObject damageText;
     [SerializeField] GameObject shieldText;
+    [SerializeField] ParticleSystem moveEffect;
 
 
     [Header("공격 쿨타임")]
@@ -135,23 +136,45 @@ public class PlayerBattle : MonoBehaviourPun
         //}
 
         Vector3 moveDir = new Vector3(inputX, 0, inputZ);
-        if (moveDir.magnitude < 0.1f) // 거의 0에 가까우면
+        if (moveDir.magnitude < 0.1f)
         {
             rb.velocity = Vector3.zero;
+
             if (animState != AnimState.Attack)
+            {
                 photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
+
+                if (moveEffect != null && moveEffect.isPlaying)
+                  photonView.RPC(nameof(MoveEffectStopRPC), RpcTarget.All);
+            }
         }
         else
         {
             moveDir.Normalize();
             rb.velocity = moveDir * moveSpeed;
+
             if (animState != AnimState.Attack)
+            {
                 photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Walk);
+
+                if (moveEffect != null && !moveEffect.isPlaying)
+                    photonView.RPC(nameof(MoveEffectStartRPC), RpcTarget.All);
+            }
         }
 
 
-    }
+}
 
+    [PunRPC]
+    void MoveEffectStartRPC()
+    {
+        moveEffect.Play();
+    }
+    [PunRPC]
+    void MoveEffectStopRPC()
+    {
+        moveEffect.Stop();
+    }
     public void Attack()
     {
         StartCoroutine(AttackCor());
@@ -241,6 +264,7 @@ public class PlayerBattle : MonoBehaviourPun
 
         BattleManager.instance.battleEndPanel.SetActive(false);
         BattleManager.instance.battleEndPanel.SetActive(true);
+
     }
 
     private void Flip()
