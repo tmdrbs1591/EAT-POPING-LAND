@@ -46,7 +46,6 @@ public class PoisonZoneManager : MonoBehaviourPunCallbacks
     [PunRPC]
    public void RPC_StartPoison()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
         if (spawnCoroutine == null)
             spawnCoroutine = StartCoroutine(SpawnPoisonRoutine());
     }
@@ -54,7 +53,6 @@ public class PoisonZoneManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_StopPoison()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
         if (spawnCoroutine != null)
         {
             StopCoroutine(spawnCoroutine);

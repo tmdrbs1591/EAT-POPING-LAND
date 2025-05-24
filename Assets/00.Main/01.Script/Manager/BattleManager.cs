@@ -106,7 +106,6 @@ public class BattleManager : MonoBehaviourPun
         isBattle = true;
         SongManager.instance.SongChange(3);
 
-        PoisonZoneManager.instance.photonView.RPC("RPC_StartPoison", RpcTarget.AllBuffered);// 자기장 시작
 
         battleCamera.transform.position = startPos;
         battleScreen.SetActive(true);

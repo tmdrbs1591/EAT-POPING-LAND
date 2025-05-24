@@ -242,6 +242,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
        playerbattleScript.hptext.text = playerbattleScript.curHp.ToString() + "/" + playerbattleScript.maxHp.ToString();
 
+        PoisonZoneManager.instance.photonView.RPC("RPC_StartPoison", RpcTarget.AllBuffered);// 자기장 시작
+
         Debug.Log("배틀위치 이동 ~ ");
 
     }
