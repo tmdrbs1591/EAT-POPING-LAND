@@ -91,6 +91,7 @@ public class BattleManager : MonoBehaviourPun
         challengerName = PhotonNetwork.NickName;
         defenderName = opponentName;
 
+
         // 시스템 메시지 출력
         SystemMessaageManager.instance.MessageTextStart($"{challengerName}님이 {defenderName}님에게 배틀을 신청했습니다!");
 
@@ -104,6 +105,8 @@ public class BattleManager : MonoBehaviourPun
     {
         isBattle = true;
         SongManager.instance.SongChange(3);
+
+        PoisonZoneManager.instance.photonView.RPC("RPC_StartPoison", RpcTarget.AllBuffered);// 자기장 시작
 
         battleCamera.transform.position = startPos;
         battleScreen.SetActive(true);

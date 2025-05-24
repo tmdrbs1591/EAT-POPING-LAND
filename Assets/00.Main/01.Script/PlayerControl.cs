@@ -256,7 +256,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
 
         Debug.Log("위치 이동 ~ ");
 
-
+        PoisonZoneManager.instance.photonView.RPC("RPC_StopPoison", RpcTarget.AllBuffered);// 자기장 중지
     }
 
 
