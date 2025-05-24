@@ -51,10 +51,9 @@ public class BoomBullet : MonoBehaviourPun
             if (hit.CompareTag("Player"))
             {
                 var pv = hit.GetComponent<PhotonView>();
-                if (pv != null && pv.ViewID != photonView.ViewID)
+                if (pv != null && pv.ViewID != photonView.ViewID && pv.IsMine)
                 {
-                    if (!PhotonNetwork.IsMasterClient)
-                        pv.RPC("TakeDamage", RpcTarget.All, damage);
+                     pv.RPC("TakeDamage", RpcTarget.All, damage);
                 }
             }
         }
