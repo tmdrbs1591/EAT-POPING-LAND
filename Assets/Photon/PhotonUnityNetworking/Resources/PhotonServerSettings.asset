@@ -107,6 +107,8 @@ MonoBehaviour:
   - MoveEffectStopRPC
   - RPC_StartPoison
   - RPC_StopPoison
+  - BattleEndRPC
+  - ScriptDown
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

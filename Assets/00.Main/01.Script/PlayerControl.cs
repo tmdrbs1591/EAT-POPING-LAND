@@ -6,6 +6,7 @@ using DG.Tweening;
 using Photon.Realtime;
 using TMPro;
 using Photon.Pun;
+using static PlayerBattle;
 
 public class PlayerControl : MonoBehaviourPunCallbacks
 {
@@ -255,7 +256,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         playerbattleScript.photonView.RPC("DieCanvasFalseRPC", RpcTarget.All);
         playerbattleScript.hpSlider.gameObject.SetActive(false);
         BattleManager.instance.winnerPanel.SetActive(false);
-
+        photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
         Debug.Log("위치 이동 ~ ");
 
         PoisonZoneManager.instance.photonView.RPC("RPC_StopPoison", RpcTarget.AllBuffered);// 자기장 중지

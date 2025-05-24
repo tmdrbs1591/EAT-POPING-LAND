@@ -81,9 +81,12 @@ public class PlayerBattle : MonoBehaviourPun
 
     // public Transform dieBattleCameraPos;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+    private void Start()
+    {
         Init();
     }
     public void Init()
@@ -91,6 +94,8 @@ public class PlayerBattle : MonoBehaviourPun
         curHp = maxHp;
         hpSlider.value = curHp / maxHp;
         isDie = false;
+        rb.isKinematic = false; // 물리 효과 아예 끔
+
     }
 
     void Update()
@@ -204,7 +209,7 @@ public class PlayerBattle : MonoBehaviourPun
     }
 
     [PunRPC]
-    void SetAnimStateRPC(int state)
+    public void SetAnimStateRPC(int state)
     {
         animState = (AnimState)state;
         SetCurrentAnimation(animState);
@@ -225,6 +230,11 @@ public class PlayerBattle : MonoBehaviourPun
             photonView.RPC("DiePtcOnRPC", RpcTarget.All);
             photonView.RPC("TimeSlowRPC", RpcTarget.All);
             StartCoroutine(BattleLoseCor());
+
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true; // 물리 효과 아예 끔
+
         }
     }
 
@@ -249,6 +259,7 @@ public class PlayerBattle : MonoBehaviourPun
     IEnumerator BattleLoseCor()
     {
         BattleManager.instance.BattleLose();
+
         yield return new WaitForSecondsRealtime(5.5f);
         photonView.RPC("BattleEndPanel", RpcTarget.All);
         yield return new WaitForSecondsRealtime(0.5f);
@@ -256,7 +267,6 @@ public class PlayerBattle : MonoBehaviourPun
         BattleManager.instance.photonView.RPC("ResetPosPlayerRPC",RpcTarget.All);
 
         Debug.Log("제ㅔㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ");
-
     }
 
     [PunRPC]
