@@ -35,6 +35,16 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] private float shieldCooldown = 1f;
     private float nextShieldTime = 0f;
 
+    [Header("대시")]
+    [SerializeField] float dashForce = 30f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashDrag = 5f;
+    [SerializeField] ParticleSystem dashPtc;
+    private bool isDashing = false;
+    private Vector3 dashDir;
+    [SerializeField] private float dashCooldown = 1f;
+    private float nextDashTime = 0f;
+
     [Header("UI")]
     [SerializeField] GameObject charSprite;
     [SerializeField] public Slider hpSlider;
@@ -173,10 +183,16 @@ public class PlayerBattle : MonoBehaviourPun
         }
 
 
-    }
+        if (Input.GetKey(KeyCode.LeftShift) && Time.time >=  nextDashTime)
+        {
+            nextDashTime = Time.time + dashCooldown;
+            Dash();
+        }
 
-    #region 무브
-    [PunRPC]
+        }
+
+        #region 무브
+        [PunRPC]
     void MoveEffectStartRPC()
     {
         moveEffect.Play();
@@ -527,6 +543,42 @@ public class PlayerBattle : MonoBehaviourPun
     }
 
 
+    #endregion
+    #region 대쉬
+    public void Dash()
+    {
+        if (isDashing) return;
+
+        dashDir = new Vector3(inputX, 0f, inputZ).normalized;
+        if (dashDir == Vector3.zero)
+            dashDir = transform.forward;
+
+        photonView.RPC(nameof(DashRPC), RpcTarget.All); 
+        StartCoroutine(DashCoroutine());
+    }
+    [PunRPC]
+    void DashRPC()
+    {
+        dashPtc.Play();
+    }
+    IEnumerator DashCoroutine()
+    {
+        isDashing = true;
+
+        float originalDrag = rb.drag;
+        rb.drag = dashDrag;
+
+        float timer = 0f;
+        while (timer < dashDuration)
+        {
+            rb.AddForce(dashDir * dashForce, ForceMode.Acceleration);
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        rb.drag = originalDrag;
+        isDashing = false;
+    }
     #endregion
 
     [PunRPC]
