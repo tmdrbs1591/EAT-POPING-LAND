@@ -17144,7 +17144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -24743,7 +24743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -56837,19 +56837,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.01820014
+      value: -0.0031851947
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.018200142
+      value: 0.003185191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7068726
+      value: -0.7070996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7068726
+      value: -0.7070996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -56861,7 +56861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -182.95
+      value: -180.516
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7dc9da3c8658bf643b6b4990490f2da1, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -57235,6 +57235,7 @@ MonoBehaviour:
   battleEndPanel: {fileID: 674092935}
   holdUpgradePanel: {fileID: 0}
   isBattle: 0
+  isPlayerDown: 0
   startPos: {x: 0, y: 0, z: 0}
   holdPrice: 0
   player1SkeletonGraphic: {fileID: 559071755}
@@ -77052,7 +77053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 

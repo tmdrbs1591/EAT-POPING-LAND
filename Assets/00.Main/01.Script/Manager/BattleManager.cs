@@ -41,6 +41,8 @@ public class BattleManager : MonoBehaviourPun
 
     public bool isBattle; // 배틀중인지
 
+    public bool isPlayerDown;//경기 플레이어가 죽었는지
+
     public Vector3 startPos;
 
     public int holdPrice;

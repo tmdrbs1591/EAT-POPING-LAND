@@ -95,12 +95,20 @@ public class PlayerBattle : MonoBehaviourPun
         hpSlider.value = curHp / maxHp;
         isDie = false;
         rb.isKinematic = false; // 물리 효과 아예 끔
+        BattleManager.instance.isPlayerDown = false;
 
     }
 
     void Update()
     {
-        if (!photonView.IsMine)
+        if (BattleManager.instance.isPlayerDown)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true; // 물리 효과 아예 끔
+        }
+
+        if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
             return;
 
         inputX = Input.GetAxis("Horizontal");
@@ -111,11 +119,14 @@ public class PlayerBattle : MonoBehaviourPun
             Flip();
         else if (inputX < 0 && !isFacingRight)
             Flip();
+
+        
+     
     }
 
     void FixedUpdate()
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
             return;
 
         Die();
@@ -227,17 +238,20 @@ public class PlayerBattle : MonoBehaviourPun
         if (curHp <= 0)
         {
             isDie = true;
+            photonView.RPC(nameof(PlayerDownRPC), RpcTarget.All);
             photonView.RPC("DiePtcOnRPC", RpcTarget.All);
             photonView.RPC("TimeSlowRPC", RpcTarget.All);
             StartCoroutine(BattleLoseCor());
 
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true; // 물리 효과 아예 끔
 
         }
     }
+    [PunRPC]
+    void PlayerDownRPC()
+    { 
+            BattleManager.instance.isPlayerDown = true;
 
+    }
     [PunRPC]
     void TimeSlowRPC()
     {
@@ -302,6 +316,8 @@ private void FlipRPC()
     [PunRPC]
     public void TakeDamage(float damage)
     {
+        if (BattleManager.instance.isPlayerDown)
+            return;
         if (!isShielding)
         {
             AudioManager.instance.PlaySound(transform.position, 6, Random.Range(1f, 1f), 1f);
