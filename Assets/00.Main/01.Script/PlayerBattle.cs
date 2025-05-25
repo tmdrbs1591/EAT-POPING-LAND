@@ -78,6 +78,8 @@ public class PlayerBattle : MonoBehaviourPun
 
     private bool isFacingRight = true;
     private bool isDie;
+    private bool useFirstAttack = true; // Toggle용 변수
+    private bool useFirstSlash = true;
 
     // public Transform dieBattleCameraPos;
 
@@ -105,7 +107,7 @@ public class PlayerBattle : MonoBehaviourPun
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-        //   rb.isKinematic = true; // 물리 효과 아예 끔
+            //   rb.isKinematic = true; // 물리 효과 아예 끔
         }
 
         if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
@@ -120,8 +122,8 @@ public class PlayerBattle : MonoBehaviourPun
         else if (inputX < 0 && !isFacingRight)
             Flip();
 
-        
-     
+
+
     }
 
     void FixedUpdate()
@@ -135,21 +137,13 @@ public class PlayerBattle : MonoBehaviourPun
         {
             nextAttackTime = Time.time + attackCooldown;
 
-            if(attackType == AttackType.Melee)
-            Attack();
+            if (attackType == AttackType.Melee)
+                Attack();
             else if (WeaponManager.instance.currentWeaponType == WeaponType.BubbleGun)
                 BubbleGunFire();
             else if (WeaponManager.instance.currentWeaponType == WeaponType.BoomGun)
                 BoomGunFire();
         }
-
-
-
-        //if (Input.GetKey(KeyCode.Space) && Time.time >= nextJumpTime)
-        //{
-        //    nextJumpTime = Time.time + jumpCooldown;
-        //    Jump();
-        //}
 
         Vector3 moveDir = new Vector3(inputX, 0, inputZ);
         if (moveDir.magnitude < 0.1f)
@@ -161,7 +155,7 @@ public class PlayerBattle : MonoBehaviourPun
                 photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
 
                 if (moveEffect != null && moveEffect.isPlaying)
-                  photonView.RPC(nameof(MoveEffectStopRPC), RpcTarget.All);
+                    photonView.RPC(nameof(MoveEffectStopRPC), RpcTarget.All);
             }
         }
         else
@@ -179,8 +173,9 @@ public class PlayerBattle : MonoBehaviourPun
         }
 
 
-}
+    }
 
+    #region 무브
     [PunRPC]
     void MoveEffectStartRPC()
     {
@@ -191,12 +186,34 @@ public class PlayerBattle : MonoBehaviourPun
     {
         moveEffect.Stop();
     }
+    private void Flip()
+    {
+        photonView.RPC("FlipRPC", RpcTarget.All);
+    }
+    [PunRPC]
+    private void FlipRPC()
+    {
+        isFacingRight = !isFacingRight;
+
+        // 바라보는 방향에 따라 정확한 회전값 설정
+        if (isFacingRight)
+            charSprite.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+        else
+            charSprite.transform.rotation = Quaternion.Euler(-40f, 180f, 0f);
+
+        // 공격 박스 위치 반전
+        Vector3 attackPos = attackBoxPos.localPosition;
+        attackPos.x *= -1;
+        attackBoxPos.localPosition = attackPos;
+    }
+
+
+    #endregion
+    #region 근거리 공격
     public void Attack()
     {
         StartCoroutine(AttackCor());
     }
-    private bool useFirstAttack = true; // Toggle용 변수
-
     IEnumerator AttackCor()
     {
         photonView.RPC("WeaponAnimationRPC", RpcTarget.All);
@@ -207,7 +224,6 @@ public class PlayerBattle : MonoBehaviourPun
         yield return new WaitForSeconds(0.05f);
         Damage();
     }
-
     [PunRPC]
     void WeaponAnimationRPC()// 근접 애니메이션 동기화
     {
@@ -218,101 +234,59 @@ public class PlayerBattle : MonoBehaviourPun
         // 다음 공격 때 바뀌도록 토글
         useFirstAttack = !useFirstAttack;
     }
-
     [PunRPC]
-    public void SetAnimStateRPC(int state)
+    public void SlashPtcOnRPC()
     {
-        animState = (AnimState)state;
-        SetCurrentAnimation(animState);
-    }
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Y속도 초기화
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
-    void Die()
-    {
-        if (isDie)
-            return;
-        if (curHp <= 0)
+        AudioManager.instance.PlaySound(transform.position, 12, Random.Range(1f, 1.2f), 1f);
+        if (useFirstSlash)
         {
-            isDie = true;
-            photonView.RPC(nameof(PlayerDownRPC), RpcTarget.All);
-            photonView.RPC("DiePtcOnRPC", RpcTarget.All);
-            photonView.RPC("TimeSlowRPC", RpcTarget.All);
-            StartCoroutine(BattleLoseCor());
+            slashPtc.Play();
+        }
+        else
+        {
+            slashPtc2.Play();
+        }
+
+        useFirstSlash = !useFirstSlash; // 다음 호출 때 번갈아
+    }
+    #endregion
+    #region 원거리 공격
+    private void Fire()
+    {
+        var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
+        // 1. 마우스 스크린 위치에서 Ray 쏘기
+        Ray ray = battleCam.ScreenPointToRay(Input.mousePosition);
+
+        CameraShake.instance.Shake(0.5f, 0.1f);
+
+        // 2. Ray를 쏴서 어디를 향할지 결정
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            // 목표 지점
+            Vector3 targetPoint = hitInfo.point;
+
+            // 3. 방향 계산
+            Vector3 direction = (targetPoint - firePoint.position).normalized;
+            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, transform.rotation);
+
+            var bulletScript = bullet.GetComponent<PlayerBullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.shooterViewID = photonView.ViewID;
+            }
+
+            // 자기 자신과 충돌 무시
+            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+            // 5. 총알에 힘 주기
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.velocity = direction * bulletSpeed;
 
 
         }
     }
-    [PunRPC]
-    void PlayerDownRPC()
-    { 
-            BattleManager.instance.isPlayerDown = true;
-
-    }
-    [PunRPC]
-    void TimeSlowRPC()
-    {
-        StartCoroutine(TimeSlowCor());
-    }
-    IEnumerator TimeSlowCor()
-    {
-        CameraShake.instance.Shake(0.4f, 0.4f);
-
-        Time.timeScale = 0.1f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        yield return new WaitForSecondsRealtime(5f);
-
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
-    }
-
-    IEnumerator BattleLoseCor()
-    {
-        BattleManager.instance.BattleLose();
-
-        yield return new WaitForSecondsRealtime(5.5f);
-        photonView.RPC("BattleEndPanel", RpcTarget.All);
-        yield return new WaitForSecondsRealtime(0.5f);
-        BattleManager.instance.photonView.RPC("RPC_BattlePanelFalse", RpcTarget.All);
-        BattleManager.instance.photonView.RPC("ResetPosPlayerRPC",RpcTarget.All);
-
-        Debug.Log("제ㅔㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ");
-    }
-
-    [PunRPC]
-    public void BattleEndPanel() {
-
-        BattleManager.instance.battleEndPanel.SetActive(false);
-        BattleManager.instance.battleEndPanel.SetActive(true);
-
-    }
-
-    private void Flip()
-    {
-        photonView.RPC("FlipRPC", RpcTarget.All);
-    }
-[PunRPC]
-private void FlipRPC()
-{
-    isFacingRight = !isFacingRight;
-
-    // 바라보는 방향에 따라 정확한 회전값 설정
-    if (isFacingRight)
-        charSprite.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
-    else
-        charSprite.transform.rotation = Quaternion.Euler(-40f, 180f, 0f);
-
-    // 공격 박스 위치 반전
-    Vector3 attackPos = attackBoxPos.localPosition;
-    attackPos.x *= -1;
-    attackBoxPos.localPosition = attackPos;
-}
-
-
+    #endregion
+    #region 데미지관련
     [PunRPC]
     public void TakeDamage(float damage)
     {
@@ -348,26 +322,26 @@ private void FlipRPC()
           -0.2f                      // Z 고정
       );
             CameraShake.instance.Shake(0.7f, 0.1f);
-           Destroy(Instantiate(shieldText, transform.position + randomOffset, transform.rotation),2f);
+            Destroy(Instantiate(shieldText, transform.position + randomOffset, transform.rotation), 2f);
         }
     }
-    private bool useFirstSlash = true;
-
-    [PunRPC]
-    public void SlashPtcOnRPC()
+    void Die()
     {
-        AudioManager.instance.PlaySound(transform.position, 12, Random.Range(1f, 1.2f), 1f);
-        if (useFirstSlash)
+        if (isDie)
+            return;
+        if (curHp <= 0)
         {
-            slashPtc.Play();
-        }
-        else
-        {
-            slashPtc2.Play();
-        }
+            isDie = true;
+            photonView.RPC(nameof(PlayerDownRPC), RpcTarget.All);
+            photonView.RPC("DiePtcOnRPC", RpcTarget.All);
+            photonView.RPC("TimeSlowRPC", RpcTarget.All);
+            StartCoroutine(BattleLoseCor());
 
-        useFirstSlash = !useFirstSlash; // 다음 호출 때 번갈아
+
+        }
     }
+
+
     [PunRPC]
     public void DiePtcOnRPC()
     {
@@ -378,10 +352,59 @@ private void FlipRPC()
     }
 
     [PunRPC]
-    public void DieCanvasFalseRPC()
+    void TimeSlowRPC()
     {
-        dieCanvas.SetActive(false);
+        StartCoroutine(TimeSlowCor());
     }
+    IEnumerator TimeSlowCor()
+    {
+        CameraShake.instance.Shake(0.4f, 0.4f);
+
+        Time.timeScale = 0.1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        yield return new WaitForSecondsRealtime(5f);
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+    }
+
+    IEnumerator BattleLoseCor()
+    {
+        BattleManager.instance.BattleLose();
+
+        yield return new WaitForSecondsRealtime(5.5f);
+        photonView.RPC("BattleEndPanel", RpcTarget.All);
+        yield return new WaitForSecondsRealtime(0.5f);
+        BattleManager.instance.photonView.RPC("RPC_BattlePanelFalse", RpcTarget.All);
+        BattleManager.instance.photonView.RPC("ResetPosPlayerRPC", RpcTarget.All);
+
+        Debug.Log("제ㅔㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ");
+    }
+    private void Damage()
+    {
+        Collider[] colliders = Physics.OverlapBox(attackBoxPos.position, attackBoxSize / 2f);
+
+
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                var otherPlayerScript = collider.GetComponent<PlayerBattle>();
+                if (otherPlayerScript != null)
+                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 10f);
+            }
+        }
+    }
+    [PunRPC]
+    public void BattleEndPanel()
+    {
+
+        BattleManager.instance.battleEndPanel.SetActive(false);
+        BattleManager.instance.battleEndPanel.SetActive(true);
+
+    }
+    #endregion
     #region 버블건
 
     public int bulletCountPerShot = 5;
@@ -474,41 +497,7 @@ private void FlipRPC()
     }
 
     #endregion
-    private void Fire()
-    {
-        var battleCam = BattleManager.instance.battleCamera.GetComponent<Camera>();
-        // 1. 마우스 스크린 위치에서 Ray 쏘기
-        Ray ray = battleCam.ScreenPointToRay(Input.mousePosition);
-
-        CameraShake.instance.Shake(0.5f, 0.1f);
-
-        // 2. Ray를 쏴서 어디를 향할지 결정
-        if (Physics.Raycast(ray, out RaycastHit hitInfo))
-        {
-            // 목표 지점
-            Vector3 targetPoint = hitInfo.point;
-
-            // 3. 방향 계산
-            Vector3 direction = (targetPoint - firePoint.position).normalized;
-            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, transform.rotation);
-
-            var bulletScript = bullet.GetComponent<PlayerBullet>();
-            if (bulletScript != null)
-            {
-                bulletScript.shooterViewID = photonView.ViewID;
-            }
-
-            // 자기 자신과 충돌 무시
-            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
-
-            // 5. 총알에 힘 주기
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = direction * bulletSpeed;
-
-
-        }
-    }
-
+    #region 쉴드
     public void ShieldOn()
     {
         if (Input.GetMouseButton(1) && Time.time >= nextShieldTime)
@@ -537,21 +526,29 @@ private void FlipRPC()
         shield.gameObject.SetActive(state);
     }
 
-    private void Damage()
+
+    #endregion
+
+    [PunRPC]
+    public void SetAnimStateRPC(int state)
     {
-        Collider[] colliders = Physics.OverlapBox(attackBoxPos.position, attackBoxSize / 2f);
-
-
-        foreach (var collider in colliders)
-        {
-            if (collider.CompareTag("Player"))
-            {
-                var otherPlayerScript = collider.GetComponent<PlayerBattle>();
-                if (otherPlayerScript != null)
-                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 10f);
-            }
-        }
+        animState = (AnimState)state;
+        SetCurrentAnimation(animState);
     }
+
+    [PunRPC]
+    void PlayerDownRPC()
+    {
+        BattleManager.instance.isPlayerDown = true;
+
+    }
+
+    [PunRPC]
+    public void DieCanvasFalseRPC()
+    {
+        dieCanvas.SetActive(false);
+    }
+
     private void AsncAnimation(AnimationReferenceAsset animClip, bool loop, float timeScale)
     {
         if (animClip.name.Equals(currentAnimation)) // 동일한 애니메이션을 재생하려 한다면 아래코드구문 실행 X 
@@ -587,7 +584,7 @@ private void FlipRPC()
             photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
     }
 
-  
+
     private void OnDrawGizmos()
     {
         if (attackBoxPos == null) return;
