@@ -105,7 +105,7 @@ public class PlayerBattle : MonoBehaviourPun
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true; // 물리 효과 아예 끔
+        //   rb.isKinematic = true; // 물리 효과 아예 끔
         }
 
         if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
