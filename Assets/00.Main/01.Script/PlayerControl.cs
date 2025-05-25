@@ -259,6 +259,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         photonView.RPC("SetAnimStateRPC", RpcTarget.All, (int)AnimState.Idle);
         Debug.Log("위치 이동 ~ ");
 
+        BattleManager.instance.isPlayerDown = false;
+
         PoisonZoneManager.instance.photonView.RPC("RPC_StopPoison", RpcTarget.AllBuffered);// 자기장 중지
     }
 

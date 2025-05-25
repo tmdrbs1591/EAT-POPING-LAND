@@ -73,6 +73,8 @@ public class PlayerBattle : MonoBehaviourPun
 
     public AttackType attackType;
 
+
+    [SerializeField] private List<GameObject> bushFalseOb;
     public enum AnimState
     {
         Idle,
@@ -118,6 +120,21 @@ public class PlayerBattle : MonoBehaviourPun
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             //   rb.isKinematic = true; // 물리 효과 아예 끔
+
+            if (photonView.IsMine)
+            {
+                Color color = skeletonAnimation.Skeleton.GetColor();
+                color.a = 1.0f;
+                skeletonAnimation.Skeleton.SetColor(color);
+
+            }
+            else
+            {
+                foreach (var bo in bushFalseOb)
+                {
+                    bo.SetActive(true);
+                }
+            }
         }
 
         if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
@@ -183,16 +200,16 @@ public class PlayerBattle : MonoBehaviourPun
         }
 
 
-        if (Input.GetKey(KeyCode.LeftShift) && Time.time >=  nextDashTime)
+        if (Input.GetKey(KeyCode.LeftShift) && Time.time >= nextDashTime)
         {
             nextDashTime = Time.time + dashCooldown;
             Dash();
         }
 
-        }
+    }
 
-        #region 무브
-        [PunRPC]
+    #region 무브
+    [PunRPC]
     void MoveEffectStartRPC()
     {
         moveEffect.Play();
@@ -553,7 +570,7 @@ public class PlayerBattle : MonoBehaviourPun
         if (dashDir == Vector3.zero)
             dashDir = transform.forward;
 
-        photonView.RPC(nameof(DashRPC), RpcTarget.All); 
+        photonView.RPC(nameof(DashRPC), RpcTarget.All);
         StartCoroutine(DashCoroutine());
     }
     [PunRPC]
@@ -654,5 +671,46 @@ public class PlayerBattle : MonoBehaviourPun
     public void AudioRealRPC(int index)
     {
         AudioManager.instance.PlaySound(transform.position, index, Random.Range(1f, 1.2f), 1f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bush"))
+        {
+            if (photonView.IsMine)
+            {
+                Color color = skeletonAnimation.Skeleton.GetColor();
+                color.a = 0.5f; 
+                skeletonAnimation.Skeleton.SetColor(color);
+            }
+            else
+            {
+                foreach (var bo in bushFalseOb)
+                {
+                    bo.SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bush"))
+        {
+            if (photonView.IsMine)
+            {
+                Color color = skeletonAnimation.Skeleton.GetColor();
+                color.a = 1.0f; 
+                skeletonAnimation.Skeleton.SetColor(color);
+
+            }
+            else
+            {
+                foreach (var bo in bushFalseOb)
+                {
+                    bo.SetActive(true);
+                }
+            }
+        }
     }
 }
