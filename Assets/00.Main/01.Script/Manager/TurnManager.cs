@@ -1,4 +1,4 @@
-using Photon.Pun;
+ï»¿using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,23 +9,23 @@ public class TurnManager : MonoBehaviourPunCallbacks
 {
     public static TurnManager instance;
 
-    public int currentPlayerIndex = 0; // ÇöÀç ÅÏÀÎ ÇÃ·¹ÀÌ¾î ÀÎµ¦½º
-    public int totalPlayers; // ÀüÃ¼ ÇÃ·¹ÀÌ¾î ¼ö
+    public int currentPlayerIndex = 0; // í˜„ì¬ í„´ì¸ í”Œë ˆì´ì–´ ì¸ë±ìŠ¤
+    public int totalPlayers; // ì „ì²´ í”Œë ˆì´ì–´ ìˆ˜
     public int countdown = 15;
 
     [SerializeField] GameObject myTurnPanel;
-    [SerializeField] TMP_Text countdownText; // Ä«¿îÆ®´Ù¿î Ç¥½Ã UI
+    [SerializeField] TMP_Text countdownText; // ì¹´ìš´íŠ¸ë‹¤ìš´ í‘œì‹œ UI
 
-    public bool isCountingDown = false; // Ä«¿îÆ®´Ù¿î ÁßÀÎÁö È®ÀÎ
-    private bool isFirstTurn = true; // Ã¹ ÅÏÀÎÁö È®ÀÎ
-    public bool isPrison = true; // °¨¿ÁÀÎÁöÈ®ÀÎ
+    public bool isCountingDown = false; // ì¹´ìš´íŠ¸ë‹¤ìš´ ì¤‘ì¸ì§€ í™•ì¸
+    private bool isFirstTurn = true; // ì²« í„´ì¸ì§€ í™•ì¸
+    public bool isPrison = true; // ê°ì˜¥ì¸ì§€í™•ì¸
 
     public GameObject diceUI;
     public GameObject otherDiceUI;
     public GameObject prisonUI;
     public GameObject prisonStartUI;
 
-    public PlayerMoney playerMoneyScript; // ³» ÅÏ¶§ ui Ä¿Áö°Ô ÇÏ±âÀ§ÇØ 
+    public PlayerMoney playerMoneyScript; // ë‚´ í„´ë•Œ ui ì»¤ì§€ê²Œ í•˜ê¸°ìœ„í•´ 
     private void Awake()
     {
         instance = this;
@@ -34,7 +34,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        totalPlayers = PhotonNetwork.PlayerList.Length; // ÇÃ·¹ÀÌ¾î ¼ö °¡Á®¿À±â
+        totalPlayers = PhotonNetwork.PlayerList.Length; // í”Œë ˆì´ì–´ ìˆ˜ ê°€ì ¸ì˜¤ê¸°
         if (PhotonNetwork.IsMasterClient && isFirstTurn)
         {
             isFirstTurn = false;
@@ -50,26 +50,26 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
     private IEnumerator CountdownCoroutine(int playerIndex)
     {
-        isCountingDown = true; // Ä«¿îÆ®´Ù¿î ½ÃÀÛ
-        DiceManager.instance.enabled = false; // ÁÖ»çÀ§ ºñÈ°¼ºÈ­
+        isCountingDown = true; // ì¹´ìš´íŠ¸ë‹¤ìš´ ì‹œì‘
+        DiceManager.instance.enabled = false; // ì£¼ì‚¬ìœ„ ë¹„í™œì„±í™”
 
    
         while (countdown > 0)
         {
-            countdownText.text = $"{countdown}ÃÊ µÚ¿¡ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.";
+            countdownText.text = $"{countdown}ì´ˆ ë’¤ì— ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.";
             yield return new WaitForSeconds(1f);
             countdown--;
         }
 
-        countdownText.text = "ÅÏ ½ÃÀÛ!";
+        countdownText.text = "í„´ ì‹œì‘!";
         yield return new WaitForSeconds(1f);
         if (PhotonNetwork.IsMasterClient)
         {
-            SystemMessaageManager.instance.MessageTextStart("°ÔÀÓÀÌ ½ÃÀÛµÇ¾ú½À´Ï´Ù!");
+            SystemMessaageManager.instance.MessageTextStart("ê²Œì„ì´ ì‹œì‘ë˜ì—ˆìŠµë‹ˆë‹¤!");
         }
         countdownText.text = "";
 
-        isCountingDown = false; // Ä«¿îÆ®´Ù¿î Á¾·á
+        isCountingDown = false; // ì¹´ìš´íŠ¸ë‹¤ìš´ ì¢…ë£Œ
         photonView.RPC("StartTurn", RpcTarget.All, playerIndex);
     }
 
@@ -78,10 +78,18 @@ public class TurnManager : MonoBehaviourPunCallbacks
     {
         currentPlayerIndex = playerIndex;
 
-        // ³» Â÷·ÊÀÏ ¶§
-        if (PhotonNetwork.LocalPlayer.ActorNumber == playerIndex + 1)
+        // ë‚´ ì°¨ë¡€ì¼ ë•Œ
+        Player[] players = PhotonNetwork.PlayerList;
+        if (playerIndex >= players.Length)
         {
-            if (isPrison) // °¨¿ÁÀÏ¶§
+            Debug.LogWarning("playerIndexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å®ï¿½Ï´ï¿½.");
+            return;
+        }
+
+        Player currentTurnPlayer = players[playerIndex];
+
+        if (PhotonNetwork.LocalPlayer == currentTurnPlayer) { 
+            if (isPrison) // ê°ì˜¥ì¼ë•Œ
             {
                 prisonUI.SetActive(false);
                 prisonUI.SetActive(true);
@@ -92,10 +100,10 @@ public class TurnManager : MonoBehaviourPunCallbacks
             else
             {
                 diceUI.SetActive(true);
-                DiceManager.instance.enabled = true; // ÁÖ»çÀ§ È°¼ºÈ­
+                DiceManager.instance.enabled = true; // ì£¼ì‚¬ìœ„ í™œì„±í™”
                 playerMoneyScript.SetTurnHighlight(true);
                 myTurnPanel.SetActive(true);
-                Debug.Log("³ªÀÇ ÅÏ!");
+                Debug.Log("ë‚˜ì˜ í„´!");
             }
            
 
@@ -117,7 +125,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         int nextPlayerIndex = (currentPlayerIndex + 1) % totalPlayers;
         photonView.RPC("StartTurn", RpcTarget.All, nextPlayerIndex);
 
-        Debug.Log("ÅÏ ³¡");
+        Debug.Log("í„´ ë");
         DiceManager.instance.isDice = false;
         playerMoneyScript.SetTurnHighlight(false);
 
@@ -127,6 +135,10 @@ public class TurnManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         totalPlayers = PhotonNetwork.PlayerList.Length;
+    }
+    public bool IsMyTurn()
+    {
+        return PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[currentPlayerIndex];
     }
 
 }

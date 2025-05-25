@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +31,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnDisable()
     {
         base.OnDisable();
-        SceneManager.sceneLoaded -= OnSceneLoaded; // ±¸µ¶ ÇØÁ¦
+        SceneManager.sceneLoaded -= OnSceneLoaded; // êµ¬ë… í•´ì œ
     }
 
 
@@ -40,16 +40,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (scene.name == "01.Ingame")
         {
 
-            //   PhotonNetwork.SendRate = 100; // ±âº»°ªÀº 10
-            //  PhotonNetwork.SerializationRate = 100; // ±âº»°ªÀº 10
+            //   PhotonNetwork.SendRate = 100; // ê¸°ë³¸ê°’ì€ 10
+            //  PhotonNetwork.SerializationRate = 100; // ê¸°ë³¸ê°’ì€ 10
 
-            // RoomManager.cs ¾È StartGame ÀÌÈÄ, ÇÃ·¹ÀÌ¾î ½ºÆù ½ÃÁ¡¿¡ ½ÇÇà
-            Player[] players = PhotonNetwork.PlayerList; // ÀÌ°Ç ÀÚµ¿ Á¤·ÄµÊ (ÀÔÀå ¼ø¼­)
+            // RoomManager.cs ì•ˆ StartGame ì´í›„, í”Œë ˆì´ì–´ ìŠ¤í° ì‹œì ì— ì‹¤í–‰
+            // ë‚˜ì˜ ì¸ë±ìŠ¤ë¥¼ ì…ì¥ ìˆœì„œë¡œ ê³„ì‚°
+            Player[] players = PhotonNetwork.PlayerList; // ï¿½Ì°ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½Äµï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-            // ³ªÀÇ ÀÎµ¦½º¸¦ ÀÔÀå ¼ø¼­·Î °è»ê
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             int playerIndex = System.Array.IndexOf(players, PhotonNetwork.LocalPlayer);
 
-            // ½ºÆù Æ÷ÀÎÆ® °¡Á®¿À±â
+            // ìŠ¤í° í¬ì¸íŠ¸ ê°€ì ¸ì˜¤ê¸°
             Transform spawnPoint = SpawnPoint.instance.GetSpawnPoint(playerIndex);
 
             var player = PhotonNetwork.Instantiate(CharacterManager.instance.characterType.ToString()+"Player", spawnPoint.position, Quaternion.identity);

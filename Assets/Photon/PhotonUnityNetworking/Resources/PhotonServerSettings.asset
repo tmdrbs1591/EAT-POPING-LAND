@@ -110,6 +110,7 @@ MonoBehaviour:
   - BattleEndRPC
   - ScriptDown
   - isPlayerDieTrueRPC
+  - PlayerDownRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

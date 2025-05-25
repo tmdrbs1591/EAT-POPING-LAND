@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -26,9 +27,12 @@ public class DiceManager : MonoBehaviourPunCallbacks
     void Update()
     {
         // 자신의 턴이고, 아직 주사위를 안 굴렸으며, 전투 중이 아닐 때
-        if (Input.GetKeyDown(KeyCode.Space) &&
-            TurnManager.instance.currentPlayerIndex == PhotonNetwork.LocalPlayer.ActorNumber - 1 &&
-            !isDice && !BattleManager.instance.isBattle)
+        Player[] players = PhotonNetwork.PlayerList;
+
+        if (Input.GetKeyDown(KeyCode.Space)
+            && players[TurnManager.instance.currentPlayerIndex] == PhotonNetwork.LocalPlayer
+            && !isDice
+            && !BattleManager.instance.isBattle)
         {
             isDice = true;
             photonView.RPC(nameof(RPC_PlayDiceSound), RpcTarget.All);
