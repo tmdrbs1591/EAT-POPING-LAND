@@ -26,11 +26,11 @@ public enum StatType
 public class PlayerBattle : MonoBehaviourPun
 {
     [Header("스텟")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] public float moveSpeed = 5f;
     [SerializeField] public float curHp;
     [SerializeField] public float maxHp;
     [SerializeField] private float jumpForce = 7f;
-    [SerializeField] private float attackPower = 1f;
+    [SerializeField] public float attackPower = 1f;
     [Header("공격")]
     [SerializeField] private Vector3 attackBoxSize;
     [SerializeField] private Transform attackBoxPos;
@@ -66,6 +66,9 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] GameObject damageText;
     [SerializeField] GameObject shieldText;
     [SerializeField] ParticleSystem moveEffect;
+    [SerializeField] public TMP_Text[] attackPowerUIText;
+    [SerializeField] public TMP_Text[] HPUIText;
+    [SerializeField] public TMP_Text[] MoveSpeedUIText;
 
 
     [Header("공격 쿨타임")]
@@ -625,12 +628,24 @@ public class PlayerBattle : MonoBehaviourPun
         {
             case StatType.Power:
                 attackPower += 0.2f;
+                foreach (var Text in attackPowerUIText)
+                {
+                    Text.text = attackPower.ToString() + "X";
+                }
                 break;
             case StatType.HP:
                 maxHp += 10;
+                foreach (var Text in HPUIText)
+                {
+                    Text.text = maxHp.ToString();
+                }
                 break;
             case StatType.Speed:
                 moveSpeed += 0.2f;
+                foreach (var Text in MoveSpeedUIText)
+                {
+                    Text.text = moveSpeed.ToString();
+                }
                 break;
         }
     }

@@ -52,6 +52,19 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         {
             GameManager.instance.playerScript = this;
         }
+        foreach (var Text in playerbattleScript.attackPowerUIText)
+        {
+            Text.text = playerbattleScript.attackPower.ToString() + "X";
+        }
+        foreach (var Text in playerbattleScript.HPUIText)
+        {
+            Text.text = playerbattleScript.maxHp.ToString();
+        }
+        foreach (var Text in playerbattleScript.MoveSpeedUIText)
+        {
+            Text.text = playerbattleScript.moveSpeed.ToString();
+        }
+
     }
     void Start()
     {
