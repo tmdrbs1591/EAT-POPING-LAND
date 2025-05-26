@@ -7,6 +7,7 @@ using Spine.Unity;
 using System.Linq;
 using TMPro;
 using DG.Tweening.Core.Easing;
+using JetBrains.Annotations;
 
 public enum AttackType
 {
@@ -14,6 +15,13 @@ public enum AttackType
     Distance,
 
 }
+public enum StatType
+{
+    Power,
+    HP,
+    Speed
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBattle : MonoBehaviourPun
 {
@@ -22,6 +30,7 @@ public class PlayerBattle : MonoBehaviourPun
     [SerializeField] public float curHp;
     [SerializeField] public float maxHp;
     [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float attackPower = 1f;
     [Header("공격")]
     [SerializeField] private Vector3 attackBoxSize;
     [SerializeField] private Transform attackBoxPos;
@@ -425,7 +434,7 @@ public class PlayerBattle : MonoBehaviourPun
             {
                 var otherPlayerScript = collider.GetComponent<PlayerBattle>();
                 if (otherPlayerScript != null)
-                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 10f);
+                    otherPlayerScript.photonView.RPC("TakeDamage", RpcTarget.All, 10 * attackPower);
             }
         }
     }
@@ -498,6 +507,7 @@ public class PlayerBattle : MonoBehaviourPun
         if (bulletScript != null)
         {
             bulletScript.shooterViewID = photonView.ViewID;
+            bulletScript.damage *= attackPower;
         }
 
         Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
@@ -523,6 +533,8 @@ public class PlayerBattle : MonoBehaviourPun
             object[] instantiationData = new object[] { targetPoint.x, targetPoint.y, targetPoint.z };
 
             GameObject bombObj = PhotonNetwork.Instantiate("BoomBullet", firePoint.position, firePoint.rotation, 0, instantiationData);
+            var boomScript = bombObj.GetComponent<BoomBullet>();
+            boomScript.damage *= attackPower;
 
             // 자기 자신과 충돌 무시
             Physics.IgnoreCollision(bombObj.GetComponent<Collider>(), GetComponent<Collider>());
@@ -595,6 +607,32 @@ public class PlayerBattle : MonoBehaviourPun
 
         rb.drag = originalDrag;
         isDashing = false;
+    }
+    #endregion
+    #region 강화
+    public void UpgradeStat(StatType stat)
+    {
+        // 로컬에서 업그레이드 시작 (호스트가 호출한다고 가정)
+        photonView.RPC("RPC_UpgradeStat", RpcTarget.All, (int)stat);
+    }
+
+    [PunRPC]
+    public void RPC_UpgradeStat(int statValue)
+    {
+        StatType stat = (StatType)statValue;
+
+        switch (stat)
+        {
+            case StatType.Power:
+                attackPower += 0.2f;
+                break;
+            case StatType.HP:
+                maxHp += 10;
+                break;
+            case StatType.Speed:
+                moveSpeed += 0.2f;
+                break;
+        }
     }
     #endregion
 

@@ -7,7 +7,7 @@ public class PlayerBullet : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject destroyPtc;
 
-    [SerializeField] float damage;
+    [SerializeField] public float damage;
 
     public int shooterViewID = -1; // 총알 만든 사람의 ViewID
     public Collider collider;

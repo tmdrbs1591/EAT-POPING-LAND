@@ -4,6 +4,7 @@ using DG.Tweening;
 public class WeaponButton : MonoBehaviour
 {
     public WeaponType weaponTypeToSelect;
+    public StatType statTypeToSelect;
 
     [Header("Fade Settings")]
     [SerializeField] private CanvasGroup canvasGroup;
@@ -35,6 +36,18 @@ public class WeaponButton : MonoBehaviour
         {
             WeaponManager.instance.WeaponChange(weaponTypeToSelect);
         playerMoney.AddMoney(-price);
+        }
+    }
+
+
+    public void OnClickUpgrade()
+    {
+        PlayerMoney playerMoney = GameManager.instance.playerScript.gameObject.GetComponent<PlayerMoney>();
+
+        if (playerMoney.money >= price)
+        {
+            GameManager.instance.playerScript.playerbattleScript.UpgradeStat(statTypeToSelect);
+            playerMoney.AddMoney(-price);
         }
     }
 }

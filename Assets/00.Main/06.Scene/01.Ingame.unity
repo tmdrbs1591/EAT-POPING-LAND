@@ -12689,6 +12689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 4
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.5
   fadeDuration: 0.5
@@ -25550,10 +25551,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 0
+  statTypeToSelect: 1
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.1
   fadeDuration: 0.5
-  price: 0
+  price: 100
 --- !u!114 &623943413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25600,7 +25602,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 623943412}
         m_TargetAssemblyTypeName: WeaponButton, Assembly-CSharp
-        m_MethodName: OnClickChangeWeapon
+        m_MethodName: OnClickUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27087,6 +27089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 2
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.3
   fadeDuration: 0.5
@@ -27383,6 +27386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 0
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.1
   fadeDuration: 0.5
@@ -38917,6 +38921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 5
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.6
   fadeDuration: 0.5
@@ -41376,6 +41381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 1
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.2
   fadeDuration: 0.5
@@ -41426,7 +41432,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 936305141}
         m_TargetAssemblyTypeName: WeaponButton, Assembly-CSharp
-        m_MethodName: OnClickChangeWeapon
+        m_MethodName: OnClickUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50861,7 +50867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1154572720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -62127,7 +62133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1418903539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71360,6 +71366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 1
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.2
   fadeDuration: 0.5
@@ -78702,6 +78709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 3
+  statTypeToSelect: 0
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.4
   fadeDuration: 0.5
@@ -95398,10 +95406,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTypeToSelect: 2
+  statTypeToSelect: 2
   canvasGroup: {fileID: 0}
   delayBeforeFade: 0.3
   fadeDuration: 0.5
-  price: 400
+  price: 600
 --- !u!114 &2132420731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95448,7 +95457,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2132420730}
         m_TargetAssemblyTypeName: WeaponButton, Assembly-CSharp
-        m_MethodName: OnClickChangeWeapon
+        m_MethodName: OnClickUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

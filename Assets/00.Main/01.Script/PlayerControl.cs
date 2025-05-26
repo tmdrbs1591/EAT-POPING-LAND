@@ -43,7 +43,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         { "위", "아래" }, { "아래", "위" }, { "왼쪽", "오른쪽" }, { "오른쪽", "왼쪽" }
     };
 
-    private PlayerBattle playerbattleScript;
+    public PlayerBattle playerbattleScript;
 
     private void Awake()
     {
