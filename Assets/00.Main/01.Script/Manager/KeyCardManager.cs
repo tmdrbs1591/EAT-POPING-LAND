@@ -93,6 +93,8 @@ public class KeyCardManager : MonoBehaviour
             case KeyCardType.HoldLevelUp:
                 break;
             case KeyCardType.WeaponUpgrade:
+                GameManager.instance.playerScript.playerbattleScript.UpgradeStat(StatType.Power);
+                TurnManager.instance.EndTurn();
                 break;
             case KeyCardType.Prison:
                 int targetViewID = GameManager.instance.playerScript.GetComponent<PhotonView>().ViewID;
