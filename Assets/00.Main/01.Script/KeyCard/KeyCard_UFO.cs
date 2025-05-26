@@ -30,17 +30,7 @@ public class KeyCard_UFO : MonoBehaviourPunCallbacks, KeyCardEvents
     {
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            UIOpen();
-        }
-        else if (Input.GetKeyUp(KeyCode.T))
-        {
-            UIclose();
-        }
-    }
+
     public void UIOpen()
     {
         mainCam.DOOrthoSize(zoomOutSize, 0.5f);

@@ -23,6 +23,7 @@ public class KeyCardManager : MonoBehaviour
 
     [Header("이벤트들")]
    public KeyCard_UFO keycardUFO;
+   public KeyCard_HoldUpgrade keycardHoldUpgrade;
     private void Awake()
     {
         instance = this;
@@ -91,6 +92,7 @@ public class KeyCardManager : MonoBehaviour
                 WeaponManager.instance.ShopPanelOpen(); 
                 break;
             case KeyCardType.HoldLevelUp:
+                keycardHoldUpgrade.EventStart();
                 break;
             case KeyCardType.WeaponUpgrade:
                 GameManager.instance.playerScript.playerbattleScript.UpgradeStat(StatType.Power);
