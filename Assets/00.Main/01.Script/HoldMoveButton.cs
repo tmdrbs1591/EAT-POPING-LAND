@@ -67,4 +67,6 @@ public class HoldMoveButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         KeyCardManager.instance.keycardUFO.CallUFOMove(targetViewID, transform);
         KeyCardManager.instance.keycardUFO.UIclose();   
     }
+
+ 
 }

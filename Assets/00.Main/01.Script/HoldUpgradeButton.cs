@@ -40,6 +40,15 @@ public class HoldUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         rectTransform.DOScale(originalScale, scaleDuration).SetEase(Ease.InOutQuad);
     }
+    private void OnEnable()
+    {
+        if (hold.holdType == ColorType.Default)
+            return;
+        if (hold.holdType != GameManager.instance.playerScript.GetComponent<PlayerColor>().playerColor)
+        {
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (image != null && highlightMaterial != null)
@@ -78,5 +87,5 @@ public class HoldUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         TurnManager.instance.EndTurn();
         //  AudioManager.instance.PlaySound(transform.position, clickIndex, Random.Range(1f, 1f), 1f);
     }
-
-}
+   
+    }
