@@ -31,7 +31,7 @@ public class Imoticon : MonoBehaviourPun
     void RPC_ShowImoticon(string imoticonName)
     {
         Sprite selectedSprite = null;
-
+        AudioManager.instance.PlaySound(transform.position, 5, Random.Range(1f, 1.2f), 1f);
         switch (imoticonName)
         {
             case "Smile":
