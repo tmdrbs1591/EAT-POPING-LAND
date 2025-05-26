@@ -46116,7 +46116,7 @@ MonoBehaviour:
   highlightMaterial: {fileID: 0}
   originalMaterial: {fileID: 0}
   scaleDuration: 0.3
-  highlightScale: 1.2
+  highlightScale: 1.05
   hightlightAudioIndex: 3
   clickIndex: 5
 --- !u!1 &2077053132
