@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public float rayDistance = 5f;
     private Dictionary<string, Vector3> directionPositions = new Dictionary<string, Vector3>();
     [SerializeField] GameObject playerColorBox;
-    [SerializeField] PlayerColorBox playerColorBoxScript;
+    [SerializeField] public PlayerColorBox playerColorBoxScript;
 
     [Header("UI")]
     public Button upButton;

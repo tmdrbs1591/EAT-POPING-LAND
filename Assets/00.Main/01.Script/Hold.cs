@@ -105,6 +105,11 @@ public class Hold : MonoBehaviour
     [PunRPC]
     public void HoldPriceUp(int price, string playerName)
     {
+        if(level >= 6)
+        {
+            GameManager.instance.playerScript.playerColorBoxScript.AddHoldMoney();
+            return;
+        }
         if(level <= 0)
         {
             holdPrice += price;
