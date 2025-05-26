@@ -241,4 +241,13 @@ public void SetTurnHighlight(bool isMyTurn)
         }
     } 
 
+    public void BattleMoneyMinus()
+    {
+        PlayerMoney money = GameManager.instance.playerScript.GetComponent<PlayerMoney>();
+        if (money != null)
+        {
+            Debug.Log("진 사람 돈 빼기");
+            money.AddMoney(-BattleManager.instance.holdPrice / 2);
+        }
+    }
 }

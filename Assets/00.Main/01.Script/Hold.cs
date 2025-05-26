@@ -17,7 +17,7 @@ public enum ColorType
 
 }
 
-public class Hold : MonoBehaviour
+public class Hold : MonoBehaviourPun
 {
     public Renderer rend;
 
@@ -107,7 +107,8 @@ public class Hold : MonoBehaviour
     {
         if(level >= 6)
         {
-            GameManager.instance.playerScript.playerColorBoxScript.AddHoldMoney();
+            if(photonView.IsMine)
+            GameManager.instance.playerScript.playerColorBoxScript.AddHoldMoney(50);
             return;
         }
         if(level <= 0)

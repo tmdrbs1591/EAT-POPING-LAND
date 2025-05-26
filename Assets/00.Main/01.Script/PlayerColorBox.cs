@@ -80,7 +80,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                     return;
 
                 case ColorType.Money:
-                    AddHoldMoney();
+                    AddHoldMoney(300);
                     EndTurn();
                     return;
 
@@ -203,13 +203,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
         Gizmos.DrawWireCube(center, size);
     }
 
-    public void AddHoldMoney()
+    public void AddHoldMoney(int money)
     {
         if (photonView.IsMine)
         {
-            playerMoneyScript.AddMoney(300);
+            playerMoneyScript.AddMoney(money);
             string playerNickName = photonView.Owner.NickName;
-            SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 300캔디코인을 획득했습니다!");
+            SystemMessaageManager.instance.MessageTextStart($"{playerNickName}님이 {money}캔디코인을 획득했습니다!");
         }
         Instantiate(moneyEffect, transform.position, Quaternion.identity);
         photonView.RPC("AudioRPC", RpcTarget.AllBuffered, 8);
