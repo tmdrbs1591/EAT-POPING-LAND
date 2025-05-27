@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackCharData
   m_EditorClassIdentifier: 
   characterName: "\uD398\uB2C8"
-  characterInfo: "\uAC80\uC815\uC0C9\uAE54\uACF5\uC8FC"
+  characterInfo: "\uD398\uB2C8\uB2E4"
   characteristic: "\uAC80\uC815\uC0C9\uAE54\uC774\uB2E4"
   moveSpeed: 6
   hp: 9
