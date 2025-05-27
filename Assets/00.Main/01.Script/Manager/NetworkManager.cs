@@ -199,14 +199,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LocalPlayer.NickName = UserInfo.Data.nickname;
+
         Player[] players = PhotonNetwork.PlayerList;
         for (int i = 0; i < players.Count(); i++)
         {
             GameObject playerItem = Instantiate(playerListItemPrefab, playerLisContent);
             playerItem.GetComponent<PlayerListItem>().Setup(players[i]);
-            playerObjects[players[i].NickName] = playerItem; // 플레이어 오브젝트 저장
+            playerObjects[players[i].NickName] = playerItem;
         }
-
 
         RoomPanel.SetActive(true);
         RoomRenewal();
@@ -215,14 +215,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         StartButton.SetActive(PhotonNetwork.IsMasterClient);
 
-        // 방 코드 표시: 방 코드만 추출하여 UI에 표시
+        // 방 코드 표시
         string roomName = PhotonNetwork.CurrentRoom.Name;
-        string roomCode = roomName.Split('_')[^1];  // 방 이름에서 마지막 부분이 방 코드
+        string roomCode = roomName.Split('_')[^1];
         RoomCodeText.text = "Room Code: " + roomCode;
 
         LobbyPanel.SetActive(false);
         DisconnectPanel.SetActive(false);
+
+        CheckAutoStart(); // 입장 직후 자동 시작 체크
     }
+
 
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -247,9 +250,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         GameObject playerItem = Instantiate(playerListItemPrefab, playerLisContent);
         playerItem.GetComponent<PlayerListItem>().Setup(newPlayer);
-        playerObjects[newPlayer.NickName] = playerItem; // 플레이어 오브젝트 저장
+        playerObjects[newPlayer.NickName] = playerItem;
 
+        CheckAutoStart(); // 여기서 자동 시작 체크
     }
+
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
@@ -305,5 +310,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
     }
     #endregion
+    public bool isQuickMatch;
+    void CheckAutoStart()
+    {
+        if (PhotonNetwork.IsMasterClient &&
+            PhotonNetwork.CurrentRoom.PlayerCount == 2 && isQuickMatch) // 2명일 때 시작
+        {
+            PhotonNetwork.LoadLevel("01.Ingame");
+        }
+    }
+
+    public void QuickMatchChange(bool b)
+    {
+        isQuickMatch = b;
+    }
+
 }
 
