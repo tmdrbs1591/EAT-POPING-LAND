@@ -25,6 +25,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     public Button rightButton;
     public GameObject uiCanvas;
     [SerializeField] TMP_Text nickNameText;
+    [SerializeField] TMP_Text diceCountText;
+
 
     [SerializeField] GameObject playerSprite;
     [SerializeField] GameObject playerNickUI;
@@ -34,7 +36,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     private string lastDirection = ""; // 마지막 이동한 방향
     private string currentDirection = "";
 
-    private int remainingMoveCount;
+    public int remainingMoveCount;
     public bool isMove;
     public bool isWin;
 
@@ -110,6 +112,14 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     IEnumerator DiceResultCor()
     {
         yield return new WaitForSeconds(0.1f);
+        photonView.RPC(nameof(DiceResultRPC), RpcTarget.All);
+        yield return new WaitForSeconds(1f);
+        photonView.RPC(nameof(DiceCountTextOn), RpcTarget.All);
+
+    }
+    [PunRPC]
+    void DiceResultRPC()
+    {
         remainingMoveCount = DiceManager.instance.diceResult;
     }
     void CastRay(Vector3 direction, string directionName)
@@ -152,7 +162,6 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     {
         isMove = true;
         uiCanvas.SetActive(false);
-
         photonView.RPC("TurnUICloseRPC", RpcTarget.All);
       
 
@@ -167,7 +176,8 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             }
 
             photonView.RPC("OnMoveButtonClicked", RpcTarget.All, currentDirection);
-            remainingMoveCount--;
+            photonView.RPC(nameof(DiceCountDownRPC), RpcTarget.All);
+            photonView.RPC(nameof(DiceTextUpdateRPC), RpcTarget.All);
 
             yield return new WaitForSeconds(0.2f);
             playerColorBoxScript.HoldDown();
@@ -179,6 +189,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
         if (remainingMoveCount <= 0)
         {
             ColorChange();
+            photonView.RPC(nameof(DiceCountTextOff), RpcTarget.All);
             Debug.Log("턴 종료");
         }
         else
@@ -187,7 +198,28 @@ public class PlayerControl : MonoBehaviourPunCallbacks
             UpdateButtonVisibility();
         }
     }
+    [PunRPC]
+    void DiceCountDownRPC()
+    {
+        remainingMoveCount--;
+    }
+    [PunRPC]
+    void DiceTextUpdateRPC()
+    {
+        diceCountText.text = remainingMoveCount.ToString();
+    }
+    [PunRPC]
+    void DiceCountTextOn()
+    {
+        diceCountText.gameObject.SetActive(true);
+        photonView.RPC(nameof(DiceTextUpdateRPC), RpcTarget.All);
 
+    }
+    [PunRPC]
+    void DiceCountTextOff()
+    {
+        diceCountText.gameObject.SetActive(false);
+    }
     [PunRPC]
     void TurnUICloseRPC()
     {

@@ -379,7 +379,7 @@ public class BattleManager : MonoBehaviourPun
                     Vector3 originalPos = playerOriginalPositions[playerID];
                     pv.RPC("RPC_SetRePosition", RpcTarget.All, originalPos);
                     pv.RPC("RPC_SetRotation", RpcTarget.All, 31.7f, 42.8f, 0f);
-                    pv.RPC("RPC_SetUIPosition", RpcTarget.All, 1.1f, 3.36f, 0.53f);
+                    pv.RPC("RPC_SetUIPosition", RpcTarget.All, 0.56f, 4.4f, 0.53f);
                 }
                 else
                 {

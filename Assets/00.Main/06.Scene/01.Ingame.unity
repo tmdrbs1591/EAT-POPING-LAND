@@ -27747,7 +27747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -41817,7 +41817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -53641,7 +53641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -84653,7 +84653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -86136,7 +86136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -96765,7 +96765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 4
+  holdType: 5
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -100475,7 +100475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbf5f96c455d054d8c87de8f8cf9ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropDelay: 3.25
+  dropDelay: 5.3
   dropHeight: 35
 --- !u!114 &2008343584
 MonoBehaviour:

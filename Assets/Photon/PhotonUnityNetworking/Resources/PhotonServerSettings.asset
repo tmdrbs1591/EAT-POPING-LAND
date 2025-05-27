@@ -114,6 +114,11 @@ MonoBehaviour:
   - DashRPC
   - RPC_UpgradeStat
   - RPC_ShowImoticon
+  - DiceCountTextOff
+  - DiceCountTextOn
+  - DiceCountDownRPC
+  - DiceResultRPC
+  - DiceTextUpdateRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
