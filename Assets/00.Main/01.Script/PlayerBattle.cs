@@ -8,6 +8,7 @@ using System.Linq;
 using TMPro;
 using DG.Tweening.Core.Easing;
 using JetBrains.Annotations;
+using DG.Tweening;
 
 public enum AttackType
 {
@@ -57,12 +58,15 @@ public class PlayerBattle : MonoBehaviourPun
     [Header("UI")]
     [SerializeField] GameObject charSprite;
     [SerializeField] public Slider hpSlider;
+    [SerializeField] public Slider hpSlider2;
+    [SerializeField]  Slider dashSlider;
     [SerializeField] ParticleSystem slashPtc;
     [SerializeField] ParticleSystem slashPtc2;
     [SerializeField] ParticleSystem diePtc;
     [SerializeField] ParticleSystem damagePtc;
     [SerializeField] GameObject dieCanvas;
     [SerializeField] public TMP_Text hptext;
+    [SerializeField] public TMP_Text hptext2;
     [SerializeField] GameObject damageText;
     [SerializeField] GameObject shieldText;
     [SerializeField] ParticleSystem moveEffect;
@@ -105,6 +109,8 @@ public class PlayerBattle : MonoBehaviourPun
     private bool useFirstAttack = true; // Toggle용 변수
     private bool useFirstSlash = true;
 
+    [SerializeField] GameObject battleUI;
+
     // public Transform dieBattleCameraPos;
 
     void Awake()
@@ -119,14 +125,32 @@ public class PlayerBattle : MonoBehaviourPun
     {
         curHp = maxHp;
         hpSlider.value = curHp / maxHp;
+        hpSlider2.value = curHp / maxHp;
         isDie = false;
         rb.isKinematic = false; // 물리 효과 아예 끔
         BattleManager.instance.isPlayerDown = false;
 
     }
 
+    private void OnEnable()
+    {
+        if (photonView.IsMine)
+        {
+            battleUI.SetActive(true);
+        }
+    }
+    private void OnDisable()
+    {
+        if (photonView.IsMine)
+        {
+            battleUI.SetActive(false);
+        }
+    }
     void Update()
     {
+        float cooldownRemaining = nextDashTime - Time.time;
+        dashSlider.value = 1f - Mathf.Clamp01(cooldownRemaining / dashCooldown);
+
         if (BattleManager.instance.isPlayerDown)
         {
             rb.velocity = Vector3.zero;
@@ -345,7 +369,9 @@ public class PlayerBattle : MonoBehaviourPun
             CameraShake.instance.Shake(0.7f, 0.1f);
             curHp -= damage;
             hpSlider.value = curHp / maxHp;
-            hptext.text = curHp.ToString() + "/" + maxHp.ToString();
+            hpSlider2.value = curHp / maxHp;
+            hptext.text = Mathf.FloorToInt(curHp).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
+            hptext2.text = Mathf.FloorToInt(curHp).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
 
             Vector3 randomOffset = new Vector3(
              Random.Range(-1f, 2f),   // X 범위
