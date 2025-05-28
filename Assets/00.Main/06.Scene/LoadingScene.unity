@@ -4414,7 +4414,7 @@ MonoBehaviour:
   initialSkinName: skin3
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 3-run
+  startingAnimation: 2-run
   startingLoop: 1
   timeScale: 1.3
   freeze: 0

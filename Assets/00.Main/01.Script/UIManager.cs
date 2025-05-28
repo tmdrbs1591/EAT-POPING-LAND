@@ -59,19 +59,26 @@ public class UIManager : MonoBehaviour
         }
         if (CharacterManager.instance.isCharSelect)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                currentIndex = Mathf.Clamp(currentIndex + 1, 0, buttons.Count - 1);
-                UpdateButtonPositions();
+                RightCharSelectMove();
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                currentIndex = Mathf.Clamp(currentIndex - 1, 0, buttons.Count - 1);
-                UpdateButtonPositions();
+                LeftCharSelectMove();
             }
         }
     }
-
+    public void RightCharSelectMove()
+    {
+        currentIndex = Mathf.Clamp(currentIndex + 1, 0, buttons.Count - 1);
+                UpdateButtonPositions();
+    }
+    public void LeftCharSelectMove()
+    {
+        currentIndex = Mathf.Clamp(currentIndex - 1, 0, buttons.Count - 1);
+        UpdateButtonPositions();
+    }
     void UpdateButtonPositions()
     {
         AudioManager.instance.PlaySound(transform.position, 3, Random.Range(1f, 1f), 1f);
