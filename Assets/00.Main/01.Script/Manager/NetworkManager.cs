@@ -314,7 +314,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void CheckAutoStart()
     {
         if (PhotonNetwork.IsMasterClient &&
-            PhotonNetwork.CurrentRoom.PlayerCount == 2 && isQuickMatch) // 2명일 때 시작
+            PhotonNetwork.CurrentRoom.PlayerCount == 4 && isQuickMatch) // 4명일 때 시작
         {
             PhotonNetwork.LoadLevel("01.Ingame");
         }

@@ -11,7 +11,7 @@ public class MatchingPanel : MonoBehaviour
     private int secondsPassed = 0;
 
     private float textChangeTimer = 0f;
-    private float textChangeInterval = 0.3f; // 텍스트 변경 주기
+    private float textChangeInterval = 0.6f; // 텍스트 변경 주기
 
     private bool isCounting = false;
 
