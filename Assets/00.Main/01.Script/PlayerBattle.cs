@@ -656,7 +656,7 @@ public class PlayerBattle : MonoBehaviourPun
                 attackPower += 0.2f;
                 foreach (var Text in attackPowerUIText)
                 {
-                    Text.text = attackPower.ToString() + "X";
+                    Text.text = attackPower.ToString("F1") + "X";
                 }
                 break;
             case StatType.HP:
@@ -670,7 +670,7 @@ public class PlayerBattle : MonoBehaviourPun
                 moveSpeed += 0.2f;
                 foreach (var Text in MoveSpeedUIText)
                 {
-                    Text.text = moveSpeed.ToString();
+                    Text.text = moveSpeed.ToString("F1");
                 }
                 break;
         }
