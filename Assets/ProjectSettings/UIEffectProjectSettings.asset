@@ -50,7 +50,17 @@ ShaderVariantCollection:
         passType: 0
       - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_PATTERN
         passType: 0
+      - keywords: SAMPLING_EDGE_LUMINANCE
+        passType: 0
+      - keywords: TRANSITION_BURN
+        passType: 0
+      - keywords: TRANSITION_CUTOFF
+        passType: 0
+      - keywords: TRANSITION_DISSOLVE
+        passType: 0
       - keywords: TRANSITION_FADE
+        passType: 0
+      - keywords: TRANSITION_MELT
         passType: 0
       - keywords: TRANSITION_MELT UNITY_UI_ALPHACLIP
         passType: 0
