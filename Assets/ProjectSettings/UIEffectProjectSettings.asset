@@ -40,6 +40,8 @@ ShaderVariantCollection:
         passType: 0
       - keywords: SAMPLING_BLUR_FAST
         passType: 0
+      - keywords: TRANSITION_FADE
+        passType: 0
       - keywords: TRANSITION_PATTERN
         passType: 0
       - keywords: TRANSITION_PATTERN UNITY_UI_ALPHACLIP
