@@ -27984,7 +27984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -42054,7 +42054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -53878,7 +53878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -85073,7 +85073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -86556,7 +86556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
@@ -97305,7 +97305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  holdType: 5
+  holdType: 4
   holdPrice: 0
   level: 0
   holdPlayerName: 
