@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3400039086654940260}
   - component: {fileID: 7369300165239043839}
   - component: {fileID: 7155282441806498342}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoomBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 7813265350713826001}
   - component: {fileID: 4144755121909176992}
   - component: {fileID: 5497626683257145821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5205,7 @@ GameObject:
   - component: {fileID: 6806134048218831370}
   - component: {fileID: 285454131741859439}
   - component: {fileID: 4997162798380251581}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundResidue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
