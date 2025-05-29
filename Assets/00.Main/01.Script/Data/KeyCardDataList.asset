@@ -38,4 +38,4 @@ MonoBehaviour:
     keyCardName: "\uCEA1\uC290\uC774\uC758 UFO"
     keyCardInfo: "\uCEA1\uC290\uC774\uAC00 UFO\uB97C \uD0DC\uC6CC \uC6D0\uD558\uB294
       \uB545\uC73C\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4"
-    keyCardImage: {fileID: 21300000, guid: 2acf9148f9ea9d64fa50d6e3b257f285, type: 3}
+    keyCardImage: {fileID: 21300000, guid: fcf3e0b8dbdc2ff4f9808f7f48eccece, type: 3}
