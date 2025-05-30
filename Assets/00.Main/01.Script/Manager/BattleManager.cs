@@ -289,7 +289,7 @@ public class BattleManager : MonoBehaviourPun
                     if (money != null)
                     {
                         Debug.Log("이긴 사람 돈 추가");
-                        money.AddMoney(holdPrice);
+                        StartCoroutine(AddMoney(money, holdPrice));
                     }
                 }
 
@@ -300,13 +300,18 @@ public class BattleManager : MonoBehaviourPun
                     if (money != null)
                     {
                         Debug.Log("진 사람 돈 빼기");
-                        money.AddMoney(-holdPrice);
+                        StartCoroutine(AddMoney(money, -holdPrice));
                     }
                 }
             }
         }
 
         SystemMessaageManager.instance.MessageTextStart(GetBattleResultMessage(winnerName));
+    }
+    IEnumerator AddMoney(PlayerMoney money , int holdPrice)
+    {
+        yield return new WaitForSeconds(2f);
+        money.AddMoney(holdPrice);
     }
     private string GetBattleResultMessage(string winnerName)
     {
