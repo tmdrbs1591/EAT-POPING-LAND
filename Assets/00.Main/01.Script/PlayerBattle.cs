@@ -373,7 +373,6 @@ public class PlayerBattle : MonoBehaviourPun
             hptext.text = Mathf.FloorToInt(Mathf.Max(0, curHp)).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
             hptext2.text = Mathf.FloorToInt(Mathf.Max(0, curHp)).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
 
-
             Vector3 randomOffset = new Vector3(
              Random.Range(-1f, 2f),   // X 범위
              Random.Range(2f, 3f),    // Y를 위쪽으로 띄운 범위
@@ -381,8 +380,15 @@ public class PlayerBattle : MonoBehaviourPun
          );
 
             var tmp = Instantiate(damageText, transform.position + randomOffset, transform.rotation).GetComponent<TMP_Text>();
-            tmp.text = damage.ToString("F1");
-            Destroy(tmp, 2f);
+            if (damage % 1 == 0)
+            {
+                tmp.text = ((int)damage).ToString();
+            }
+            else
+            {
+                tmp.text = damage.ToString("F1");
+            }
+
 
         }
         else

@@ -119,6 +119,8 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                                 int holdTypeInt = (int)playerColorScript.HoldChange();
                                 holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                                 holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, photonView.Owner.NickName);
+                                Debug.Log("<color=red>이 땅은 내꺼다 !!!!!!!</color>");
+                                Debug.Log(playerControl.isWin);
                             }
                         }
                         else
