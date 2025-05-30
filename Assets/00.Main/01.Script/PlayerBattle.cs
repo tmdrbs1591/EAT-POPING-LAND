@@ -370,8 +370,9 @@ public class PlayerBattle : MonoBehaviourPun
             curHp -= damage;
             hpSlider.value = curHp / maxHp;
             hpSlider2.value = curHp / maxHp;
-            hptext.text = Mathf.FloorToInt(curHp).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
-            hptext2.text = Mathf.FloorToInt(curHp).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
+            hptext.text = Mathf.FloorToInt(Mathf.Max(0, curHp)).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
+            hptext2.text = Mathf.FloorToInt(Mathf.Max(0, curHp)).ToString() + "/" + Mathf.FloorToInt(maxHp).ToString();
+
 
             Vector3 randomOffset = new Vector3(
              Random.Range(-1f, 2f),   // X 범위
@@ -380,7 +381,7 @@ public class PlayerBattle : MonoBehaviourPun
          );
 
             var tmp = Instantiate(damageText, transform.position + randomOffset, transform.rotation).GetComponent<TMP_Text>();
-            tmp.text = damage.ToString();
+            tmp.text = damage.ToString("F1");
             Destroy(tmp, 2f);
 
         }

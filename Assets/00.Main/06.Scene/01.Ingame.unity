@@ -7488,7 +7488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.271
+      value: 0.257
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23015,7 +23015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 262}
+  m_AnchoredPosition: {x: 7, y: 150}
   m_SizeDelta: {x: 1215.366, y: 640.256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506316749
@@ -44971,8 +44971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 747.59937, y: -0.00012207031}
-  m_SizeDelta: {x: -1060.591, y: 134.158}
+  m_AnchoredPosition: {x: 636.7545, y: -0.00012207031}
+  m_SizeDelta: {x: -1273.489, y: -61.713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900844795
 MonoBehaviour:
@@ -44994,8 +44994,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f958d4b62e678454a838f535600c1e65, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -48557,7 +48557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.271
+      value: 0.257
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72430,7 +72430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114, y: 60}
+  m_AnchoredPosition: {x: -7, y: -52}
   m_SizeDelta: {x: 471.367, y: 117.842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440055895
@@ -77745,7 +77745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.27142859
+      value: 0.257
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5823277b114ba4428fd548a5d61e745, type: 3}
       propertyPath: m_LocalRotation.w
@@ -83808,7 +83808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114, y: 433}
+  m_AnchoredPosition: {x: -7, y: 321}
   m_SizeDelta: {x: 471.367, y: 117.842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675699103
@@ -87855,7 +87855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: -43}
+  m_AnchoredPosition: {x: 37, y: -155}
   m_SizeDelta: {x: 471.367, y: 117.842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734801871
@@ -87880,8 +87880,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB545\uAC12 : 0000\uC6D0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9ef20cd8f10738a4bad0113530f1cc18, type: 2}
-  m_sharedMaterial: {fileID: 4694938459003218641, guid: 9ef20cd8f10738a4bad0113530f1cc18, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d89097671943f354d9185a0fdd0e972a, type: 2}
+  m_sharedMaterial: {fileID: 8829450966974262072, guid: d89097671943f354d9185a0fdd0e972a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -87905,14 +87905,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.43
-  m_fontSizeBase: 41.43
+  m_fontSize: 37
+  m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
