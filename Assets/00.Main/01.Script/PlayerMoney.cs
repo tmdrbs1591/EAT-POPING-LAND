@@ -5,13 +5,15 @@ using TMPro;
 using ExitGames.Client.Photon;
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class PlayerMoney : MonoBehaviourPunCallbacks
 {
     public GameObject[] uiPositions; // UI 위치들 (우상단, 좌상단 등)
     public TextMeshProUGUI[] moneyTexts; // 돈 텍스트
     public TextMeshProUGUI[] nameTexts;  // 이름 텍스트
-
+    public PlayerColorBox playerColorBox;
+    
 
     public int money = 100; // 초기 돈
     public int uiIndex;     // UI 인덱스
@@ -52,10 +54,34 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.I))
-                AddMoney(1000);
+                AddMoney(-100);
+        }
+      if(money <= 0)
+        {
+            Bankruptcy();
         }
     }
+    
+    public void Bankruptcy()
+    {
+        photonView.RPC(nameof(BankruptcyRPC), RpcTarget.All);
+        playerColorBox.HoldReset();
+        if (TurnManager.instance.IsMyTurn() && photonView.IsMine)
+        {
+            TurnManager.instance.EndTurn();
+        }
+        TurnManager.instance.isBankruptcy = true;
+        TurnManager.instance.bankruptcyUI.SetActive(true);
+        SystemMessaageManager.instance.MessageTextStart($"{PhotonNetwork.NickName}님이 돈을 모두 잃어 파산하였습니다 ㅜㅜ");
 
+    }
+
+    [PunRPC]
+    void BankruptcyRPC()
+    {
+        gameObject.SetActive(false);
+
+    }
     public void AddMoney(int amount)
     {
         UpdateMoney(amount);

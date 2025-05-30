@@ -24,11 +24,13 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
     }
     public void HoldReset()
     {
-        foreach (var hold in myHoldeList)
+        for (int i = myHoldeList.Count - 1; i >= 0; i--)
         {
-            hold.photonView.RPC("RPC_ResetHold", RpcTarget.All); // 호출
-            myHoldeList.Remove(hold);
+            var hold = myHoldeList[i];
+            hold.photonView.RPC("RPC_ResetHold", RpcTarget.All);
+            myHoldeList.RemoveAt(i);
         }
+
     }
     public void HoldDown()
     {

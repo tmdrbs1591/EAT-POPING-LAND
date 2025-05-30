@@ -120,6 +120,7 @@ MonoBehaviour:
   - DiceResultRPC
   - DiceTextUpdateRPC
   - RPC_ResetHold
+  - BankruptcyRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

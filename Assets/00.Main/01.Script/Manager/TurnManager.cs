@@ -19,11 +19,14 @@ public class TurnManager : MonoBehaviourPunCallbacks
     public bool isCountingDown = false; // 카운트다운 중인지 확인
     private bool isFirstTurn = true; // 첫 턴인지 확인
     public bool isPrison = true; // 감옥인지확인
+    public bool isBankruptcy = false; //파산인지 확인
 
     public GameObject diceUI;
     public GameObject otherDiceUI;
     public GameObject prisonUI;
     public GameObject prisonStartUI;
+    public GameObject bankruptcyUI;
+
 
     public PlayerMoney playerMoneyScript; // 내 턴때 ui 커지게 하기위해 
     private void Awake()
@@ -97,6 +100,11 @@ public class TurnManager : MonoBehaviourPunCallbacks
                 isPrison = false;
                 return;
             }
+            else if (isBankruptcy)
+            {
+                EndTurn();
+                return;
+            }
             else
             {
                 diceUI.SetActive(true);
@@ -128,6 +136,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         Debug.Log("턴 끝");
         DiceManager.instance.isDice = false;
         playerMoneyScript.SetTurnHighlight(false);
+        diceUI.SetActive(false);
 
 
     }
