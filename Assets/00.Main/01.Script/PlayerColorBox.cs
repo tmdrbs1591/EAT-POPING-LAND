@@ -17,9 +17,18 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
     public TMP_Text priceText;
     [SerializeField] private float rayLength = 3f; // 인스펙터에서 조절 가능하게
 
+    public List<Hold> myHoldeList;
     private void Update()
     {
        
+    }
+    public void HoldReset()
+    {
+        foreach (var hold in myHoldeList)
+        {
+            hold.photonView.RPC("RPC_ResetHold", RpcTarget.All); // 호출
+            myHoldeList.Remove(hold);
+        }
     }
     public void HoldDown()
     {
@@ -91,6 +100,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                         int holdTypeInt = (int)playerColorScript.HoldChange();
                         holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                         holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, PhotonNetwork.NickName);
+                        myHoldeList.Add(hold);
                     }
                     EndTurn();
                     return;
@@ -119,6 +129,7 @@ public class PlayerColorBox : MonoBehaviourPunCallbacks
                                 int holdTypeInt = (int)playerColorScript.HoldChange();
                                 holdView.RPC("HoldColorChange", RpcTarget.AllBuffered, materialIndex, holdTypeInt);
                                 holdView.RPC("HoldPriceUp", RpcTarget.AllBuffered, 100, photonView.Owner.NickName);
+                                myHoldeList.Add(hold);
                                 Debug.Log("<color=red>이 땅은 내꺼다 !!!!!!!</color>");
                                 Debug.Log(playerControl.isWin);
                             }

@@ -1926,6 +1926,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -3964,6 +3965,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -8823,6 +8825,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -10057,6 +10060,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -10612,6 +10616,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -12141,6 +12146,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -19273,6 +19279,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -22205,6 +22212,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -22551,6 +22559,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -23606,6 +23615,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -25488,6 +25498,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -27829,6 +27840,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -28722,6 +28734,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -29792,6 +29805,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -30236,6 +30250,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -32704,6 +32719,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -33266,6 +33282,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -34576,6 +34593,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -35461,6 +35479,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -39000,6 +39019,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -39262,6 +39282,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -41020,6 +41041,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -42695,6 +42717,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -44695,6 +44718,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -46090,6 +46114,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -49329,6 +49354,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -52605,6 +52631,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -53052,6 +53079,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -54219,6 +54247,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -54761,6 +54790,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -55063,6 +55093,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -60692,6 +60723,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -62810,6 +62842,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -76721,6 +76754,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -78424,6 +78458,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -83106,6 +83141,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -83464,6 +83500,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -83631,6 +83668,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -85875,6 +85913,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -86699,6 +86738,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -87613,6 +87653,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -88182,6 +88223,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -93004,6 +93046,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -95875,6 +95918,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -98914,6 +98958,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -100059,6 +100104,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -104620,6 +104666,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -106380,6 +106427,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}
@@ -108133,6 +108181,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c1f2420624f137849be987d0ff39143a, type: 2}
   - {fileID: 2100000, guid: 45a21ca601c1c5742809fa5f1cbb6e8e, type: 2}
   - {fileID: 2100000, guid: 98c6002e0d7b14c48974d1db760bfa58, type: 2}
+  - {fileID: 2100000, guid: 79a8d06c20267004b8ad2573a2c83d1c, type: 2}
   level1Effect: {fileID: 0}
   level2Effect: {fileID: 0}
   level3Effect: {fileID: 0}

@@ -129,6 +129,30 @@ public class Hold : MonoBehaviourPun
         Debug.Log("레벨업!");
     }
 
+
+    [PunRPC]
+    public void RPC_ResetHold()
+    {
+        // 기본 메테리얼로 변경 (materialList[0] 기준)
+        if (materialList.Length > 0)
+        {
+            rend.material = materialList[4];
+        }
+
+        // 기본값들로 초기화
+        holdType = ColorType.Default;
+        holdPrice = 0;
+        level = 0;
+        holdPlayerName = "";
+
+        // 이펙트 전부 비활성화
+        if (level1Effect != null) level1Effect.SetActive(false);
+        if (level2Effect != null) level2Effect.SetActive(false);
+        if (level3Effect != null) level3Effect.SetActive(false);
+        if (level4Effect != null) level4Effect.SetActive(false);
+        if (level5Effect != null) level5Effect.SetActive(false);
+    }
+
     public void PlaySteppedAnimation()
     {
         // 처음 위치

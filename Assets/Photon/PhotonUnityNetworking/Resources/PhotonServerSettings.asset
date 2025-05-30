@@ -119,6 +119,7 @@ MonoBehaviour:
   - DiceCountDownRPC
   - DiceResultRPC
   - DiceTextUpdateRPC
+  - RPC_ResetHold
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
