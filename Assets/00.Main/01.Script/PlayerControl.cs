@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviourPunCallbacks
     [SerializeField] GameObject playerColorBox;
     [SerializeField] public PlayerColorBox playerColorBoxScript;
 
+
     [Header("UI")]
     public Button upButton;
     public Button downButton;
