@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-    public int diceValue; // 주사위 값 (1~6)
+    public int diceValue { get; private set; } // 주사위 값 (1~6)
 
     public void SetValue(int value)
     {
