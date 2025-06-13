@@ -135,7 +135,7 @@ public class CrownManager : MonoBehaviourPunCallbacks
             }
         }
 
-        text.text = winnerName;
+        text.text = winnerName + "WIN!";
 
         resultPanel.SetActive(true);
     }

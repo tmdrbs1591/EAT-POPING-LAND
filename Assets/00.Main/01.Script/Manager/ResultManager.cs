@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -10,24 +10,33 @@ public class ResultManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject resultPanel;
 
+    private void Awake()
+    {
+        StartCoroutine(PanelOpenCor());
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            resultPanel.SetActive(true); 
+            Application.Quit();
         }
+     
+
     }
-    // ¿¹: °á°ú È­¸é¿¡¼­ ¹öÆ° ´©¸£¸é È£Ãâ
+    // ì˜ˆ: ê²°ê³¼ í™”ë©´ì—ì„œ ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void OnLeaveRoomButtonClicked()
     {
         PhotonNetwork.LeaveRoom();
-        OnLeftRoom();
     }
 
     public override void OnLeftRoom()
     {
-        // ¿øÇÏ´Â ¾ÀÀ¸·Î ÀÌµ¿ (¿¹: ·Îºñ ¾À)
-        SceneManager.LoadScene("00.Room"); // ¿©±â¿¡ ½ÇÁ¦ ¾À ÀÌ¸§ ÀÔ·Â
+        SceneManager.LoadScene("00.Room"); // ì—¬ê¸°ì— ì‹¤ì œ ì”¬ ì´ë¦„ ì…ë ¥
     }
 
+    IEnumerator PanelOpenCor()
+    {
+        yield return new WaitForSeconds(4f);
+        resultPanel.SetActive(true);
+    }
 }
