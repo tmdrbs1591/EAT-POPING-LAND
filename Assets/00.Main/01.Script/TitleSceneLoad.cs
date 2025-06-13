@@ -32,6 +32,7 @@ public class TitleSceneLoad : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
         loadingText.text = loadingMessages[currentMessageIndex]; // 첫 번째 메시지를 설정
         loadingBar.value = 0f; // 슬라이더 초기화
     }

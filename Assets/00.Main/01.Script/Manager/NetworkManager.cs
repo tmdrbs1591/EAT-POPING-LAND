@@ -53,7 +53,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Disconnect();
         Connect();
-        Screen.SetResolution(960, 540, false);
+        //Screen.SetResolution(960, 540, false);
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "asia";
         SongManager.instance.SongChange(1);
