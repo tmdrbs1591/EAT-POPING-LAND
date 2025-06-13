@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private Stack<GameObject> uiStack = new Stack<GameObject>();
+    public Stack<GameObject> uiStack = new Stack<GameObject>();
 
     [Header("캐릭터 선택 버튼")]
     [SerializeField] Button redButton;
@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     private Vector3 buttonSpacing = new Vector3(180f, 0, 0); // 버튼 간 간격
 
+
     void Awake()
     {
 
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+      
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseTopUI();
