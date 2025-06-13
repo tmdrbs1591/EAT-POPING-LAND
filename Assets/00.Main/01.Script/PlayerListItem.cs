@@ -5,6 +5,7 @@ using Photon.Pun;
 using TMPro;
 using Photon.Realtime;
 using Spine.Unity;
+using System.Linq;
 
 public class PlayerListItem : MonoBehaviourPunCallbacks
 {
@@ -23,6 +24,7 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
     [SerializeField] private AnimationReferenceAsset blueAnim;
     [SerializeField] private AnimationReferenceAsset yellowAnim;
     [SerializeField] private AnimationReferenceAsset blackAnim;
+
     public void Setup(Player _player)
     {
         player = _player;

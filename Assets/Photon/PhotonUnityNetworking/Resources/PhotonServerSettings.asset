@@ -121,6 +121,7 @@ MonoBehaviour:
   - DiceTextUpdateRPC
   - RPC_ResetHold
   - BankruptcyRPC
+  - PanelOpenRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

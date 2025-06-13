@@ -8,6 +8,15 @@ using System.Diagnostics;
 
 public class ResultManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject resultPanel;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            resultPanel.SetActive(true); 
+        }
+    }
     // 예: 결과 화면에서 버튼 누르면 호출
     public void OnLeaveRoomButtonClicked()
     {
@@ -21,5 +30,4 @@ public class ResultManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("00.Room"); // 여기에 실제 씬 이름 입력
     }
 
-  
 }

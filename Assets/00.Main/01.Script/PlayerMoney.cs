@@ -54,12 +54,12 @@ public class PlayerMoney : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.I))
-                AddMoney(-100);
+                AddMoney(10000);
         }
-      if(money < 0)
-        {
-            Bankruptcy();
-        }
+      //if(money < 0)
+      //  {
+      //      Bankruptcy();
+      //  }
     }
     
     public void Bankruptcy()
