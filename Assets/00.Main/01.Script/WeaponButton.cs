@@ -36,6 +36,7 @@ public class WeaponButton : MonoBehaviour
         {
             WeaponManager.instance.WeaponChange(weaponTypeToSelect);
         playerMoney.AddMoney(-price);
+            AudioManager.instance.PlaySound(transform.position, 14, Random.Range(1f, 1f), 1f);
         }
     }
 
@@ -48,6 +49,7 @@ public class WeaponButton : MonoBehaviour
         {
             GameManager.instance.playerScript.playerbattleScript.UpgradeStat(statTypeToSelect);
             playerMoney.AddMoney(-price);
+            AudioManager.instance.PlaySound(transform.position, 14, Random.Range(1f, 1f), 1f);
         }
     }
 }

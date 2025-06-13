@@ -15,6 +15,8 @@ public class PlayerBullet : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Awake()
     {
+        Destroy(gameObject,1f);
+        CameraShake.instance.Shake(0.4f, 0.1f);
     }
 
     // Update is called once per frame

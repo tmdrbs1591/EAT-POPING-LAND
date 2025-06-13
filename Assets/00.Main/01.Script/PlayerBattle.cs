@@ -191,8 +191,16 @@ public class PlayerBattle : MonoBehaviourPun
 
     void FixedUpdate()
     {
+
         if (!photonView.IsMine || BattleManager.instance.isPlayerDown)
             return;
+
+        if (attackType == AttackType.Melee)
+            attackCooldown = 0.4f;
+        else if (WeaponManager.instance.currentWeaponType == WeaponType.BubbleGun)
+            attackCooldown = 1f;
+        else if (WeaponManager.instance.currentWeaponType == WeaponType.BoomGun)
+            attackCooldown = 1.3f;
 
         Die();
         ShieldOn();
